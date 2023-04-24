@@ -1,8 +1,8 @@
 <?php
 session_start(); // start a session
 if (isset($_SESSION["id"])) {
-	header("Location: index.php");
-	exit();
+    header("Location: index.php");
+    exit();
 }
 // Check if the registration form was submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pharm = $_POST["pharm"];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $adress = $_POST["adress"]; 
+    $adress = $_POST["adress"];
 
     // Validate user input
     if (empty($username) || empty($email) || empty($password)) {
@@ -38,18 +38,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Hash the password
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             // Insert the pharm data into the database
-            $insert_pharm = "INSERT INTO `pharm`(`name`, `adress`, `email`) VALUES ('$username','$adress' ,'$email');" ;  
-            $conn->query($insert_pharm) ; 
+            $insert_pharm = "INSERT INTO `pharm`(`name`, `adress`, `email`) VALUES ('$username','$adress' ,'$email');";
+            $conn->query($insert_pharm);
             $pharm_id = mysqli_insert_id($conn);
             // Insert the user's data into the database
-            $role = "owner"; 
-            $temp = $username .strval($pharm_id ) ;  // i don't need to keep this in mind the "." make a syntax error so no need to complecat this 
+            $role = "owner";
+            $temp = $username . strval($pharm_id); // i don't need to keep this in mind the "." make a syntax error so no need to complecat this 
             $insert_user = "INSERT INTO `users`( `id_pharm`, `name`, `username`, `pwd`, `role`) VALUES ('$pharm_id','$username','$temp','$hashed_password','$role')";
             if ($conn->query($insert_user) === TRUE) {
                 // give this user the owner ship of the pharm 
                 $owner_id = mysqli_insert_id($conn);
-                $insert_owner = "UPDATE `pharm` SET `owner`='$owner_id' WHERE  id= ' $pharm_id' " ; 
-                $conn->query($insert_owner) ; 
+                $insert_owner = "UPDATE `pharm` SET `owner`='$owner_id' WHERE  id= ' $pharm_id' ";
+                $conn->query($insert_owner);
                 header("Location: login.php");
                 exit;
             } else {
@@ -100,23 +100,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <form id="sign_up" action="signup.php" method="post">
                                         <div class="mb-3">
                                             <label class="form-label">Name</label>
-                                            <input class="form-control form-control-lg" type="text" name="username" placeholder="Enter your name" />
+                                            <input class="form-control form-control-lg" type="text" name="username"
+                                                placeholder="Enter your name" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Pharm name</label>
-                                            <input class="form-control form-control-lg" type="text" name="pharm" placeholder="Enter your company name" />
+                                            <input class="form-control form-control-lg" type="text" name="pharm"
+                                                placeholder="Enter your company name" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Adress</label>
-                                            <input class="form-control form-control-lg" type="text" name="adress" placeholder="Enter your company name" />
+                                            <input class="form-control form-control-lg" type="text" name="adress"
+                                                placeholder="Enter your company name" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Email</label>
-                                            <input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
+                                            <input class="form-control form-control-lg" type="email" name="email"
+                                                placeholder="Enter your email" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Password</label>
-                                            <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter password" />
+                                            <input class="form-control form-control-lg" type="password" name="password"
+                                                placeholder="Enter password" />
                                         </div>
 
                                         <div class="text-center mt-3">
