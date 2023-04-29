@@ -1,5 +1,5 @@
 <?php
-$expire = 365 * 24 * 3600; // We choose a one year duration
+$expire = 365 * 24 * 3600; // i choose a one year duration
 ini_set('session.gc_maxlifetime', $expire);
 session_start(); // start a session
 setcookie(session_name(), session_id(), time() + $expire);
@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<div class="card-body">
 								<div class="m-sm-4">
 									<div class="text-center">
-										<img src="img/avatars/img2.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
+										<img src="img\avatars\avatar.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
 									</div>
 									<form id=" log_in" action="login.php" method="post">
 										<div class="mb-3">
