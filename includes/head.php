@@ -34,6 +34,10 @@
 <script type="text/javascript" src="js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="js/buttons.colVis.min.js"></script>
 
+
+<!--no need to this truly -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
 <!--font Awesome-->
 <link href="assest/fontawesome/css/all.css" rel="stylesheet">
 <style type="text/css">
@@ -52,6 +56,16 @@
 
 	.dataTables_filter {
 		display: none;
+	}
+
+	.delete-btn {
+		color: white;
+		background-color: red;
+	}
+
+	.info-btn {
+		color: white;
+		background-color: forestgreen;
 	}
 </style>
 <script src="js/app.js"></script>
