@@ -22,7 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_list = $id[$i];
         $l = $lot[$i];
         $a = $amount[$i];  
-        $sql = " SELECT * FROM `prodoit` WHERE  `list_prodoit`='$id_list', `pharm`='$pharm_id', `lot`= '$l' ";
+        $sql =
+        "SELECT * FROM `prodoit` WHERE `list_prodoit`='$id_list' AND `pharm`='$pharm_id' AND `lot`= '$l'";
         $result = $coon->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -32,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } 
         else {
             $sql = "INSERT INTO `prodoit`(`list_prodoit`, `pharm`, `lot`, `amount`)
-        VALUES (   $id_list ,$pharm_id  , $lot , $amount  )";
+        VALUES (  $id_list, $pharm_id ,$l , $a  )";
         
             if ($coon->query($sql) === true) {
                 // pass some information here like modification 
@@ -43,4 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
+    // we have to change this for later use 
+    header("Location:  ../products.php");
 }
