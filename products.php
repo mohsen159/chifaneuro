@@ -28,6 +28,7 @@ include "includes/coon.php";
 						<table id="prducts" style="width:100%" class="display" class="display table table-hover my-0">
 							<thead>
 								<tr>
+									<th>id</th>
 									<th>Name</th>
 									<th>lot</th>
 									<th>amount</th>
@@ -185,6 +186,10 @@ include "includes/coon.php";
 						columnDefs: [{
 								targets: -1,
 								visible: true
+							},
+							{
+								targets: 0,
+								visible: false
 							}
 						],
 
@@ -194,7 +199,7 @@ include "includes/coon.php";
 					});
 					for (var i = 0; i < data.length; i++) {
 						var row = [
-							
+							data[i]['id'],
 							data[i]['name_dosage'],
 							data[i]['lot'],
 							data[i]['amount'],

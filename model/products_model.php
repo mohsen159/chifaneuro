@@ -11,12 +11,12 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form autocomplete="off" action="action/add_products.php" method="post" class="was-validated" id="new_product" name="new_product">
+                    <form autocomplete="off" action="actions/add_products.php" method="post" class="was-validated" id="new_product" name="new_product">
                         <div id="1" class="mt-3 autocomplete d-flex flex-nowrap justify-content-between space">
                             <input type="hidden" name="id[]">
                             <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
-                            <input type="text" class="order-2 p-2" style="width:80px"  placeholder="Lot" name="lot[]" required>
-                            <input type="number"  class="order-3 p-2" style="width:90px" placeholder="Amount" name="amount[]" required>
+                            <input type="text" class="order-2 p-2" style="width:80px" placeholder="Lot" name="lot[]" required>
+                            <input type="number" class="order-3 p-2" style="width:90px" placeholder="Amount" name="amount[]" required>
 
                             <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick=" delet_p(this)">
                                 <br>
