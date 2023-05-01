@@ -1,5 +1,5 @@
-    <!--model stuff -->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="myModal">
+    <!--add model-->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="add">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
@@ -11,12 +11,13 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form autocomplete="off" onsubmit="return validateForm()" action="/operation/add_drug.php" method="post" class="was-validated" id="new_drog" name="new_drog">
+                    <form autocomplete="off" action="action/add_products.php" method="post" class="was-validated" id="new_product" name="new_product">
                         <div id="1" class="mt-3 autocomplete d-flex flex-nowrap justify-content-between space">
-                            <input type="text" onchange="find_dci(this);" onfocus="drugs_auto(this)" class="form-control order-1 p-2" placeholder="name" name="name[]" required>
-                            <input type="text" onfocus="lot_auto(this)" class="order-2 p-2" style="width:80px" id="lot" placeholder="Lot" name="Lot[]" required>
-                            <input type="number" id="amount" class="order-3 p-2" style="width:90px" placeholder="Amount" name="amount[]" required>
-                            <input type="text" onfocus="dci_auto(this)" class="order-4 p-2" placeholder="dci" name="dci[]" required>
+                            <input type="hidden" name="id[]">
+                            <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
+                            <input type="text" class="order-2 p-2" style="width:80px"  placeholder="Lot" name="lot[]" required>
+                            <input type="number"  class="order-3 p-2" style="width:90px" placeholder="Amount" name="amount[]" required>
+
                             <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick=" delet_p(this)">
                                 <br>
                         </div>
@@ -25,18 +26,8 @@
                         <button style="margin-top:10px" type="button" onclick="addElement()" class="fa fa-plus btn btn-primary"></button>
                         <br>
                         <br>
-                        <!--select class="form-select form-select-sm" aria-label="Default select example" name="type">
-                            <option selected value="1">SARL BIG DIS</option>
-                            <option selected value="3">hydera</option>
-                            <option selected value="2">Attia Pharma</option>
-                            <option selected value="2">Attia Pharma</option>
-
-                        </select-->
-                        <!--br>
-                        <br-->
                         <button type="submit" class="btn btn-outline-success">Add</button>
                     </form>
-
                 </div>
 
 

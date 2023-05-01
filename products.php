@@ -8,10 +8,7 @@ include "includes/coon.php";
 
 <head>
 	<?php include "includes/head.php"; ?>
-
-
 </head>
-
 
 <body>
 	<div class="wrapper">
@@ -22,14 +19,13 @@ include "includes/coon.php";
 			<?php include "includes/stat_navbar.php"; ?>
 			<!--end navbar here -->
 
-		
+
 			<main class="content">
 				<div class="container-fluid p-0">
 
 					<h1 class="h3 mb-3"><?php echo $page_name;  ?> </h1>
-
 					<div style="color: black;" class="row">
-						<table id="prducts" class="display">
+						<table id="prducts" style="width:100%" class="display" class="display table table-hover my-0">
 							<thead>
 								<tr>
 									<th>Name</th>
@@ -40,23 +36,9 @@ include "includes/coon.php";
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Row 1 Data 1</td>
-									<td>Row 1 Data 1</td>
-									<td>Row 1 Data 1</td>
-									<td>Row 1 Data 1</td>
-									<td>Row 1 Data 1</td>
-								</tr>
-								<tr>
-									<td>Row 1 Data 2</td>
-									<td>Row 1 Data 21</td>
-									<td>Row 1 Data 3</td>
-									<td>Row 1 Data 4</td>
-									<td>Row 1 Data 6</td>
-								</tr>
 							</tbody>
 						</table>
-
+						<?php include "model/products_model.php"; ?>
 					</div>
 
 
@@ -70,14 +52,164 @@ include "includes/coon.php";
 		</div>
 	</div>
 	<script>
-		$(document).ready(function() {
-			$('#prducts').DataTable();
-		});
-
 		// this part is just for your custom search
-		$('#search').keyup(function() {
+		/*$('#search').keyup(function() {
 			var table = $('#prducts').DataTable();
 			table.search($(this).val()).draw();
+		});*/
+		// the add model 
+		// counter to track number of elements
+		let counter = 1;
+
+		function getProducts() {
+			const products = [];
+			$.ajax({
+				url: 'actions/get_product_list.php',
+				type: 'GET',
+				dataType: 'json',
+				success: function(response) {
+					for (let i = 0; i < response.length; i++) {
+						products.push({
+							id_p: response[i].id_p,
+							name: response[i].name,
+							dosage: response[i].dosage,
+							full_name: response[i].name + ' ' + response[i].dosage
+						});
+					}
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			});
+			return products;
+		}
+
+		let data = getProducts();
+
+
+
+		function addElement() {
+			counter++;
+			const newDiv = document.createElement('div');
+			newDiv.id = counter;
+			newDiv.className = 'mt-3 autocomplete d-flex flex-nowrap justify-content-between space';
+			newDiv.innerHTML = `
+    <input type="hidden" name="id[]">
+    <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
+    <input type="text" class="order-2 p-2" style="width:80px"  placeholder="Lot" name="lot[]" required>
+    <input type="number"  class="order-3 p-2" style="width:90px" placeholder="Amount" name="amount[]" required>
+    <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)">
+      <br>
+    </li>
+  `;
+			const lastDiv = document.getElementById(counter - 1);
+			lastDiv.parentNode.insertBefore(newDiv, lastDiv.nextSibling);
+		}
+
+
+		// function to add new input element
+		function delet_p(element) {
+			if (element.parentElement === document.getElementById("1")) {
+				/// no need for the form to be visible
+				alert("Please set on input for validation the form");
+			} else {
+				element.parentElement.remove();
+			}
+		}
+		/// the autocomplete 
+		function find_product(element) {
+			let names = data.map(p => p.full_name);
+			autocomplete(element, names);
+		}
+
+		function find_productid(input) {
+			const parentDiv = input.parentNode;
+			const full_name = input.value.toLowerCase();
+			const product = data.find((p) => p.full_name.toLowerCase() === full_name);
+			if (product) {
+				const idInput = parentDiv.querySelector('input[type="hidden"]');
+				const productId = product.id_p;
+				idInput.value = productId;
+				alert(productId);
+			}
+		}
+		//#####
+		const dbutton = document.querySelectorAll('.delete-btn');
+		dbutton.forEach(btn => {
+			btn.addEventListener('click', () => {
+				const row = btn.closest('tr');
+				const id = row.querySelector('td:first-child').textContent; // this will take the id 
+				row.remove();
+
+			});
+		});
+		$(document).ready(function() {
+			$.ajax({
+				url: "actions/get_products.php",
+				type: "GET",
+				dataType: "json",
+				success: function(data) {
+					// Loop through the data and add each row to the table.
+					var table = $('#prducts').DataTable({
+						responsive: true,
+						paging: false,
+						dom: 'Bfrtip',
+						buttons: [{
+								text: 'add',
+								action: function() {
+
+									//alert("nothing for now ")
+									$('#add').modal('show');
+								}
+							},
+							{
+								extend: 'print',
+								messageTop: ' ',
+								exportOptions: {
+									columns: ':visible'
+								}
+							},
+							{
+								extend: 'excel',
+								text: 'excel',
+								exportOptions: {
+									columns: ':visible',
+									modifier: {
+										page: 'current'
+									}
+								}
+							},
+							'colvis'
+						],
+
+						columnDefs: [{
+								targets: -1,
+								visible: true
+							}
+						],
+
+						order: [
+							[0, "desc"]
+						]
+					});
+					for (var i = 0; i < data.length; i++) {
+						var row = [
+							
+							data[i]['name_dosage'],
+							data[i]['lot'],
+							data[i]['amount'],
+							moment(data[i]['Expiration']).format('DD/MM/YYYY'),
+							'<td><button class="delete-btn"><i class="fas fa-trash-alt"></i> Delete</button>  <button class="info-btn"><i class="fas fa-info-circle" ></i> Info</button> </td>'
+						];
+						table.row.add(row);
+					}
+					// Draw the table to show the added data.
+					table.draw();
+				},
+				error: function() {
+					alert("Error retrieving product data.");
+				}
+			});
 		});
 	</script>
 </body>

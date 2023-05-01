@@ -1,68 +1,16 @@
-console.log("am here ");
-function delet(id, name) {
-    /* confirm first  */
-    var r = confirm("You want to delete thus record  ?");
-    if (r == true) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                alert(this.responseText); // just for test do somthing more awsome here  
-                window.location.reload();
-            }
-        };
-        xmlhttp.open("GET", window.location.origin + "/operation/delet.php?id=" + id + "&name=" + name);
-        xmlhttp.send();
-    } else {
-        /* nothing yet to delete */
-    }
-
-}
-
-function clear_exist(arg) {
-    if (document.getElementById("select").value == "2") {
-        let parent = arg.parentNode;
-        const myNodelist = parent.querySelectorAll("input");
-        let drug = myNodelist[0].value;
-        let lot = myNodelist[1].value;
-        let amount = myNodelist[2];
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                if (this.responseText == "-1") {
-                    //alert('drug white the name  ' + drug + ' and lot =' + lot + " dosn't exist in the database");
-                } else if (this.responseText == "0") {
-                   // alert('drug white the name = ' + drug + ' and lot =  ' + lot + " have amount of 0 ");
-
-                }/* else {
-                    amount.placeholder = this.responseText;
-                }*/
-                amount.placeholder = this.responseText;
-                amount.max = this.responseText;
-            }
-        };
-        xmlhttp.open("GET", window.location.origin + "/operation/check.php?name=" + drug + "&lot=" + lot);
-        xmlhttp.send();
-    }
-}
-function check_exist(arg)
-{
-    if (document.getElementById("select").value == "2") {    /// if 1 mean an old stuff 
-    }
-}
 function autocomplete(inp, arr) {
-    /*the autocomplete function takes two arguments,
-    the text field element and an array of possible autocompleted values:*/
+   
     var currentFocus;
-    /*execute a function when someone writes in the text field:*/
+    
     inp.addEventListener("input", function (e) {
         var a, b, i, val = this.value;
-        /*close any already open lists of autocompleted values*/
+    
         closeAllLists();
         if (!val) {
             return false;
         }
         currentFocus = -1;
-        /*create a DIV element that will contain the items (values):*/
+        
         a = document.createElement("DIV");
         a.setAttribute("id", this.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
@@ -145,52 +93,8 @@ function autocomplete(inp, arr) {
             }
         }
     }
-    /*execute a function when someone clicks in the document:*/
+  
     document.addEventListener("click", function (e) {
         closeAllLists(e.target);
     });
-}
-
-
-/// drugs edit form 
-function drug_edit(id, name, lot, amount, exp) {
-    document.forms["form_edit"]["id"].value = id;
-    document.forms["form_edit"]["name"].value = name;
-    document.forms["form_edit"]["lot"].value = lot;
-    document.forms["form_edit"]["number"].value = amount;
-    document.forms["form_edit"]["exp"].value = exp;
-}
-/// sales edit form 
- function sales_edit(id) {
-
-    /// get the information about the sale 
-     var xmlhttp = new XMLHttpRequest();
-     xmlhttp.onreadystatechange = function () {
-         if (this.readyState == 4 && this.status == 200) {
-            
-            let result = JSON.parse(this.responseText) ;     
-            document.forms["sale_update"]["id"].value =  result.id;
-            document.forms["sale_update"]["medication"].value = result.medication;
-            document.forms["sale_update"]["note_fix"].value = result.note;
-            document.forms["sale_update"]["num_order"].value = result.num_order  ; 
-            document.forms["sale_update"]["sale_date"].value = result.sales_date ; 
-            document.forms["sale_update"]["dure"].value = result.dure;
-            document.forms["sale_update"]["employs"].value = result.sales_id;
-             
-         }
-     };
-     xmlhttp.open("GET", window.location.origin + "/operation/sales_info.php?id=" +id);
-     xmlhttp.send();     
-}
-
-
-function sal(id, name, amount) {
-    document.forms["form_sales"]["id"].value = id;
-    document.forms["form_sales"]["name"].value = name;
-    document.forms["form_sales"]["number"].max = amount;
-}
-
-function delet_client(id, name) {
-    document.forms["delet_client"]["id"].value = id;
-    document.forms["delet_client"]["name"].value = name;
 }

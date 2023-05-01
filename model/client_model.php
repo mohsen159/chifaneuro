@@ -24,6 +24,7 @@
 
                            <br>
                          <select id="select" class="form-select form-select-sm" aria-label="Default select example" name="employs">
+                            <!-- genrate dynamcli-->
                              <option selected value="1">wissam</option>
                              <option value="2">mohssen</option> 
                              <option value="3">hakim</option>
