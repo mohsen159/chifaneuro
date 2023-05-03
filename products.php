@@ -103,8 +103,11 @@ include "includes/coon.php";
       <br>
     </li>
   `;
-			const lastDiv = document.getElementById(counter - 1);
-			lastDiv.parentNode.insertBefore(newDiv, lastDiv.nextSibling);
+
+			const lastDiv = document.getElementById(counter - 1); // there is a problem maybe the elemetn is deleted 
+			//const lastDiv = document.getElementById(0); // there is a problem maybe the elemetn is deleted 
+			lastDiv.parentNode.insertBefore(newDiv , lastDiv.nextSibling);
+		    
 		}
 
 
@@ -134,7 +137,7 @@ include "includes/coon.php";
 				alert(productId);
 			}
 		}
-		//#####
+		// not working yet 
 		const dbutton = document.querySelectorAll('.delete-btn');
 		dbutton.forEach(btn => {
 			btn.addEventListener('click', () => {
