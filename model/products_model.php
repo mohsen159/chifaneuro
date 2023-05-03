@@ -21,6 +21,7 @@
                             <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick=" delet_p(this)">
                                 <br>
                         </div>
+                        <!-- don't delet this input we use it to add new div before  -->
                         <input type="hidden" id="0">
                         <br>
                         <button style="margin-top:10px" type="button" onclick="addElement()" class="fa fa-plus btn btn-primary"></button>
