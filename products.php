@@ -104,10 +104,10 @@ include "includes/coon.php";
     </li>
   `;
 
-			const lastDiv = document.getElementById(counter - 1); // there is a problem maybe the elemetn is deleted 
-			//const lastDiv = document.getElementById(0); // there is a problem maybe the elemetn is deleted 
-			lastDiv.parentNode.insertBefore(newDiv , lastDiv.nextSibling);
-		    
+			const formElement = document.querySelector('form');
+			const inputElement = document.getElementById('0');
+			formElement.insertBefore(newDiv, inputElement);
+
 		}
 
 
