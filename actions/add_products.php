@@ -21,20 +21,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     for ($i = 0; $i < $counter; $i++) {
         $id_list = $id[$i];
         $l = $lot[$i];
-        $a = $amount[$i];  
+        $a = $amount[$i];
         $sql =
-        "SELECT * FROM `prodoit` WHERE `list_prodoit`='$id_list' AND `pharm`='$pharm_id' AND `lot`= '$l'";
+            "SELECT * FROM `prodoit` WHERE `list_prodoit`='$id_list' AND `pharm`='$pharm_id' AND `lot`= '$l'";
         $result = $coon->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $sql = "UPDATE `prodoit` SET amount=(amount+ $a) WHERE id =" . $row["id"];
                 $coon->query($sql);
             }
-        } 
-        else {
-            $sql = "INSERT INTO `prodoit`(`list_prodoit`, `pharm`, `lot`, `amount`)
-        VALUES (  $id_list, $pharm_id ,$l , $a  )";
-        
+        } else {
+            $sql
+                = "INSERT INTO `prodoit`(`list_prodoit`, `pharm`, `lot`, `amount`)
+        VALUES ($id_list, $pharm_id, '$l', $a)";
+
+
             if ($coon->query($sql) === true) {
                 // pass some information here like modification 
                 echo "add ";
