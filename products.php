@@ -123,6 +123,7 @@ include "includes/coon.php";
 			let names = data.map(p => p.full_name);
 			autocomplete(element, names);
 		}
+
 		function find_productid(input) {
 			const parentDiv = input.parentNode;
 			const full_name = input.value.toLowerCase();
@@ -131,12 +132,15 @@ include "includes/coon.php";
 				const idInput = parentDiv.querySelector('input[type="hidden"]');
 				const productId = product.id_p;
 				idInput.value = productId;
-				
+
 			} else {
-				$('#add').modal('hide');
-				// this is a new product submit to product list and use the data 
-				// to update the product list show model #addproductlist
-				$('#addproductlist').modal('show'); // open the modal and fetch the input value in the name 
+				if (full_name == '') {
+					$('#add').modal('hide');
+					// this is a new product submit to product list and use the data 
+					// to update the product list show model #addproductlist
+					$('#addproductlist').modal('show'); // open the modal and fetch the input value in the name 
+				}
+
 			}
 		}
 		// not working yet 
