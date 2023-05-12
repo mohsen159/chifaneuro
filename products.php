@@ -87,8 +87,6 @@ include "includes/coon.php";
 
 		let data = getProducts();
 
-
-
 		function addElement() {
 			counter++;
 			const newDiv = document.createElement('div');
@@ -115,7 +113,7 @@ include "includes/coon.php";
 		function delet_p(element) {
 			if (element.parentElement === document.getElementById("1")) {
 				/// no need for the form to be visible
-				alert("Please set on input for validation the form");
+				alert("this fieald can not be deleted ");
 			} else {
 				element.parentElement.remove();
 			}
@@ -125,7 +123,6 @@ include "includes/coon.php";
 			let names = data.map(p => p.full_name);
 			autocomplete(element, names);
 		}
-
 		function find_productid(input) {
 			const parentDiv = input.parentNode;
 			const full_name = input.value.toLowerCase();
@@ -134,7 +131,12 @@ include "includes/coon.php";
 				const idInput = parentDiv.querySelector('input[type="hidden"]');
 				const productId = product.id_p;
 				idInput.value = productId;
-				alert(productId);
+				
+			} else {
+				$('#add').modal('hide');
+				// this is a new product submit to product list and use the data 
+				// to update the product list show model #addproductlist
+				$('#addproductlist').modal('show'); // open the modal and fetch the input value in the name 
 			}
 		}
 		// not working yet 
@@ -142,9 +144,8 @@ include "includes/coon.php";
 		dbutton.forEach(btn => {
 			btn.addEventListener('click', () => {
 				const row = btn.closest('tr');
-				const id = row.querySelector('td:first-child').textContent; // this will take the id 
+				//const id = row.querySelector('td:first-child').textContent; // this will take the id 
 				row.remove();
-
 			});
 		});
 		$(document).ready(function() {
