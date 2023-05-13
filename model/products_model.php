@@ -11,11 +11,12 @@
 
                <!-- Modal body -->
                <div class="modal-body">
-                   <form autocomplete="off" action="actions/add_productslist.php" method="post" class="was-validated" id="new_item" name="new_item">
+                   <form autocomplete="off"  method="post" class="was-validated" id="new_item" name="new_item">
                        <div id="1" class="mt-3 autocomplete d-flex flex-nowrap justify-content-between space">
                            <input type="text" class="form-control order-1 p-2" placeholder="Name" name="name" required>
+                           <input type="text" class="form-control order-1 p-2" placeholder="Dci" name="dci" required>
                            <input type="text" class="form-control order-1 p-2" placeholder="Dosage" name="dosage" required>
-                           <input type="text" class="form-control order-1 p-2" placeholder="La Forme" name="la_forme" required>
+                           <input type="text" class="form-control order-1 p-2" placeholder="La Forme" name="form" required>
                        </div>
                        <br>
                        <br>
