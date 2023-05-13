@@ -11,7 +11,7 @@
 
                <!-- Modal body -->
                <div class="modal-body">
-                   <form autocomplete="off"  method="post" class="was-validated" id="new_item" name="new_item">
+                   <form autocomplete="off" method="post" class="was-validated" id="new_item" name="new_item">
                        <div id="1" class="mt-3 autocomplete d-flex flex-nowrap justify-content-between space">
                            <input type="text" class="form-control order-1 p-2" placeholder="Name" name="name" required>
                            <input type="text" class="form-control order-1 p-2" placeholder="Dci" name="dci" required>
@@ -83,7 +83,7 @@
 
                <!-- Modal body -->
                <div class="modal-body">
-                   <form action="/operation/update_drug.php" method="post" class="was-validated" id="form_edit" name="form_edit">
+                   <form method="post" class="was-validated" id="form_edit" name="form_edit">
                        <div class="mb-3 mt-3">
                            <input type="hidden" class="form-control" id="id" name="id" required>
                        </div>
@@ -98,13 +98,18 @@
                            <div class="invalid-feedback">Please fill out this field.</div>
                        </div>
                        <div class="mb-3">
-                           <label for="number" class="form-label">count</label>
+                           <label for="number" class="form-label">Amount</label>
                            <input type="number" id="number" min="1" name="number" required>
                            <div class="valid-feedback">Valid.</div>
                            <div class="invalid-feedback">Enter a valid number</div>
                        </div>
+                       <div class="mb-3">
+                           <label for="exp" class="form-label">expiration date </label>
+                           <input type="date" id="exp"  name="exp" required>
+                           <div class="valid-feedback">Valid.</div>
+                           <div class="invalid-feedback">Enter a valid date</div>
+                       </div>
                        <button type="submit" class="btn btn-outline-success">Edit</button>
-                       <button type="submit" class="btn btn-outline-danger" onclick='delet( document.forms["form_edit"]["id"].value ,"products")' style="float:right">Delete</button>
                    </form>
 
                </div>

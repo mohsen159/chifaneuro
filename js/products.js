@@ -242,7 +242,77 @@ $(document).ready(function () {
                 });
             });
 
+            const editbtn = document.querySelectorAll('.info-btn');
+            editbtn.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    var currentRow = btn.closest("tr");
+                    var table = $('#prducts').DataTable();
+                    var rowIdx = table.row(currentRow).index();
+                    var rowData = table.row(rowIdx).data();
+                    var id = rowData[0]; // Assuming 'id' is in the first column
+                    var name = rowData[1];
+                    var lot = rowData[2];
+                    var amount = rowData[3];
+                    var exp = rowData[4];
+                
+                    // set data in the form 
+                    var form = document.getElementById("form_edit");
+                    form.elements["id"].value = id;
+                    form.elements["name"].value = name;
+                    form.elements["lot"].value = lot;
+                    form.elements["number"].value = amount;
+                    /* please don't change this it works fin it take me 1 h to fix this  */
+                    var parts = exp.split("/");
+                    var formattedDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+                    form.elements["exp"].value = formattedDate;
+                    $('#edit').modal('show');
 
+                })
+
+            });
+
+            /// using the info button 
+            $(document).ready(function () {
+                $('#form_edit').on('submit', function (event) {
+                    event.preventDefault(); // Prevent form submission
+
+                    // Get the form data
+                       var form = document.getElementById("form_edit");
+                       var id = form.elements["id"].value ;
+                    
+                       var lot =  form.elements["lot"].value ;
+                       var amount =  form.elements["number"].value ;
+                       var exp = form.elements["exp"].value  ; 
+                       var formData = {
+                           id: id,
+                           lot: lot,
+                           amount: amount,
+                           exp: exp
+                       };
+
+                    // Perform an AJAX request to update the data in the server-side script
+                    $.ajax({
+                        url: 'actions/update_product.php', // Replace with the URL of your server-side script
+                        method: 'POST',
+                        data: formData,
+                        dataType: 'json',
+                        success: function (response) {
+                            // Check if the update was successful
+                            if (response.success) {
+                                // Update the data in the row
+                                 /// this is just for test 
+                                location.reload(); 
+                                // Update the expiration date in the row using the expDate value
+                            } else {
+                                // Handle the case when the update failed
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            // Handle the AJAX error
+                        }
+                    });
+                });
+            });
 
         },
         error: function () {
