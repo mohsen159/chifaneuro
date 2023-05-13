@@ -16,12 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST["id"];
     $lot = $_POST["lot"];
     $amount = $_POST["amount"];
+    $exp = $_POST["exp"];
     $counter = count($id);
 
     for ($i = 0; $i < $counter; $i++) {
         $id_list = $id[$i];
         $l = $lot[$i];
         $a = $amount[$i];
+        $e = $exp[$i]; 
         $sql =
             "SELECT * FROM `prodoit` WHERE `list_prodoit`='$id_list' AND `pharm`='$pharm_id' AND `lot`= '$l'";
         $result = $coon->query($sql);
@@ -31,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $coon->query($sql);
             }
         } else {
-            $sql
-                = "INSERT INTO `prodoit`(`list_prodoit`, `pharm`, `lot`, `amount`)
-        VALUES ($id_list, $pharm_id, '$l', $a)";
+            $sql = "INSERT INTO `prodoit`(`list_prodoit`, `pharm`, `lot`, `amount`, `Expiration`)
+        VALUES ('$id_list', '$pharm_id', '$l', '$a', '$e')";
+
 
 
             if ($coon->query($sql) === true) {

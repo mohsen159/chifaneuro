@@ -96,17 +96,21 @@ include "includes/coon.php";
     <input type="hidden" name="id[]">
     <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
     <input type="text" class="order-2 p-2" style="width:80px"  placeholder="Lot" name="lot[]" required>
-    <input type="number"  class="order-3 p-2" style="width:90px" placeholder="Amount" name="amount[]" required>
+    <input type="number"  class="order-3 p-2" style="width:100px" placeholder="Amount" name="amount[]" required>
+	<input type="date" class="order-3 p-2" style="width:220px" name="exp[]" required>
     <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)">
       <br>
     </li>
   `;
 
-			const formElement = document.querySelector('form');
+			const formElement = document.getElementById('new_product');
 			const inputElement = document.getElementById('0');
 			formElement.insertBefore(newDiv, inputElement);
 
 		}
+
+
+
 
 
 		// function to add new input element
@@ -134,7 +138,7 @@ include "includes/coon.php";
 				idInput.value = productId;
 
 			} else {
-				if (full_name == '') {
+				if (full_name.length > 2) {
 					$('#add').modal('hide');
 					// this is a new product submit to product list and use the data 
 					// to update the product list show model #addproductlist
@@ -211,7 +215,7 @@ include "includes/coon.php";
 							data[i]['name_dosage'],
 							data[i]['lot'],
 							data[i]['amount'],
-							moment(data[i]['Expiration']).format('DD/MM/YYYY'),
+							moment(data[i]['exp']).format('DD/MM/YYYY'),
 							'<td><button class="delete-btn"><i class="fas fa-trash-alt"></i> Delete</button>  <button class="info-btn"><i class="fas fa-info-circle" ></i> Info</button> </td>'
 						];
 						table.row.add(row);
