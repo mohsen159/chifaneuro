@@ -5,18 +5,18 @@
 
                    <!-- Modal Header -->
                    <div class="modal-header">
-                       <h4 class="modal-title">new sales </h4>
+                       <h4 class="modal-title">New Sales </h4>
                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                    </div>
 
                    <!-- Modal body -->
                    <div class="modal-body">
-                       <form autocomplete="off" action="actons/new_sales.php" method="post" class="was-validated" id="form_sales" name="form_sales">
+                       <form autocomplete="off" action="actions/insert_sale.php" method="post" class="was-validated" id="form_sales" name="form_sales">
                            <div class="mb-3 mt-3 autocomplete">
                                <input type="text" onfocus="fooo(this)" class="form-control" id="input_client" placeholder="client" name="client" required>
                                <div class="valid-feedback">Valid.</div>
                                <div class="invalid-feedback">Please fill out this field.</div>
-                           </div>            
+                           </div>
                            <br>
                            <select id="select" class="form-select form-select-sm" aria-label="Default select example" name="employs">
                                <!--fetch user -->
