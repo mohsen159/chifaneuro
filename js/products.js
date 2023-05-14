@@ -76,61 +76,56 @@ function find_product(element) {
 function find_productid(input) {
     const parentDiv = input.parentNode;
     const full_name = input.value.toLowerCase();
+    const idInput = parentDiv.querySelector('input[type="hidden"]');
     const product = data.find((p) => p.full_name.toLowerCase() === full_name);
     if (product) {
-        const idInput = parentDiv.querySelector('input[type="hidden"]');
-        const productId = product.id_p;
-        idInput.value = productId;
-
+        idInput.value = product.id_p;
     } else {
-        if (full_name.length > 2) {
+        if (full_name.length > 0) {
             $('#add').modal('hide');
-            // this is a new product submit to product list and use the data 
-            // to update the product list show model #addproductlist
             $('#addproductlist').modal('show'); // open the modal and fetch the input value in the name 
-            $(document).ready(function () {
-                $('#new_item').submit(function (e) {
-                    e.preventDefault(); // prevent default form submission
+            $('#new_item').submit(function (e) {
+                e.preventDefault(); // prevent default form submission
 
-                    // Gather form data
-                    var name = $('[name="name"]').val();
-                    var dosage = $('[name="dosage"]').val();
-                    var la_forme = $('[name="form"]').val();
-                    var dci = $('[name="dci"]').val();
+                // Gather form data
+                var name = $('[name="name"]').val();
+                var dosage = $('[name="dosage"]').val();
+                var la_forme = $('[name="form"]').val();
+                var dci = $('[name="dci"]').val();
 
-                    // make AJAX request
-                    $.ajax({
-                        url: 'actions/add_productslist.php', // replace with your script file
-                        type: 'POST',
-                        data: {
-                            name: name,
-                            dosage: dosage,
-                            la_forme: la_forme,
-                            dci: dci
-                        },
-                        success: function (response) {
-                            // handle success
-                            var newId = response; // ID of the new insert
-                            alert("New Product successfully inserted");
-                            input.value = name + ' ' + dosage;
-                            $('[name="name"]').val() = "";
-                            $('[name="dosage"]').val() = "";
-                            $('[name="form"]').val() = "";
-                            $('[name="dci"]').val() = "";
-                            alert("cleqn"); 
-                            data = getProducts();
-                            find_productid(input);
-                            $('#addproductlist').modal('hide');
-                            $('#add').modal('show');
-                            // perform any additional actions with the new ID
-                        },
-                        error: function () {
-                            // handle error
-                            alert("Error occurred during insert.");
-                        }
-                    });
+                // make AJAX request
+                $.ajax({
+                    url: 'actions/add_productslist.php', // replace with your script file
+                    type: 'POST',
+                    data: {
+                        name: name,
+                        dosage: dosage,
+                        la_forme: la_forme,
+                        dci: dci
+                    },
+                    success: function (response) {
+                        // handle success
+                        var newId = response; // ID of the new insert
+                        input.value = name + ' ' + dosage;
+                        $('[name="name"]').val("");
+                        $('[name="dosage"]').val("");
+                        $('[name="form"]').val("");
+                        $('[name="dci"]').val("");
+                        data = getProducts();
+                        idInput.value = newId;
+                        $('#addproductlist').modal('hide');
+                        $('#add').modal('show');
+                        // perform any additional actions with the new ID
+                    },
+                    error: function () {
+                        // handle error
+                        alert("Error occurred during insert.");
+                    }
                 });
             });
+
+        } else {
+            alert("no empty fiealds here enter data or delete the entry  Please  ");
         }
 
     }
