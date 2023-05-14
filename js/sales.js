@@ -154,6 +154,7 @@ function find_client(element) {
 
 function find_clientid(input) {
     const parentDiv = input.parentNode;
+    const idInput = parentDiv.querySelector('input[type="hidden"]');
     const full_name = input.value.toLowerCase();
     if (full_name.length < 1) {
         alert("Please select a client ");
@@ -162,13 +163,56 @@ function find_clientid(input) {
 
         const client = clients.find((p) => p.full_name.toLowerCase() === full_name);
         if (client) {
-            const idInput = parentDiv.querySelector('input[type="hidden"]');
+
             const clientId = client.id_p;
             idInput.value = clientId;
 
         } else {
+            // this means the client is new we have to creat a new one update the clients array and call the findclientid again 
+            // use the model addclient
+            alert('This client not exist in the database please enter his information');
+            $('#add').modal('hide');
 
-            alert('Please select a valide Client name ');
+            $('#addclient').modal('show');
+            $(document).ready(function () {
+                $('#new_client').submit(function (e) {
+                    e.preventDefault(); // prevent default form submission
+                    // Gather form data
+                    var name = $('[name="name"]').val();
+                    var fname = $('[name="fname"]').val();
+                    // make AJAX request
+                    $.ajax({
+                        url: 'actions/add_client.php', // replace with your script file
+                        type: 'POST',
+                        data: {
+                            name: name,
+                            fname: fname
+                        },
+                        success: function (response) {
+                            // handle success
+                            var newId = response; // ID of the new insert
+                            alert("New client successfully inserted" + newId);
+                            input.value = fname + ' ' + name;
+                            $('[name="name"]').val() = "";
+                            $('[name="fname"]').val() = "";
+                            $('#addclient').modal('hide');
+                            clients = getclients();
+                            idInput.value = newId;
+                            $('#add').modal('show');
+
+                            /// find_clientid(input);   /// stupid method *
+
+
+                            // perform any additional actions with the new ID
+                        },
+                        error: function () {
+                            // handle error
+                            alert("Error occurred during insert.");
+                        }
+                    });
+                });
+            });
+
         }
     }
 

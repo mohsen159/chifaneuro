@@ -113,16 +113,15 @@ function find_productid(input) {
                             var newId = response; // ID of the new insert
                             alert("New Product successfully inserted");
                             input.value = name + ' ' + dosage;
-                            data = getProducts();
-                            find_productid(input);
                             $('[name="name"]').val() = "";
                             $('[name="dosage"]').val() = "";
                             $('[name="form"]').val() = "";
                             $('[name="dci"]').val() = "";
-
+                            alert("cleqn"); 
+                            data = getProducts();
+                            find_productid(input);
+                            $('#addproductlist').modal('hide');
                             $('#add').modal('show');
-
-
                             // perform any additional actions with the new ID
                         },
                         error: function () {
@@ -254,7 +253,7 @@ $(document).ready(function () {
                     var lot = rowData[2];
                     var amount = rowData[3];
                     var exp = rowData[4];
-                
+
                     // set data in the form 
                     var form = document.getElementById("form_edit");
                     form.elements["id"].value = id;
@@ -277,18 +276,18 @@ $(document).ready(function () {
                     event.preventDefault(); // Prevent form submission
 
                     // Get the form data
-                       var form = document.getElementById("form_edit");
-                       var id = form.elements["id"].value ;
-                    
-                       var lot =  form.elements["lot"].value ;
-                       var amount =  form.elements["number"].value ;
-                       var exp = form.elements["exp"].value  ; 
-                       var formData = {
-                           id: id,
-                           lot: lot,
-                           amount: amount,
-                           exp: exp
-                       };
+                    var form = document.getElementById("form_edit");
+                    var id = form.elements["id"].value;
+
+                    var lot = form.elements["lot"].value;
+                    var amount = form.elements["number"].value;
+                    var exp = form.elements["exp"].value;
+                    var formData = {
+                        id: id,
+                        lot: lot,
+                        amount: amount,
+                        exp: exp
+                    };
 
                     // Perform an AJAX request to update the data in the server-side script
                     $.ajax({
@@ -300,8 +299,8 @@ $(document).ready(function () {
                             // Check if the update was successful
                             if (response.success) {
                                 // Update the data in the row
-                                 /// this is just for test 
-                                location.reload(); 
+                                /// this is just for test 
+                                location.reload();
                                 // Update the expiration date in the row using the expDate value
                             } else {
                                 // Handle the case when the update failed
