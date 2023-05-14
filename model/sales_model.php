@@ -13,7 +13,8 @@
                    <div class="modal-body">
                        <form autocomplete="off" action="actions/insert_sale.php" method="post" class="was-validated" id="form_sales" name="form_sales">
                            <div class="mb-3 mt-3 autocomplete">
-                               <input type="text" onfocus="fooo(this)" class="form-control" id="input_client" placeholder="client" name="client" required>
+                               <input type="hidden" name="clientId">
+                               <input type="text" onfocus="find_client(this)" onblur="find_clientid(this)" class="form-control" id="input_client" placeholder="client" name="client" required>
                                <div class="valid-feedback">Valid.</div>
                                <div class="invalid-feedback">Please fill out this field.</div>
                            </div>
@@ -53,15 +54,17 @@
                            <br>
 
                            <div id="1" class="mt-3 autocomplete d-flex flex-nowrap justify-content-between space">
-
-                               <input type="text" onclick="drugs_auto(this)" class="form-control order-1 p-2" placeholder="drug name" name="name[]" required>
-                               <input type="text" onfocus="lot_auto(this)" onblur="clear_exist(this)" class="order-2 p-2" style="width:90px" id="lot" placeholder="Lot" name="Lot[]" required>
-                               <input type="number" min="0" max="99" class="order-3 p-2" style="width:90px" placeholder="Amount" name="amount[]" required>
-                               <li style="margin-right: 10px;" class="btn btn-danger fa " data-feather="log-out" aria-hidden="true" onclick=" delet_p(this)">
+                               <input type="hidden" name="id[]">
+                               <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
+                               <input type="text" class="order-2 p-2" style="width:80px" placeholder="Lot" name="lot[]" required>
+                               <input type="number" class="order-3 p-2" style="width:100px" placeholder="Amount" name="amount[]" required>
+                               <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick=" delet_p(this)">
                                    <br>
                            </div>
+                           <!-- don't delet this input we use it to add new div before  -->
                            <input type="hidden" id="0">
-                           <button style="margin-top:10px" type="button" onclick="addElement()" class="btn btn-primary fa fa-plus"></button>
+                           <br>
+                           <button style="margin-top:10px" type="button" onclick="addElement()" class="fa fa-plus btn btn-primary"></button>
                            <div class="mb-3 mt-3">
                                <input type="text" class="form-control" id="num_order" placeholder="num_order" name="num_order" required>
                                <div class="valid-feedback">Valid.</div>
