@@ -155,14 +155,21 @@ function find_client(element) {
 function find_clientid(input) {
     const parentDiv = input.parentNode;
     const full_name = input.value.toLowerCase();
-    const client = clients.find((p) => p.full_name.toLowerCase() === full_name);
-    if (client) {
-        const idInput = parentDiv.querySelector('input[type="hidden"]');
-        const clientId = client.id_p;
-        idInput.value = clientId;
-
-        //alert(idInput.value); just for test 
+    if (full_name.length < 1) {
+        alert("Please select a client ");
+        //TODO: make the client fiald focus on 
     } else {
-        alert('Please select a valide Client name ');
+
+        const client = clients.find((p) => p.full_name.toLowerCase() === full_name);
+        if (client) {
+            const idInput = parentDiv.querySelector('input[type="hidden"]');
+            const clientId = client.id_p;
+            idInput.value = clientId;
+
+        } else {
+
+            alert('Please select a valide Client name ');
+        }
     }
+
 }
