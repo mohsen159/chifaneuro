@@ -113,8 +113,6 @@ function find_productid(input) {
         const idInput = parentDiv.querySelector('input[type="hidden"]');
         const productId = product.id_p;
         idInput.value = productId;
-
-
     } else {
         alert('Please select a valide product name ');
     }
@@ -170,49 +168,44 @@ function find_clientid(input) {
         } else {
             // this means the client is new we have to creat a new one update the clients array and call the findclientid again 
             // use the model addclient
-            alert('This client not exist in the database please enter his information');
+            alert('This client not exist in the database please enter his information  !!! ');
             $('#add').modal('hide');
-
             $('#addclient').modal('show');
-            $(document).ready(function () {
-                $('#new_client').submit(function (e) {
-                    e.preventDefault(); // prevent default form submission
-                    // Gather form data
-                    var name = $('[name="name"]').val();
-                    var fname = $('[name="fname"]').val();
-                    // make AJAX request
-                    $.ajax({
-                        url: 'actions/add_client.php', // replace with your script file
-                        type: 'POST',
-                        data: {
-                            name: name,
-                            fname: fname
-                        },
-                        success: function (response) {
-                            // handle success
-                            var newId = response; // ID of the new insert
-                            alert("New client successfully inserted" + newId);
-                            input.value = fname + ' ' + name;
-                            $('[name="name"]').val() = "";
-                            $('[name="fname"]').val() = "";
-                            $('#addclient').modal('hide');
-                            clients = getclients();
-                            idInput.value = newId;
-                            $('#add').modal('show');
+            $('#new_client').submit(function (e) {
+                     e.preventDefault(); // prevent default form submission
+                     // Gather form data
+                     var name = $('[name="name"]').val();
+                     var fname = $('[name="fname"]').val();
+                     // make AJAX request
+                     $.ajax({
+                         url: 'actions/add_client.php', // replace with your script file
+                         type: 'POST',
+                         data: {
+                             name: name,
+                             fname: fname
+                         },
+                         success: function (response) {
+                             // handle success
+                             var newId = response; // ID of the new insert
+                             input.value = fname + ' ' + name;
+                             $('[name="name"]').val("");;
+                             $('[name="name"]').val("");;
+                             $('#addclient').modal('hide');
+                             clients = getclients();
+                             idInput.value = newId;
+                             $('#add').modal('show');
 
-                            /// find_clientid(input);   /// stupid method *
+                             /// find_clientid(input);   /// stupid method *
 
 
-                            // perform any additional actions with the new ID
-                        },
-                        error: function () {
-                            // handle error
-                            alert("Error occurred during insert.");
-                        }
-                    });
-                });
-            });
-
+                             // perform any additional actions with the new ID
+                         },
+                         error: function () {
+                             // handle error
+                             alert("Error occurred during insert.");
+                         }
+                     });
+                 });
         }
     }
 
