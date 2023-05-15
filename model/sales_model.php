@@ -56,8 +56,8 @@
                     <div id="1" class="mt-3 autocomplete d-flex flex-nowrap justify-content-between space">
                         <input type="hidden" name="id[]">
                         <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
-                        <input type="text" class="order-2 p-2" style="width:80px" placeholder="Lot" name="lot[]" required>
-                        <input type="number" class="order-3 p-2" min="1" style="width:100px" onblur="findmax(this)" placeholder="Amount" name="amount[]" required>
+                        <input type="text" class="order-2 p-2" style="width:80px" onblur="findmax(this)" placeholder="Lot" name="lot[]" required>
+                        <input type="number" class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" required>
                         <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick=" delet_p(this)">
                             <br>
                     </div>
