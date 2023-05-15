@@ -15,8 +15,8 @@ $pharm_id = $_SESSION['id_pharm'];
 // Retrieve the form data
 $clientid = $_POST['clientid'];
 $employs = $_POST['employs']; /// session vaibale 
-$id = $_POST['id'];
-$amounts = $_POST['amount'];
+$id = $_POST['id']; /// id of products table 
+$amounts = $_POST['amount']; /// amount of the chnage in every prodcuts 
 /// this part is for non complet 
 $idn = $_POST['idn'];
 $amountn = $_POST['amountn'];
@@ -60,7 +60,7 @@ for ($i = 0; $i < $count; $i++) {
 // If the loop completes without encountering any issues, the data is valid for the sale
 
 if ($available)
- {
+{
 
     // creat sales 
     $ns = date('Y-m-d', strtotime($sale_date . ' +  ' . $dure . ' days'));
@@ -70,8 +70,8 @@ if ($available)
     $coon->query($sql);
     $sale_id = $coon->insert_id; // Get the ID of the new sale record
     //insert change date 
-
-
+    // data using id and amount varbales  
+    
 
     // insert noncomplet if exist
 
