@@ -103,3 +103,6 @@ if ($available) {
 
 
 /// return postion data from 
+
+
+header("Location:  ../sales.php");
