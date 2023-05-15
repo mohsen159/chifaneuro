@@ -81,7 +81,7 @@ function addElement() {
     <input type="hidden" name="id[]">
     <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
     <input type="text" class="order-2 p-2" style="width:80px"  placeholder="Lot" name="lot[]" required>
-    <input type="number"  class="order-3 p-2" style="width:100px" placeholder="Amount" name="amount[]" required>
+    <input type="number"  class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" required>
     <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)">
       <br>
     </li>
@@ -109,7 +109,7 @@ function addnElement() {
     newDiv.innerHTML = `
     <input type="hidden" name="idn[]">
     <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="namen[]" required>
-    <input type="number"  class="order-3 p-2" style="width:100px" placeholder="Amount" name="amountn[]" required>
+    <input type="number"  class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amountn[]" required>
     <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)">
       <br>
     </li>
@@ -230,65 +230,3 @@ function find_clientid(input) {
     }
 
 }
-$('#form_sales').submit(function (e) {
-    e.preventDefault(); // prevent default form submission
-
-    // Retrieve form values
-    var client = $('#input_client').val();
-    var employee = $('#select').val();
-    var products = [];
-
-    $('.autocomplete').each(function () {
-        var productName = $(this).find('input[name="name[]"]').val();
-        var lot = $(this).find('input[name="lot[]"]').val();
-        var amount = $(this).find('input[name="amount[]"]').val();
-
-        // Create an object for each product
-        var product = {
-            name: productName,
-            lot: lot,
-            amount: amount
-        };
-
-        products.push(product);
-    });
-
-    var noncomplitedProducts = [];
-
-    $('.autocomplete-n').each(function () {
-        var productName = $(this).find('input[name="namen[]"]').val();
-        var amount = $(this).find('input[name="amountn[]"]').val();
-
-        // Create an object for each noncomplited product
-        var product = {
-            name: productName,
-            amount: amount
-        };
-
-        noncomplitedProducts.push(product);
-    });
-
-    var orderNumber = $('#num_order').val();
-    var saleDate = $('#sale_date').val();
-    var duration = $('#dure').val();
-    var note = $('#note').val();
-
-    // Create an object to hold all the form data
-    var formData = {
-        client: client,
-        employee: employee,
-        products: products,
-        noncomplitedProducts: noncomplitedProducts,
-        orderNumber: orderNumber,
-        saleDate: saleDate,
-        duration: duration,
-        note: note
-    };
-
-    // Display the form data in an alert
-    alert(JSON.stringify(formData));
-
-    // Proceed with form submission
-    // Uncomment the following line to submit the form
-    // $(this).unbind('submit').submit();
-});
