@@ -11,15 +11,14 @@ if (!isset($_SESSION["id"])) {
     header("Location: login.php");
     exit();
 }
-
+$pharm_id = $_SESSION['id_pharm'];
 // Retrieve the form data
 $clientid = $_POST['clientid'];
 $employs = $_POST['employs']; /// session vaibale 
-$names = $_POST['name'];
+$id = $_POST['id'];
 $amounts = $_POST['amount'];
-$lots = $_POST['lot'];
 /// this part is for non complet 
-$namen = $_POST['namen'];
+$idn = $_POST['idn'];
 $amountn = $_POST['amountn'];
 
 $num_order = $_POST['num_order'];
@@ -27,22 +26,59 @@ $sale_date = $_POST['sale_date'];
 $dure = $_POST['dure'];
 $note = $_POST['note'];
 
-/// check is prdocuts exit in the right formate 
+// Check if all products are available in sufficient quantities
+// Assuming $id is the array of product IDs and $amounts is the array of corresponding amounts
+$count = count($id); /// this is the id from products table 
+$complited =count($idn)>0?false : true ;  /// this is the id from list products 
+$available = true;
+for ($i = 0; $i < $count; $i++) {
+    $productId = $id[$i];
+    $requestedAmount = $amounts[$i];
+
+    // Retrieve the product from the database using the ID
+    $sql = "SELECT amount FROM prodoit WHERE id = $productId";
+    $result = mysqli_query($connection, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $availableAmount = $row['amount'];
+
+        if ($availableAmount < $requestedAmount) {
+            // The data is not valid, handle the insufficient amount case
+            echo "Insufficient amount for product with ID: $productId";
+            $available = false;
+            break;
+        }
+    } else {
+        // The product does not exist in the database, handle the invalid product case
+        echo "Invalid product with ID: $productId";
+        $available = false;
+        break;
+    }
+}
+
+// If the loop completes without encountering any issues, the data is valid for the sale
+
+if ($available)
+ {
+
+    // creat sales 
+    $ns = date('Y-m-d', strtotime($sale_date . ' +  ' . $dure . ' days'));
+    $coon->begin_transaction();
+    $sql = "INSERT INTO `ord`( `id_user`, `id_client`, `id_pharm`,  `ord_date`, `next_date`, `desc_ord`, `dure`,`complited`)  
+    values ($employs,$clientid,$pharm_id,$sale_date ,$ns ,$num_order,$dure , $complited)";
+    $coon->query($sql);
+    $sale_id = $coon->insert_id; // Get the ID of the new sale record
+    //insert change date 
 
 
-// creat sales 
 
+    // insert noncomplet if exist
 
-//insert change date 
-
-
-
-// insert noncomplet if exist
+} else {
+    // entry mistak deal with the product with ID: $productId 
+}
 
 
 
 /// return postion data from 
-
-
-
-?>
