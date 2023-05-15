@@ -105,7 +105,7 @@
                        </div>
                        <div class="mb-3">
                            <label for="exp" class="form-label">expiration date </label>
-                           <input type="date" id="exp"  name="exp" required>
+                           <input type="date" id="exp" name="exp" required>
                            <div class="valid-feedback">Valid.</div>
                            <div class="invalid-feedback">Enter a valid date</div>
                        </div>

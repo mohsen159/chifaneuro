@@ -80,7 +80,7 @@ function addElement() {
     newDiv.innerHTML = `
     <input type="hidden" name="id[]">
     <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
-    <input type="text" class="order-2 p-2" style="width:80px"  placeholder="Lot" name="lot[]" required>
+    <input type="text" class="order-2 p-2" style="width:80px" onblur="findmax(this)" placeholder="Lot" name="lot[]" required>
     <input type="number"  class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" required>
     <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)">
       <br>
@@ -138,6 +138,43 @@ function find_productid(input) {
     }
 }
 
+function findmax(inputElement) {
+
+    var parentDiv = inputElement.parentNode;
+    var hiddenIdInput = parentDiv.querySelector('input[name="id[]"]');
+    var amount = parentDiv.querySelector('input[name="amount[]"]');
+    find_productid(parentDiv.querySelector('input[name="name[]"]'));
+    $.ajax({
+        url: 'actions/get_product.php', // Replace with your actual API endpoint URL
+        method: 'POST', // Adjust the HTTP method if necessary
+        data: {
+            id: hiddenIdInput.value,
+            lot: inputElement.value
+        },
+        success: function (response) {
+            if (response.length > 0) {
+                var data = response[0]; // Assuming there is only one result
+                hiddenIdInput.value = "";
+                hiddenIdInput.value = data.id;
+                amount.max = "";
+                amount.max = data.max;
+                // Set the placeholder of the amount input
+                amount.placeholder = "";
+                amount.placeholder = data.max;
+            } else {
+
+                amount.max = "-1";
+                amount.placeholder = "-1"; // this mean that the product with the lot and name thoese not exist yet 
+                alert("this mean that the product with the lot and name thoese not exist yet ");
+            }
+
+        },
+        error: function () {
+            // Handle any errors that occur during the AJAX request
+            console.log('Error occurred during AJAX request');
+        }
+    });
+}
 /// this part is just for sales 
 function getclients() {
     const clients = [];
