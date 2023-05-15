@@ -28,16 +28,16 @@ include "includes/coon.php";
 						<table id="Sales" style="width:100%" class="display" class="display table table-hover my-0">
 							<thead>
 								<tr>
-									<th>id</th>
-									<th>Client</th>
-									<th>medictations</th>
-									<th>Dure</th>
-									<th>Next Date </th>
-									<th>Served</th>
-									<th>Info</th>
+									<th>Order ID</th>
+									<th>Client Name</th>
+									<th>Medication </th>
+									<th>Order Date</th>
+									<th>Next Date</th>
+									<th>Duration</th>
+									
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="order-data">
 							</tbody>
 						</table>
 						<?php include "model/sales_model.php"; ?>

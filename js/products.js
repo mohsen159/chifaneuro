@@ -130,7 +130,6 @@ function find_productid(input) {
 
     }
 }
-// not working yet 
 
 $(document).ready(function () {
     $.ajax({

@@ -1,49 +1,3 @@
-var table = $('#Sales').DataTable({
-    responsive: true,
-    paging: false,
-    dom: 'Bfrtip',
-    buttons: [{
-            text: 'add',
-            action: function () {
-
-                //alert("nothing for now ")
-                $('#add').modal('show');
-            }
-        },
-        {
-            extend: 'print',
-            messageTop: ' ',
-            exportOptions: {
-                columns: ':visible'
-            }
-        },
-        {
-            extend: 'excel',
-            text: 'excel',
-            exportOptions: {
-                columns: ':visible',
-                modifier: {
-                    page: 'current'
-                }
-            }
-        },
-        'colvis'
-    ],
-
-    columnDefs: [{
-            targets: -1,
-            visible: true
-        },
-        {
-            targets: 0,
-            visible: false
-        }
-    ],
-
-    order: [
-        [0, "desc"]
-    ]
-});
 /// it's the same in the prodcuts js this varibale is used there 
 let counter = 1;
 let ncounter = 1;
@@ -267,3 +221,87 @@ function find_clientid(input) {
     }
 
 }
+
+
+
+let sales;
+
+
+$(document).ready(function () {
+    var table = $('#Sales').DataTable({
+        responsive: true,
+        paging: false,
+        dom: 'Bfrtip',
+        buttons: [{
+                text: 'Add',
+                action: function () {
+                    $('#add').modal('show');
+                }
+            },
+            {
+                extend: 'print',
+                messageTop: ' ',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'excel',
+                text: 'Excel',
+                exportOptions: {
+                    columns: ':visible',
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            },
+            'colvis'
+        ],
+        columnDefs: [{
+                targets: -1,
+                visible: true
+            },
+            {
+                targets: [0, 5],
+                visible: false
+            }
+
+        ],
+
+        order: [
+            [0, 'desc']
+        ]
+    });
+
+    function getSalesData() {
+        $.ajax({
+            url: 'actions/get_sales.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                sales = data;
+                table.clear().draw();
+                $.each(data, function (index, row) {
+                    var rowData = [
+                        row.id,
+                        row.client_name,
+                        row.medication_info + (row.non_completed_info == null ? "" : ("\nrest : \n" +
+                        row.non_completed_info)),
+                        row.ord_date,
+                        row.next_date,
+                        row.dure,
+                    ];
+                    table.row.add(rowData);
+                });
+                table.draw();
+            },
+            error: function () {
+                alert('Error retrieving sales data.');
+            }
+        });
+    }
+
+    getSalesData();
+});
+
+

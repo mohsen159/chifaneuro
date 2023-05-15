@@ -67,6 +67,14 @@
 		color: white;
 		background-color: forestgreen;
 	}
+
+	#Sales td {
+		text-align: center;
+	}
+
+	#Sales th {
+		text-align: center;
+	}
 </style>
 <script src="js/app.js"></script>
 
