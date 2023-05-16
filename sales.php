@@ -34,7 +34,8 @@ include "includes/coon.php";
 									<th>Order Date</th>
 									<th>Next Date</th>
 									<th>Duration</th>
-									
+									<th>Delete</th>
+
 								</tr>
 							</thead>
 							<tbody id="order-data">

@@ -272,6 +272,8 @@ $(document).ready(function () {
             [0, 'desc']
         ]
     });
+    
+
 
     function getSalesData() {
         $.ajax({
@@ -285,15 +287,52 @@ $(document).ready(function () {
                     var rowData = [
                         row.id,
                         row.client_name,
-                        row.medication_info + (row.non_completed_info == null ? "" : ("\nrest : \n" +
-                        row.non_completed_info)),
+                        "<pre>" + (row.medication_info + (row.non_completed_info == null ? "" : ("\nrest : \n" +
+                            row.non_completed_info))) + "</pre>",
                         row.ord_date,
                         row.next_date,
-                        row.dure,
+                        row.dure, 
+                        $("<button>")
+                            .addClass("delete-btn")
+                            .append($("<i>").addClass("fas fa-trash-alt"))
+                            .text("Delete")
+                            .prop("outerHTML") // Convert the button element to HTML string great not bad 
                     ];
                     table.row.add(rowData);
                 });
                 table.draw();
+
+                
+                const dbutton = document.querySelectorAll('.delete-btn');
+                dbutton.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                          var currentRow = btn.closest("tr");
+                          var rowIdx = table.row(currentRow).index();
+                          var rowData = table.row(rowIdx).data();
+                          var id = rowData[0]; // the id is the first column in the table 
+                          alert(id);    
+                        if (confirm(' this will return the inventory to his old location ?  ')) {
+                            // Perform the delete operation
+                            const saleId = id ; 
+                            $.ajax({
+                                url: 'actions/delet_sales.php',
+                                type: 'POST',
+                                data: {
+                                    saleId: saleId
+                                },
+                                success: function () {
+                                    // Refresh the sales table
+                                    currentRow.remove();
+                                },
+                                error: function () {
+                                    alert('Error deleting the sale.');
+                                }
+                            });
+                        }
+                    });
+                });
+
+
             },
             error: function () {
                 alert('Error retrieving sales data.');
@@ -302,6 +341,5 @@ $(document).ready(function () {
     }
 
     getSalesData();
+
 });
-
-
