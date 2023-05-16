@@ -55,8 +55,7 @@ function addElement() {
 }
 
 
-
-
+let foo ; 
 
 // function to add new input element
 function delet_p(element) {
@@ -137,6 +136,7 @@ $(document).ready(function () {
         type: "GET",
         dataType: "json",
         success: function (data) {
+            foo= data ;
             // Loop through the data and add each row to the table.
             var table = $('#prducts').DataTable({
                 responsive: true,
