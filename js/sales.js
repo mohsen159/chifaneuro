@@ -310,7 +310,7 @@ $(document).ready(function () {
                           var rowIdx = table.row(currentRow).index();
                           var rowData = table.row(rowIdx).data();
                           var id = rowData[0]; // the id is the first column in the table 
-                          alert(id);    
+                         // alert(id);   // just for test this is good enough 
                         if (confirm(' this will return the inventory to his old location ?  ')) {
                             // Perform the delete operation
                             const saleId = id ; 
@@ -323,6 +323,7 @@ $(document).ready(function () {
                                 success: function () {
                                     // Refresh the sales table
                                     currentRow.remove();
+                                    
                                 },
                                 error: function () {
                                     alert('Error deleting the sale.');
