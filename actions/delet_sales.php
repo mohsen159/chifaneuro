@@ -30,7 +30,9 @@ if ($result && mysqli_num_rows($result) > 0) {
     $sql = "SELECT id_prodoit, amount FROM `changement` WHERE id_ord = $order_id";
     $result = mysqli_query($coon, $sql);
 
-    // Restore the quantities of the products
+    // Create an array to store the product IDs
+    $productIds = [];
+
     while ($row = mysqli_fetch_assoc($result)) {
         $product_id = $row['id_prodoit'];
         $amount = $row['amount'];
@@ -38,6 +40,9 @@ if ($result && mysqli_num_rows($result) > 0) {
         // Update the product quantity in the `prodoit` table by adding the amount
         $sql = "UPDATE `prodoit` SET `amount` = `amount` + $amount WHERE id = $product_id";
         mysqli_query($coon, $sql);
+
+        // Add the product ID to the array
+        $productIds[] = $product_id;
     }
 
     // Delete the records from the `changement` table
@@ -53,13 +58,9 @@ if ($result && mysqli_num_rows($result) > 0) {
     mysqli_query($coon, $sql);
 
     // Redirect the user back to the sales page or any desired page
-    
+
     exit();
-} else {
-    // Handle the case when the order with the given ID does not exist
-    echo "Invalid order ID: $order_id";
 }
 
-
-
-?>
+// Handle the case when the order with the given ID does not exist
+echo "Invalid order ID: $order_id";
