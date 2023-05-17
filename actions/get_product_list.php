@@ -1,11 +1,6 @@
 <?php
-// Connect to database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$ndbname = "memo";
-// Create connection
-$coon = new mysqli($servername, $username, $password, $ndbname);
+include "../includes/coon.php";
+include "../includes/session.php";
 
 
 // Query all products
