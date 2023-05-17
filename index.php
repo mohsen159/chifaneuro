@@ -29,33 +29,7 @@ include "includes/coon.php";
 					<h1 class="h3 mb-3"><?php echo $page_name;  ?> </h1>
 
 					<div style="color: black;" class="row">
-						<table id="prducts" class="display">
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>lot</th>
-									<th>amount</th>
-									<th>Exp</th>
-									<th>Info</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Row 1 Data 1</td>
-									<td>Row 1 Data 1</td>
-									<td>Row 1 Data 1</td>
-									<td>Row 1 Data 1</td>
-									<td>Row 1 Data 1</td>
-								</tr>
-								<tr>
-									<td>Row 1 Data 2</td>
-									<td>Row 1 Data 21</td>
-									<td>Row 1 Data 3</td>
-									<td>Row 1 Data 4</td>
-									<td>Row 1 Data 6</td>
-								</tr>
-							</tbody>
-						</table>
+						
 
 					</div>
 
@@ -70,15 +44,7 @@ include "includes/coon.php";
 		</div>
 	</div>
 	<script>
-		$(document).ready(function() {
-			$('#prducts').DataTable();
-		});
-
-		// this part is just for your custom search
-		$('#search').keyup(function() {
-			var table = $('#prducts').DataTable();
-			table.search($(this).val()).draw();
-		});
+	
 	</script>
 </body>
 
