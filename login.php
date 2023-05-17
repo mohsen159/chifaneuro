@@ -8,7 +8,7 @@ setcookie(session_name(), session_id(), time() + $expire);
 $user = null; // user
 $pwd = null; // password
 if (isset($_SESSION["id"])) {
-	header("Location: index.php");
+	header("Location: products.php");
 	exit();
 }
 // Check if the form is submitted

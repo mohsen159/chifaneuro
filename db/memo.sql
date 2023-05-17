@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 16, 2023 at 01:41 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Hôte : 127.0.0.1
+-- Généré le : mer. 17 mai 2023 à 13:34
+-- Version du serveur : 10.4.28-MariaDB
+-- Version de PHP : 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `memo`
+-- Base de données : `memo`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `changement`
+-- Structure de la table `changement`
 --
 
 CREATE TABLE `changement` (
@@ -34,24 +34,10 @@ CREATE TABLE `changement` (
   `id_ord` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `changement`
---
-
-INSERT INTO `changement` (`id`, `amount`, `id_prodoit`, `id_ord`) VALUES
-(1, 10, 11, 1),
-(2, 50, 4, 2),
-(3, 50, 5, 3),
-(4, 2, 11, 4),
-(5, 25, 5, 5),
-(6, 25, 4, 5),
-(7, 15, 4, 6),
-(8, 100, 28, 7);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `client`
+-- Structure de la table `client`
 --
 
 CREATE TABLE `client` (
@@ -63,10 +49,10 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `client`
+-- Déchargement des données de la table `client`
 --
 
---INSERT INTO `client` (`id`, `fname`, `name`, `created`, `img`) VALUES
+INSERT INTO `client` (`id`, `fname`, `name`, `created`, `img`) VALUES
 (1, 'Tifoura', 'Nacera ', '2022-04-07 08:16:06', NULL),
 (2, 'Menib', 'Ouarda', '2022-04-07 08:16:06', NULL),
 (3, 'Guelati', 'Asma', '2022-04-07 08:16:06', NULL),
@@ -195,12 +181,13 @@ CREATE TABLE `client` (
 (129, 'boulahba7411', 'mohssen', '2023-05-14 15:49:05', NULL),
 (130, 'boulahba7411', 'mohssen', '2023-05-14 15:49:05', NULL),
 (131, 'boulahbal', 'abdel rahmabn', '2023-05-14 15:57:46', NULL),
-(132, 'nomber 1', 'client', '2023-05-14 16:14:59', NULL);
+(132, 'nomber 1', 'client', '2023-05-14 16:14:59', NULL),
+(133, 'dddd', 'TRAMADOL LS 100MG', '2023-05-17 00:05:31', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `list_prodoit`
+-- Structure de la table `list_prodoit`
 --
 
 CREATE TABLE `list_prodoit` (
@@ -212,7 +199,7 @@ CREATE TABLE `list_prodoit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `list_prodoit`
+-- Déchargement des données de la table `list_prodoit`
 --
 
 INSERT INTO `list_prodoit` (`id`, `name`, `dci`, `dosage`, `form`) VALUES
@@ -309,7 +296,7 @@ INSERT INTO `list_prodoit` (`id`, `name`, `dci`, `dosage`, `form`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `noncompliant`
+-- Structure de la table `noncompliant`
 --
 
 CREATE TABLE `noncompliant` (
@@ -320,20 +307,10 @@ CREATE TABLE `noncompliant` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `noncompliant`
---
-
-INSERT INTO `noncompliant` (`list_prodoit`, `ord_id`, `amount`, `created`, `id`) VALUES
-(31, 3, 100, '2023-05-15 17:26:35', 21),
-(27, 4, 10, '2023-05-15 17:48:17', 22),
-(19, 6, 85, '2023-05-15 18:02:35', 23),
-(29, 6, 100, '2023-05-15 18:02:35', 24);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ord`
+-- Structure de la table `ord`
 --
 
 CREATE TABLE `ord` (
@@ -351,23 +328,10 @@ CREATE TABLE `ord` (
   `note` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `ord`
---
-
-INSERT INTO `ord` (`id`, `id_user`, `id_client`, `id_pharm`, `created`, `ord_date`, `next_date`, `order_ord`, `dure`, `ModifiedDate`, `complited`, `note`) VALUES
-(1, 11, 128, 10, '2023-05-15 17:16:40', '0000-00-00 00:00:00', '2005-05-21 00:00:00', 'gffg', 90, '2023-05-15 18:16:40', 1, 'fgfgf'),
-(2, 11, 128, 10, '2023-05-15 17:17:57', '2023-02-02 00:00:00', '2023-05-03 00:00:00', 'no', 90, '2023-05-15 18:17:57', 1, 'gggg'),
-(3, 11, 9, 10, '2023-05-15 17:26:35', '2023-05-14 00:00:00', '2023-08-12 00:00:00', '999', 90, '2023-05-15 18:26:35', 0, 'nothing'),
-(4, 11, 10, 10, '2023-05-15 17:48:17', '2026-02-23 00:00:00', '2026-05-24 00:00:00', 'nothing', 90, '2023-05-15 18:48:17', 0, 'nothing'),
-(5, 11, 13, 10, '2023-05-15 17:54:16', '2022-05-25 00:00:00', '2022-08-23 00:00:00', '999', 90, '2023-05-15 18:54:16', 1, 'SHIT BABE '),
-(6, 11, 73, 10, '2023-05-15 18:02:35', '2023-05-23 00:00:00', '2023-08-21 00:00:00', '99', 90, '2023-05-15 19:02:35', 0, 'fjgfdgjkhfdgh'),
-(7, 18, 128, 12, '2023-05-15 22:44:24', '2023-02-02 00:00:00', '2023-05-03 00:00:00', '99', 90, '2023-05-15 23:44:24', 1, 'ffff');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pharm`
+-- Structure de la table `pharm`
 --
 
 CREATE TABLE `pharm` (
@@ -380,17 +344,18 @@ CREATE TABLE `pharm` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `pharm`
+-- Déchargement des données de la table `pharm`
 --
 
 INSERT INTO `pharm` (`id`, `name`, `adress`, `creation`, `email`, `owner`) VALUES
 (10, 'hakim', 'ben mehidi rue 44', '2023-04-14 04:21:31', 'mohssenboulahbal3333@gmail.com', 11),
-(12, 'nothing', 'ffffffff', '2023-05-15 22:42:25', 'mohssenboulahbal@gmail.com', 18);
+(12, 'nothing', 'ffffffff', '2023-05-15 22:42:25', 'mohssenboulahbal@gmail.com', 18),
+(13, 'nothing159', 'ben mhidi el tarf rue 36', '2023-05-17 11:08:30', 'jomia@gmail.com', 19);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prodoit`
+-- Structure de la table `prodoit`
 --
 
 CREATE TABLE `prodoit` (
@@ -405,27 +370,30 @@ CREATE TABLE `prodoit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `prodoit`
+-- Déchargement des données de la table `prodoit`
 --
 
 INSERT INTO `prodoit` (`list_prodoit`, `pharm`, `lot`, `amount`, `Expiration`, `created`, `inserted`, `id`) VALUES
-(3, 10, '18', 10000, '2023-05-14 23:00:00', '2023-04-30 12:37:13', NULL, 4),
-(4, 10, '13', 25, '2023-05-15 17:54:16', '2023-04-30 12:37:13', NULL, 5),
+(3, 10, '18', 100, '2023-05-16 23:00:00', '2023-04-30 12:37:13', NULL, 4),
+(4, 10, '13', 100, '2023-05-17 00:06:11', '2023-04-30 12:37:13', NULL, 5),
 (5, 10, '5220', 0, '2023-05-13 02:45:34', '2023-04-30 12:37:13', NULL, 6),
 (5, 10, '20', 0, '2023-05-15 16:53:41', '2023-05-01 04:13:22', NULL, 7),
 (3, 10, '19', 0, '2023-05-15 16:53:37', '2023-05-01 04:14:50', NULL, 8),
 (3, 10, '20', 0, '2023-05-15 16:53:36', '2023-05-01 04:15:05', NULL, 9),
 (3, 10, '21', 0, '2023-05-15 16:53:34', '2023-05-01 04:16:03', NULL, 10),
-(18, 10, '12', 90, '2023-05-15 17:48:17', '2023-05-01 05:02:15', NULL, 11),
+(18, 10, '12', 100, '2023-05-16 23:51:31', '2023-05-01 05:02:15', NULL, 11),
 (84, 10, '12', 0, '2023-05-13 02:38:15', '2023-05-01 07:29:32', NULL, 12),
 (36, 10, '123', 0, '2023-05-13 02:38:10', '2023-05-01 07:45:16', NULL, 13),
 (100, 10, '20', 0, '2023-05-14 22:44:29', '2023-05-14 22:44:09', NULL, 27),
-(2, 12, '15', 900, '2023-05-15 22:44:24', '2023-05-15 22:43:20', NULL, 28);
+(2, 12, '15', 100, '2023-05-16 23:00:00', '2023-05-15 22:43:20', NULL, 28),
+(42, 10, '13', 50, '2023-05-17 10:41:19', '2023-05-16 09:27:12', NULL, 29),
+(22, 10, '1000', 100, '2023-05-16 23:59:27', '2023-05-16 09:38:30', NULL, 30),
+(18, 10, '13', 100, '2023-05-17 10:56:52', '2023-05-16 11:59:19', NULL, 31);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
@@ -439,24 +407,25 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `id_pharm`, `name`, `username`, `pwd`, `role`, `created`) VALUES
 (11, 10, 'hakim', 'hakim10', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'owner', '2023-04-14 04:21:31'),
 (13, 10, 'mohssen2', 'mohe2159', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
-(14, 10, 'mohssen555', 'mohe774159', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
+(14, 10, 'bbbb', 'bbbb', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
 (15, 10, 'mohssen99', 'mohe15999', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
 (16, 10, 'mohssen4', 'mohe1594', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
 (17, 10, 'mohssen3', 'mohe3159', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
-(18, 12, 'nothing', 'nothing12', '$2y$10$KAKxZ7f4vOnpC/gE4R56ze8gTR/bsNeUxp9y8.ZKT//jDfA8QL01m', 'owner', '2023-05-15 22:42:25');
+(18, 12, 'nothing', 'nothing12', '$2y$10$KAKxZ7f4vOnpC/gE4R56ze8gTR/bsNeUxp9y8.ZKT//jDfA8QL01m', 'owner', '2023-05-15 22:42:25'),
+(19, 13, 'nothing159', 'nothing15913', '$2y$10$O7QPh4Rv1fPdvEveqLhDFOIF0O9RigBTKayx//aPr7N2ovRp2Kpi2', 'owner', '2023-05-17 11:08:30');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `changement`
+-- Index pour la table `changement`
 --
 ALTER TABLE `changement`
   ADD PRIMARY KEY (`id`),
@@ -464,26 +433,26 @@ ALTER TABLE `changement`
   ADD KEY `fk_prodoit` (`id_prodoit`);
 
 --
--- Indexes for table `client`
+-- Index pour la table `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `list_prodoit`
+-- Index pour la table `list_prodoit`
 --
 ALTER TABLE `list_prodoit`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `noncompliant`
+-- Index pour la table `noncompliant`
 --
 ALTER TABLE `noncompliant`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_list_prodoit` (`list_prodoit`);
 
 --
--- Indexes for table `ord`
+-- Index pour la table `ord`
 --
 ALTER TABLE `ord`
   ADD PRIMARY KEY (`id`),
@@ -492,14 +461,14 @@ ALTER TABLE `ord`
   ADD KEY `fk_user_ord` (`id_user`);
 
 --
--- Indexes for table `pharm`
+-- Index pour la table `pharm`
 --
 ALTER TABLE `pharm`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_users_pharm` (`owner`);
 
 --
--- Indexes for table `prodoit`
+-- Index pour la table `prodoit`
 --
 ALTER TABLE `prodoit`
   ADD PRIMARY KEY (`id`),
@@ -507,77 +476,77 @@ ALTER TABLE `prodoit`
   ADD KEY `fk_pham_prodoit` (`pharm`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_pharm_users` (`id_pharm`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `changement`
+-- AUTO_INCREMENT pour la table `changement`
 --
 ALTER TABLE `changement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `client`
+-- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
--- AUTO_INCREMENT for table `list_prodoit`
+-- AUTO_INCREMENT pour la table `list_prodoit`
 --
 ALTER TABLE `list_prodoit`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
--- AUTO_INCREMENT for table `noncompliant`
+-- AUTO_INCREMENT pour la table `noncompliant`
 --
 ALTER TABLE `noncompliant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `ord`
+-- AUTO_INCREMENT pour la table `ord`
 --
 ALTER TABLE `ord`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `pharm`
+-- AUTO_INCREMENT pour la table `pharm`
 --
 ALTER TABLE `pharm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `prodoit`
+-- AUTO_INCREMENT pour la table `prodoit`
 --
 ALTER TABLE `prodoit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `changement`
+-- Contraintes pour la table `changement`
 --
 ALTER TABLE `changement`
   ADD CONSTRAINT `fk_ord` FOREIGN KEY (`id_ord`) REFERENCES `ord` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_prodoit` FOREIGN KEY (`id_prodoit`) REFERENCES `prodoit` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `ord`
+-- Contraintes pour la table `ord`
 --
 ALTER TABLE `ord`
   ADD CONSTRAINT `fk_client_ord` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -585,20 +554,20 @@ ALTER TABLE `ord`
   ADD CONSTRAINT `fk_user_ord` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `pharm`
+-- Contraintes pour la table `pharm`
 --
 ALTER TABLE `pharm`
   ADD CONSTRAINT `fk_users_pharm` FOREIGN KEY (`owner`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `prodoit`
+-- Contraintes pour la table `prodoit`
 --
 ALTER TABLE `prodoit`
   ADD CONSTRAINT `fk_list_prodoit` FOREIGN KEY (`list_prodoit`) REFERENCES `list_prodoit` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_pham_prodoit` FOREIGN KEY (`pharm`) REFERENCES `pharm` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `users`
+-- Contraintes pour la table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_pharm_users` FOREIGN KEY (`id_pharm`) REFERENCES `pharm` (`id`) ON DELETE CASCADE;

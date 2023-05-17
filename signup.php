@@ -1,7 +1,7 @@
 <?php
 session_start(); // start a session
 if (isset($_SESSION["id"])) {
-    header("Location: index.php");
+    header("Location: products.php");
     exit();
 }
 // Check if the registration form was submitted
@@ -43,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $pharm_id = mysqli_insert_id($conn);
             // Insert the user's data into the database
             $role = "owner";
+
+            /// after the owner of the pharm sigin form you have to send email white the user name and password 
             $temp = $username . strval($pharm_id); // i don't need to keep this in mind the "." make a syntax error so no need to complecat this 
             $insert_user = "INSERT INTO `users`( `id_pharm`, `name`, `username`, `pwd`, `role`) VALUES ('$pharm_id','$username','$temp','$hashed_password','$role')";
             if ($conn->query($insert_user) === TRUE) {
