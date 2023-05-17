@@ -66,7 +66,7 @@ CREATE TABLE `client` (
 -- Dumping data for table `client`
 --
 
-INSERT INTO `client` (`id`, `fname`, `name`, `created`, `img`) VALUES
+--INSERT INTO `client` (`id`, `fname`, `name`, `created`, `img`) VALUES
 (1, 'Tifoura', 'Nacera ', '2022-04-07 08:16:06', NULL),
 (2, 'Menib', 'Ouarda', '2022-04-07 08:16:06', NULL),
 (3, 'Guelati', 'Asma', '2022-04-07 08:16:06', NULL),
