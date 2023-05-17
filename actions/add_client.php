@@ -1,16 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$ndbname = "memo";
-// Create coonection
-$coon = new mysqli($servername, $username, $password, $ndbname);
+include "../includes/coon.php";
+include "../includes/session.php";
 
-session_start();
-if (!isset($_SESSION["id"])) {
-    header("Location: login.php");
-    exit();
-}
 //Check if the form data is received
 if (isset($_POST['name'], $_POST['fname'])) {
     $name = $_POST['name'];

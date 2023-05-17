@@ -1,16 +1,9 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$ndbname = "memo";
-// Create coonection
-$coon = new mysqli($servername, $username, $password, $ndbname);
+include "../includes/coon.php";
+include "../includes/session.php";
 
-session_start();
-if (!isset($_SESSION["id"])) {
-    header("Location: login.php");
-    exit();
-}
+
+
 $pharm_id = $_SESSION['id_pharm'];
 // Retrieve the form data
 $clientid = $_POST['clientid'];

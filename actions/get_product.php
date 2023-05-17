@@ -1,17 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "memo";
+include "../includes/coon.php";
+include "../includes/session.php";
 
-// Create connection
-$coon = new mysqli($servername, $username, $password, $dbname);
-
-session_start();
-if (!isset($_SESSION["id"])) {
-    header("Location: login.php");
-    exit();
-}
 $pharm_id = $_SESSION['id_pharm'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

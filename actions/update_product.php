@@ -1,16 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "memo";
-
-// Create connection
-$connection = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($connection->connect_error) {
-    die("Connection failed: " . $connection->connect_error);
-}
+include "../includes/coon.php";
+include "../includes/session.php";
 
 // Check if the form data is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lot = $_POST["lot"];
 
     // Prepare and execute the SQL query to update the fields in the database
-    $stmt = $connection->prepare("UPDATE prodoit SET lot = ?, amount = ?, Expiration = ? WHERE id = ?");
+    $stmt = $coon->prepare("UPDATE prodoit SET lot = ?, amount = ?, Expiration = ? WHERE id = ?");
     $stmt->bind_param("sisi", $lot, $amount, $expDate, $id);
     $stmt->execute();
 
@@ -41,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo json_encode($response);
 }
 
-// Close the database connection
-$connection->close();
+// Close the database coon
+$coon->close();
 
 
 ?>

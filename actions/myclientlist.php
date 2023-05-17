@@ -1,6 +1,11 @@
-<?php 
+<?php
 /**/
-$id_pharm = "" ; 
+
+include "../includes/coon.php";
+include "../includes/session.php";
+
+$id_pharm = $_SESSION['id_pharm'] ; 
+
 $sql= "SELECT DISTINCT c.id, c.name
 FROM client c
 INNER JOIN ord o ON o.id_client = c.id
