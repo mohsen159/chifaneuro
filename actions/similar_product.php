@@ -3,7 +3,7 @@ include "../includes/coon.php";
 include "../includes/session.php";
 
 // Retrieve the client ID and product list ID /// the values are just for the testing 
-$client_id = 128;
+$client_id = 134;
 $product_list_id = 67;
 
 // Get the name and dosage of the product in the product list

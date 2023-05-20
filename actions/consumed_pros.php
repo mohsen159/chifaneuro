@@ -5,9 +5,9 @@ include "../includes/coon.php";
 include "../includes/session.php";
 
 // Retrieve the client ID and product list ID /// the values are just for the testing 
-$client_id = 128;
+$client_id = 134;
 
-// Query to check if the client has similar products with the same DCI and next sale date passed
+//  
 $sql = "SELECT p.id, lp.name, lp.dosage, c.amount, o.next_date
         FROM `ord` o
         INNER JOIN changement c ON o.id = c.id_ord

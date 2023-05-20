@@ -15,7 +15,7 @@ if (!isset($_SESSION["id"])) {
 
 // Retrieve the start and end dates for the period
 $start_date = date("Y-m-d");
-$end_date = date('Y-m-d', strtotime($start_date . ' + 1 month')); // Adjust the interval as needed
+$end_date = date('Y-m-d', strtotime($start_date . ' + 2 month')); // Adjust the interval as needed
 
 // Query the database to find the products purchased in potential orders within the time period
 $sql = "SELECT p.id, lp.id AS list_id, lp.name, lp.dosage, SUM(c.amount) AS total_amount
