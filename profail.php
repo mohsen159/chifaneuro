@@ -1,5 +1,5 @@
 <?php
-$page_name = "profail";
+$page_name = "User Profail";
 include "includes/session.php";
 include "includes/coon.php";
 ?>
@@ -28,7 +28,7 @@ include "includes/coon.php";
 
             <main class="content">
                 <div class="container">
-                    <h1>User Profile</h1>
+                <h1 class="h1 mb-1 h1-size"><?php echo $page_name; ?></h1>
 
                     <!-- User Information -->
                     <div class="row">

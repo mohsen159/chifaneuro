@@ -75,6 +75,13 @@
 	#Sales th {
 		text-align: center;
 	}
+	      
+	.h1-size {
+    font-size: 32px;
+}
+.container-fluid {
+    text-align: center;
+}
 </style>
 <script src="js/app.js"></script>
 

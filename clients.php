@@ -1,4 +1,4 @@
-<?php
+<?php 
 $page_name = "clients";
 include "includes/session.php";
 include "includes/coon.php";
@@ -18,47 +18,41 @@ $clients = array(
     <?php include "includes/head.php"; ?>
     <style>
         /* Add any additional styles for the table if needed */
-        .search-container {
-            text-align: center;
-            margin-top: 30px;
-        }
+     
+    .search-container {
+        text-align: center;
+        margin-top: 30px;
+    }
 
-        .search-bar {
-            width: 400px;
-            height: 40px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: width 0.3s ease;
-        }
+    .search-bar {
+        width: 30%;
+        max-width: 400px;
+        height: 40px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: width 0.3s ease;
+    }
 
-        .search-bar:focus {
-            width: 500px;
-        }
+    .search-button {
+        display: inline-block;
+        vertical-align: middle;
+        transition: transform 0.3s ease;
+    }
 
-        .search-button {
-            display: inline-block;
-            vertical-align: middle;
-            transition: transform 0.3s ease;
-        }
-
-        .search-button button {
-            border-radius: 5px;
-            transition: transform 0.3s ease;
-        }
-
-        .search-button button:hover {
-            transform: scale(1.1);
-        }
-
-        .search-button button:active {
-            transform: scale(0.9);
-        }
+    .search-button button {
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+    }
 
         .client-table {
             margin-top: 30px;
         }
+        
+   
+        
+      
     </style>
 </head>
 
@@ -73,7 +67,7 @@ $clients = array(
 
             <main class="content">
                 <div class="container-fluid p-0">
-                    <h1 class="h3 mb-3"><?php echo $page_name; ?></h1>
+                <h1 class="h1 mb-1 h1-size"><?php echo $page_name; ?></h1>
 
                     <div class="search-container">
                         <form id="search-form">
@@ -120,4 +114,4 @@ $clients = array(
     </script>
 </body>
 
-</html>
+</html> 

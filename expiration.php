@@ -26,7 +26,7 @@ include "includes/coon.php";
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3"><?php echo $page_name;  ?> </h1>
+				<h1 class="h1 mb-1 h1-size"><?php echo $page_name; ?></h1>
 
 					<div style="color: black;" class="row">
 						<table id="prducts" class="display">
