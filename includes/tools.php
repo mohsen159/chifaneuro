@@ -3,7 +3,7 @@
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="">
+						<a class="sidebar-link" href="premision.php">
 							<i class="align-middle" data-feather="settings"></i> <span class="align-middle">Users & Premision </span>
 						</a>
 					</li>

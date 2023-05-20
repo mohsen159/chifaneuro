@@ -20,9 +20,9 @@ $sql = "SELECT
   o.dure,
   o.ModifiedDate,
   o.complited
-FROM `ord` o
+FROM `prescription` o
 LEFT JOIN `changement` c ON o.id = c.id_ord
-LEFT JOIN `prodoit` p ON c.id_prodoit = p.id
+LEFT JOIN `inventory` p ON c.id_prodoit = p.id
 LEFT JOIN `list_prodoit` lp ON p.list_prodoit = lp.id
 LEFT JOIN `noncompliant` nc ON o.id = nc.ord_id
 LEFT JOIN `list_prodoit` nlp ON nc.list_prodoit = nlp.id

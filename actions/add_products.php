@@ -17,15 +17,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $a = $amount[$i];
         $e = $exp[$i]; 
         $sql =
-            "SELECT * FROM `prodoit` WHERE `list_prodoit`='$id_list' AND `pharm`='$pharm_id' AND `lot`= '$l'";
+            "SELECT * FROM `inventory` WHERE `list_prodoit`='$id_list' AND `pharm`='$pharm_id' AND `lot`= '$l'";
         $result = $coon->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $sql = "UPDATE `prodoit` SET amount=(amount+ $a) WHERE id =" . $row["id"];
+                $sql = "UPDATE `inventory` SET amount=(amount+ $a) WHERE id =" . $row["id"];
                 $coon->query($sql);
             }
         } else {
-            $sql = "INSERT INTO `prodoit`(`list_prodoit`, `pharm`, `lot`, `amount`, `Expiration`)
+            $sql = "INSERT INTO `inventory`(`list_prodoit`, `pharm`, `lot`, `amount`, `Expiration`)
         VALUES ('$id_list', '$pharm_id', '$l', '$a', '$e')";
 
 

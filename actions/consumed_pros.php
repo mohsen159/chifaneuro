@@ -9,9 +9,9 @@ $client_id = 134;
 
 //  
 $sql = "SELECT p.id, lp.name, lp.dosage, c.amount, o.next_date
-        FROM `ord` o
+        FROM `prescription` o
         INNER JOIN changement c ON o.id = c.id_ord
-        INNER JOIN prodoit p ON c.id_prodoit = p.id
+        INNER JOIN `inventory` p ON c.id_prodoit = p.id
         INNER JOIN list_prodoit lp ON p.list_prodoit = lp.id
         WHERE o.id_client = $client_id 
         AND o.next_date > CURDATE()";

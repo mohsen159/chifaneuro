@@ -1,5 +1,5 @@
 <?php
-$page_name = "Expiration";
+$page_name = "User And Permision";
 include "includes/session.php";
 include "includes/coon.php";
 ?>
@@ -29,7 +29,8 @@ include "includes/coon.php";
 				<h1 class="h1 mb-1 h1-size"><?php echo $page_name; ?></h1>
 
 					<div style="color: black;" class="row">
-			
+						
+
 					</div>
 
 
@@ -43,15 +44,7 @@ include "includes/coon.php";
 		</div>
 	</div>
 	<script>
-		$(document).ready(function() {
-			$('#prducts').DataTable();
-		});
-
-		// this part is just for your custom search
-		$('#search').keyup(function() {
-			var table = $('#prducts').DataTable();
-			table.search($(this).val()).draw();
-		});
+	
 	</script>
 </body>
 

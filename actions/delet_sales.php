@@ -6,7 +6,7 @@ include "../includes/session.php";
 $order_id = $_POST['saleId'];
 
 // Retrieve the sales order details
-$sql = "SELECT id_user, id_client, id_pharm FROM `ord` WHERE id = $order_id";
+$sql = "SELECT id_user, id_client, id_pharm FROM `prescription` WHERE id = $order_id";
 $result = mysqli_query($coon, $sql);
 
 if ($result && mysqli_num_rows($result) > 0) {
@@ -27,7 +27,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         $amount = $row['amount'];
 
         // Update the product quantity in the `prodoit` table by adding the amount
-        $sql = "UPDATE `prodoit` SET `amount` = `amount` + $amount WHERE id = $product_id";
+        $sql = "UPDATE `inventory` SET `amount` = `amount` + $amount WHERE id = $product_id";
         mysqli_query($coon, $sql);
 
         // Add the product ID to the array
@@ -43,7 +43,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     mysqli_query($coon, $sql);
 
     // Delete the sales order from the `ord` table
-    $sql = "DELETE FROM `ord` WHERE id = $order_id";
+    $sql = "DELETE FROM `prescription` WHERE id = $order_id";
     mysqli_query($coon, $sql);
 
     // Redirect the user back to the sales page or any desired page

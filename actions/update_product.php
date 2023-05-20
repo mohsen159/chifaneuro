@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lot = $_POST["lot"];
 
     // Prepare and execute the SQL query to update the fields in the database
-    $stmt = $coon->prepare("UPDATE prodoit SET lot = ?, amount = ?, Expiration = ? WHERE id = ?");
+    $stmt = $coon->prepare("UPDATE inventory SET lot = ?, amount = ?, Expiration = ? WHERE id = ?");
     $stmt->bind_param("sisi", $lot, $amount, $expDate, $id);
     $stmt->execute();
 

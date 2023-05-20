@@ -30,7 +30,7 @@ for ($i = 0; $i < $count; $i++) {
     $requestedAmount = $amounts[$i];
 
     // Retrieve the product from the database using the ID
-    $sql = "SELECT amount FROM prodoit WHERE id = $productId";
+    $sql = "SELECT amount FROM inventory WHERE id = $productId";
     $result = mysqli_query($coon, $sql);
 
     if ($result && mysqli_num_rows($result) > 0) {
@@ -58,7 +58,7 @@ if ($available) {
     // creat sales 
     $ns = date('Y-m-d', strtotime($sale_date . ' +  ' . $dure . ' days'));
     $temp =  ($complited == 0);
-    $stmt = $coon->prepare("INSERT INTO `ord` (`id_user`, `id_client`, `id_pharm`, `ord_date`, `next_date`, `order_ord`, `dure`, `complited`, `note`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $coon->prepare("INSERT INTO `prescription` (`id_user`, `id_client`, `id_pharm`, `ord_date`, `next_date`, `order_ord`, `dure`, `complited`, `note`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("iiisssiss", $employs, $clientid, $pharm_id, $sale_date, $ns, $num_order, $dure, $temp, $note);
     $stmt->execute();
     $sale_id = $stmt->insert_id;
@@ -70,7 +70,7 @@ if ($available) {
         $requestedAmount = $amounts[$i];
 
         // change the amount of  the product from the database using the ID
-        $sql = "UPDATE `prodoit` SET `amount` = `amount` - $requestedAmount WHERE id = $productId";
+        $sql = "UPDATE `inventory` SET `amount` = `amount` - $requestedAmount WHERE id = $productId";
         $result = mysqli_query($coon, $sql);
 
         // Insert the change into the `changement` table
