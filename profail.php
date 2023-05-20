@@ -1,5 +1,5 @@
 <?php
-$page_name = "Home";
+$page_name = "profail";
 include "includes/session.php";
 include "includes/coon.php";
 ?>
@@ -8,6 +8,13 @@ include "includes/coon.php";
 
 <head>
     <?php include "includes/head.php"; ?>
+    <style>
+        .profile {
+            width: 70%;
+            height: auto;
+            max-width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,8 +50,14 @@ include "includes/coon.php";
                                     <label for="id-card-photo" class="form-label">Identity Card Photo</label>
                                     <input type="file" class="form-control" id="id-card-photo" name="id_card_photo" accept="image/*" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Validation</button>
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <button type="submit" class="btn btn-primary">Samilarity</button>
                             </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-center align-items-center h-100">
+                                <img src="img/user_null.jpg" alt="ID Card" class="img-fluid profile">
+                            </div>
                         </div>
                     </div>
 
