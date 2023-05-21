@@ -29,24 +29,31 @@ $sql = "SELECT p.id, lp.name, lp.dosage, c.amount, o.next_date
 
 $result = mysqli_query($coon, $sql);
 
+
 if (mysqli_num_rows($result) > 0) {
     // The client has already purchased similar products with the next sale date passed
-    // You can iterate over the rows and process the data as needed
+    // You can iterate over the rows and generate the table rows dynamically
     while ($row = mysqli_fetch_assoc($result)) {
-        $product_id = $row['id'];
         $name = $row['name'];
         $dosage = $row['dosage'];
         $amount = $row['amount'];
         $next_date = $row['next_date'];
 
-    
-
-        echo "Client has purchased a similar product (ID: $product_id, Name: $name, Dosage: $dosage) with the next sale date ($next_date) passed.<br>";
+        // Generate the table row dynamically
+        echo "<tr>";
+        echo "<td>$name $dosage</td>";
+        echo "<td>$amount</td>";
+        echo "<td>$next_date</td>";
+        echo "</tr>";
     }
 } else {
     // The client can buy the products in the list
     echo "The client can buy the products in the list.";
 }
+
+// ... Your existing PHP code
+?>
+
 
 // Close the database connection
 mysqli_close($coon);

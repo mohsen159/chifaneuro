@@ -1,14 +1,17 @@
-<?php 
-$page_name = "clients";
+<?php
+$page_name = "";
 include "includes/session.php";
 include "includes/coon.php";
 
-// Sample client data (replace with your own data)
-$clients = array(
-    array("John Doe", "johndoe@example.com", "123 Main St", "New York"),
-    array("Jane Smith", "janesmith@example.com", "456 Elm St", "Los Angeles"),
-    array("Michael Johnson", "michaeljohnson@example.com", "789 Oak St", "Chicago")
-);
+// Query to fetch all clients
+$sql = "SELECT `id`, `fname`, `name`, `Date_of_Birth`, `created`, `card`, `adress` FROM `client` WHERE 1";
+$result = mysqli_query($coon, $sql);
+
+// Fetch all clients as an associative array
+$clients = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+// Close the database connection
+mysqli_close($coon);
 ?>
 
 <!DOCTYPE html>
@@ -18,41 +21,36 @@ $clients = array(
     <?php include "includes/head.php"; ?>
     <style>
         /* Add any additional styles for the table if needed */
-     
-    .search-container {
-        text-align: center;
-        margin-top: 30px;
-    }
+        .search-container {
+            text-align: center;
+            margin-top: 30px;
+        }
 
-    .search-bar {
-        width: 30%;
-        max-width: 400px;
-        height: 40px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        transition: width 0.3s ease;
-    }
+        .search-bar {
+            width: 30%;
+            max-width: 400px;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: width 0.3s ease;
+        }
 
-    .search-button {
-        display: inline-block;
-        vertical-align: middle;
-        transition: transform 0.3s ease;
-    }
+        .search-button {
+            display: inline-block;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+        }
 
-    .search-button button {
-        border-radius: 5px;
-        transition: transform 0.3s ease;
-    }
+        .search-button button {
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
 
         .client-table {
             margin-top: 30px;
         }
-        
-   
-        
-      
     </style>
 </head>
 
@@ -67,7 +65,9 @@ $clients = array(
 
             <main class="content">
                 <div class="container-fluid p-0">
-                <h1 class="h1 mb-1 h1-size"><?php echo $page_name; ?></h1>
+                    <h1 class="h1 mb-1 h1-size">
+                        <?php echo $page_name; ?>
+                    </h1>
 
                     <div class="search-container">
                         <form id="search-form">
@@ -84,18 +84,28 @@ $clients = array(
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Email</th>
+                                <th>Date of Birth</th>
                                 <th>Address</th>
-                                <th>City</th>
+                                <th>Created</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($clients as $client) : ?>
+                            <?php foreach ($clients as $client): ?>
                                 <tr>
-                                    <td><?php echo $client[0]; ?></td>
-                                    <td><?php echo $client[1]; ?></td>
-                                    <td><?php echo $client[2]; ?></td>
-                                    <td><?php echo $client[3]; ?></td>
+                                    <td>
+                                        <a style="text-decoration: none; color: black;" href="profail.php?id=<?php echo $client['id']; ?>">
+                                            <?php echo $client['name'] . " " . $client['fname']; ?>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <?php echo date('d/m/Y', strtotime($client['Date_of_Birth'])); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $client['adress']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo date('d/m/Y', strtotime($client['created'])); ?>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -109,9 +119,7 @@ $clients = array(
             <!--end  here -->
         </div>
     </div>
-    <script>
-        // Your JavaScript code here
-    </script>
+    <script src="js/sales.js"></script>
 </body>
 
-</html> 
+</html>

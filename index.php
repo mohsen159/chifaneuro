@@ -1,5 +1,5 @@
 <?php
-$page_name = "Dashboard";
+$page_name = "";
 include "includes/session.php";
 include "includes/coon.php";
 ?>

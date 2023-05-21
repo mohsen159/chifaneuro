@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 17 mai 2023 à 13:34
+-- Généré le : dim. 21 mai 2023 à 05:59
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -34,6 +34,13 @@ CREATE TABLE `changement` (
   `id_ord` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `changement`
+--
+
+INSERT INTO `changement` (`id`, `amount`, `id_prodoit`, `id_ord`) VALUES
+(17, 50, 30, 14);
+
 -- --------------------------------------------------------
 
 --
@@ -44,145 +51,186 @@ CREATE TABLE `client` (
   `id` int(11) NOT NULL,
   `fname` tinytext DEFAULT NULL,
   `name` tinytext DEFAULT NULL,
+  `Date_of_Birth` date DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
-  `img` tinytext DEFAULT NULL
+  `card` tinytext DEFAULT NULL,
+  `adress` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`id`, `fname`, `name`, `created`, `img`) VALUES
-(1, 'Tifoura', 'Nacera ', '2022-04-07 08:16:06', NULL),
-(2, 'Menib', 'Ouarda', '2022-04-07 08:16:06', NULL),
-(3, 'Guelati', 'Asma', '2022-04-07 08:16:06', NULL),
-(4, 'Hadjam', 'faouzi ', '2022-04-07 08:16:06', NULL),
-(5, 'Menai', 'Houriya', '2022-04-07 08:16:06', NULL),
-(6, 'Rouibi', 'med ', '2022-04-07 08:16:06', NULL),
-(7, 'Houachri', 'samiha ', '2022-04-07 08:16:06', NULL),
-(8, 'Soltani', 'Fethi', '2022-04-07 08:16:06', NULL),
-(9, 'Boudar', 'zineddine', '2022-04-07 08:16:06', NULL),
-(10, 'Ali', 'khelil abdelraouf', '2022-04-07 08:16:06', NULL),
-(11, 'siaouane', 'mohamed', '2022-04-07 08:16:06', NULL),
-(12, 'Nafnaf', 'abdelkader', '2022-04-07 08:16:06', NULL),
-(13, 'Khemaissia', 'mohamed', '2022-04-07 08:16:06', NULL),
-(14, 'Bares', 'mehdi', '2022-04-07 08:16:06', NULL),
-(15, 'Younes', 'med saleh', '2022-04-07 08:16:06', NULL),
-(16, 'Kehili', 'samir', '2022-04-07 08:16:06', NULL),
-(17, 'Rechrache', 'Nacer', '2022-04-07 08:16:06', NULL),
-(18, 'Benmalek', 'fatma', '2022-04-07 08:16:06', NULL),
-(19, 'Amari', 'zakaria', '2022-04-07 08:16:06', NULL),
-(20, 'Sedraoui', 'hadda ', '2022-04-07 08:16:06', NULL),
-(21, 'Yermach', 'sabira', '2022-04-07 08:16:06', NULL),
-(22, 'Bouhaouli', 'laid ', '2022-04-07 08:16:06', NULL),
-(23, 'Bouguera', 'tahar', '2022-04-07 08:16:06', NULL),
-(24, 'Kanouni', 'Samir', '2022-04-07 08:16:06', NULL),
-(25, 'Yousfi', 'med', '2022-04-07 08:16:06', NULL),
-(26, 'Debabi', 'Brahim', '2022-04-07 08:16:06', NULL),
-(27, 'Bessioud', 'mohamed', '2022-04-07 08:16:06', NULL),
-(28, 'khaldi', 'azzedine', '2022-04-07 08:16:06', NULL),
-(29, 'Ghoumari', 'A/ouaheb', '2022-04-07 08:16:06', NULL),
-(30, 'Mahfoudi', 'A/nour', '2022-04-07 08:16:06', NULL),
-(31, 'Bouchoucha', 'saida', '2022-04-07 08:16:06', NULL),
-(32, 'Bouzid', 'meriem ', '2022-04-07 08:16:06', NULL),
-(33, 'Mazouz', 'Cherif', '2022-04-07 08:16:06', NULL),
-(34, 'Torchi', 'kamel', '2022-04-07 08:16:06', NULL),
-(35, 'Kanouni', 'Aicha', '2022-04-07 08:16:06', NULL),
-(36, 'Boutaghane', 'siham', '2022-04-07 08:16:06', NULL),
-(37, 'Aouad', 'Ramzi ', '2022-04-07 08:16:06', NULL),
-(38, 'Rahli', 'saida', '2022-04-07 08:16:06', NULL),
-(39, 'Benzeghimi', 'Aicha ', '2022-04-07 08:16:06', NULL),
-(40, 'Kouadria', 'keltoum', '2022-04-07 08:16:06', NULL),
-(41, 'Khamassi', 'Ahlam', '2022-04-07 08:16:06', NULL),
-(42, 'Trea', 'med laid', '2022-04-07 08:16:06', NULL),
-(43, 'Gueldasni', 'Hamza ', '2022-04-07 08:16:06', NULL),
-(44, 'Hezam', 'brahim', '2022-04-07 08:16:06', NULL),
-(45, 'Ouali', 'Adel', '2022-04-07 08:16:06', NULL),
-(46, 'Chabbi', 'Reda ', '2022-04-07 08:16:06', NULL),
-(47, 'Boughaba', 'A/aziz', '2022-04-07 08:16:06', NULL),
-(48, 'Khenouche', 'Samir', '2022-04-07 08:16:06', NULL),
-(49, 'Achouri', 'elHadi', '2022-04-07 08:16:06', NULL),
-(50, 'Hamriou', 'Yazid', '2022-04-07 08:16:06', NULL),
-(51, 'Sahia', 'larbi ', '2022-04-07 08:16:06', NULL),
-(52, 'Ghemida', 'youcef', '2022-04-07 08:16:06', NULL),
-(53, 'Maalem', 'Bilel', '2022-04-07 08:16:06', NULL),
-(54, 'Bouchoucha', 'Kamel', '2022-04-07 08:16:06', NULL),
-(55, 'Bouhadeb', 'Mabrouka', '2022-04-07 08:16:06', NULL),
-(56, 'Siab', 'Fares', '2022-04-07 08:16:06', NULL),
-(57, 'Boutaleb', 'Imen', '2022-04-07 08:16:06', NULL),
-(58, 'Benmechter', 'Fouad', '2022-04-07 08:16:06', NULL),
-(61, 'Bouguera', 'djamel eddine', '2022-04-07 08:16:06', NULL),
-(62, 'Arifi', 'khadra', '2022-04-07 08:16:06', NULL),
-(63, 'Benbouzid', 'miloud', '2022-04-07 08:16:06', NULL),
-(64, 'Bekhakhcha', 'mohamed', '2022-04-07 08:16:06', NULL),
-(65, 'Zouaoui', 'rebeh', '2022-04-07 08:16:06', NULL),
-(66, 'Menaiaia', 'abdessalam', '2022-04-07 08:16:06', NULL),
-(67, 'Tifoura', 'Salima', '2022-04-07 08:16:06', NULL),
-(68, 'Bouguera', 'khadoudja', '2022-04-07 08:16:06', NULL),
-(70, 'Rouaimia', 'bilel', '2022-04-07 08:16:06', NULL),
-(71, 'Khoudja', 'chaima', '2022-04-07 08:16:06', NULL),
-(72, 'Benaouadi', 'badri', '2022-04-07 08:16:06', NULL),
-(73, 'Chouchane', 'selma', '2022-04-07 08:16:06', NULL),
-(74, 'Brahmi', 'Yazid', '2022-04-07 08:16:06', NULL),
-(75, 'Ziani', 'Bahdja', '2022-04-07 08:16:06', NULL),
-(76, 'Ghanai', 'Ahcen', '2022-04-07 08:16:06', NULL),
-(77, 'Gasmoune', 'saliha', '2022-04-07 08:16:06', NULL),
-(78, 'Boughaba', 'salim', '2022-04-07 08:16:06', NULL),
-(79, 'Soufi', 'Bariza', '2022-04-07 08:16:06', NULL),
-(80, 'Ouali', 'fella', '2022-04-07 08:16:06', NULL),
-(81, 'Dif', 'Riadh', '2022-04-07 08:16:06', NULL),
-(82, 'Haif', 'saleh', '2022-04-07 08:16:06', NULL),
-(83, 'Koraichi', 'siham', '2022-04-07 08:16:06', NULL),
-(84, 'Hmaidi', 'miloud', '2022-04-07 08:16:06', NULL),
-(85, 'Aouadi', 'hicham', '2022-04-07 08:16:06', NULL),
-(86, 'Bechani', 'zakia', '2022-04-07 08:16:06', NULL),
-(87, 'Fartas', 'seif eddine', '2022-04-07 08:16:06', NULL),
-(88, 'oulhaci', 'med saleh', '2022-04-07 08:16:06', NULL),
-(89, 'Bouguera', 'walid', '2022-04-07 08:16:06', NULL),
-(90, 'Abadlia', 'Hanene', '2022-04-07 08:16:06', NULL),
-(91, 'oulhaci', 'mohamed', '2022-04-07 08:16:06', NULL),
-(92, 'Ouanes', 'Abdenasser', '2022-04-07 08:16:06', NULL),
-(93, 'Hanachi', 'Amel', '2022-04-07 08:16:06', NULL),
-(94, 'Kahili', 'zoubida', '2022-04-07 08:16:06', NULL),
-(95, 'Amri', 'someya', '2022-04-07 08:16:06', NULL),
-(96, 'Hemici', 'samir', '2022-04-07 08:16:06', NULL),
-(97, 'Nahouchi', 'mohamed', '2022-04-07 08:16:06', NULL),
-(98, 'Djedaidi', 'mohamed', '2022-04-07 08:16:06', NULL),
-(99, 'Boudjedra', 'aymen', '2022-04-07 08:16:06', NULL),
-(100, 'Bouallagui', 'fatiha', '2022-04-07 08:16:06', NULL),
-(101, 'Boulifa', 'otman', '2022-04-07 08:16:06', NULL),
-(102, 'Bechachhia', 'Abla', '2022-04-07 08:16:06', NULL),
-(103, 'Skikdi', 'mustafa', '2022-04-07 08:16:06', NULL),
-(104, 'Klai', 'chaabi', '2022-04-07 08:16:06', NULL),
-(105, 'Bouhadjera', 'bachir', '2022-04-07 08:16:06', NULL),
-(106, 'Zannat', 'fethi', '2022-04-07 08:16:06', NULL),
-(107, 'Abaiz', 'fatima', '2022-04-07 08:16:06', NULL),
-(108, 'Haizi', 'yassine', '2022-04-07 08:16:06', NULL),
-(109, 'Bounaadja', 'kamer ezzemene', '2022-04-07 08:16:06', NULL),
-(110, 'Belloum', 'boudjemaa', '2022-04-07 08:16:06', NULL),
-(111, 'Achichi', 'mihoub', '2022-04-07 08:16:06', NULL),
-(112, 'Bouchmala', 'issam', '2022-04-07 08:16:06', NULL),
-(113, 'Sissaoui', 'khaled', '2022-04-07 08:16:06', NULL),
-(114, 'Boumedris', 'Wassim', '2022-04-07 08:16:06', NULL),
-(115, 'khaoua', 'Abdelaziz', '2022-04-07 08:16:06', NULL),
-(116, 'Benallouche', 'Hafsia', '2022-04-07 08:16:06', NULL),
-(117, 'Bouacha', 'mamdouh', '2022-04-07 08:16:06', NULL),
-(118, 'Zouzou', 'reda', '2022-04-07 08:16:06', NULL),
-(119, 'Soualem', 'Fattoum', '2022-04-07 08:16:06', NULL),
-(120, 'Bourafa', 'salim', '2022-04-07 08:16:06', NULL),
-(121, 'Bouanani', 'bariza', '2022-04-07 08:16:06', NULL),
-(122, 'Ghemida', 'Houcine', '2022-04-07 08:16:06', NULL),
-(123, 'Dif', 'sami', '2022-04-07 08:16:06', NULL),
-(124, 'Khelil', 'souhaib', '2022-04-07 08:16:06', NULL),
-(125, 'Sbai', 'Kheireddine', '2022-04-07 08:16:06', NULL),
-(126, 'Diaf', 'malyk', '2022-04-07 08:16:06', NULL),
-(127, 'Azizi', 'soltana', '2022-04-07 08:16:06', NULL),
-(128, 'boulahba', 'mohssen', '2023-05-14 15:47:49', NULL),
-(129, 'boulahba7411', 'mohssen', '2023-05-14 15:49:05', NULL),
-(130, 'boulahba7411', 'mohssen', '2023-05-14 15:49:05', NULL),
-(131, 'boulahbal', 'abdel rahmabn', '2023-05-14 15:57:46', NULL),
-(132, 'nomber 1', 'client', '2023-05-14 16:14:59', NULL),
-(133, 'dddd', 'TRAMADOL LS 100MG', '2023-05-17 00:05:31', NULL);
+INSERT INTO `client` (`id`, `fname`, `name`, `Date_of_Birth`, `created`, `card`, `adress`) VALUES
+(1, 'Tifoura', 'Nacera ', '2023-02-20', '2022-04-07 08:16:06', 'user_null.jpg', ''),
+(2, 'Menib', 'Ouarda', '2020-03-12', '2022-04-07 08:16:06', 'user_null.jpg', ''),
+(3, 'Guelati', 'Asma', NULL, '2022-04-07 08:16:06', NULL, ''),
+(4, 'Hadjam', 'faouzi ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(5, 'Menai', 'Houriya', NULL, '2022-04-07 08:16:06', NULL, ''),
+(6, 'Rouibi', 'med ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(7, 'Houachri', 'samiha ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(8, 'Soltani', 'Fethi', NULL, '2022-04-07 08:16:06', NULL, ''),
+(9, 'Boudar', 'zineddine', NULL, '2022-04-07 08:16:06', NULL, ''),
+(10, 'Ali', 'khelil abdelraouf', '1980-05-23', '2022-04-07 08:16:06', 'user_null.jpg', ''),
+(11, 'siaouane', 'mohamed', NULL, '2022-04-07 08:16:06', NULL, ''),
+(12, 'Nafnaf', 'abdelkader', NULL, '2022-04-07 08:16:06', NULL, ''),
+(13, 'Khemaissia', 'mohamed', NULL, '2022-04-07 08:16:06', NULL, ''),
+(14, 'Bares', 'mehdi', NULL, '2022-04-07 08:16:06', NULL, ''),
+(15, 'Younes', 'med saleh', NULL, '2022-04-07 08:16:06', NULL, ''),
+(16, 'Kehili', 'samir', NULL, '2022-04-07 08:16:06', NULL, ''),
+(17, 'Rechrache', 'Nacer', NULL, '2022-04-07 08:16:06', NULL, ''),
+(18, 'Benmalek', 'fatma', NULL, '2022-04-07 08:16:06', NULL, ''),
+(19, 'Amari', 'zakaria', NULL, '2022-04-07 08:16:06', NULL, ''),
+(20, 'Sedraoui', 'hadda ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(21, 'Yermach', 'sabira', NULL, '2022-04-07 08:16:06', NULL, ''),
+(22, 'Bouhaouli', 'laid ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(23, 'Bouguera', 'tahar', NULL, '2022-04-07 08:16:06', NULL, ''),
+(24, 'Kanouni', 'Samir', NULL, '2022-04-07 08:16:06', NULL, ''),
+(25, 'Yousfi', 'med', NULL, '2022-04-07 08:16:06', NULL, ''),
+(26, 'Debabi', 'Brahim', NULL, '2022-04-07 08:16:06', NULL, ''),
+(27, 'Bessioud', 'mohamed', NULL, '2022-04-07 08:16:06', NULL, ''),
+(28, 'khaldi', 'azzedine', NULL, '2022-04-07 08:16:06', NULL, ''),
+(29, 'Ghoumari', 'A/ouaheb', NULL, '2022-04-07 08:16:06', NULL, ''),
+(30, 'Mahfoudi', 'A/nour', NULL, '2022-04-07 08:16:06', NULL, ''),
+(31, 'Bouchoucha', 'saida', NULL, '2022-04-07 08:16:06', NULL, ''),
+(32, 'Bouzid', 'meriem ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(33, 'Mazouz', 'Cherif', NULL, '2022-04-07 08:16:06', NULL, ''),
+(34, 'Torchi', 'kamel', NULL, '2022-04-07 08:16:06', NULL, ''),
+(35, 'Kanouni', 'Aicha', NULL, '2022-04-07 08:16:06', NULL, ''),
+(36, 'Boutaghane', 'siham', NULL, '2022-04-07 08:16:06', NULL, ''),
+(37, 'Aouad', 'Ramzi ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(38, 'Rahli', 'saida', NULL, '2022-04-07 08:16:06', NULL, ''),
+(39, 'Benzeghimi', 'Aicha ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(40, 'Kouadria', 'keltoum', NULL, '2022-04-07 08:16:06', NULL, ''),
+(41, 'Khamassi', 'Ahlam', NULL, '2022-04-07 08:16:06', NULL, ''),
+(42, 'Trea', 'med laid', NULL, '2022-04-07 08:16:06', NULL, ''),
+(43, 'Gueldasni', 'Hamza ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(44, 'Hezam', 'brahim', NULL, '2022-04-07 08:16:06', NULL, ''),
+(45, 'Ouali', 'Adel', NULL, '2022-04-07 08:16:06', NULL, ''),
+(46, 'Chabbi', 'Reda ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(47, 'Boughaba', 'A/aziz', NULL, '2022-04-07 08:16:06', NULL, ''),
+(48, 'Khenouche', 'Samir', NULL, '2022-04-07 08:16:06', NULL, ''),
+(49, 'Achouri', 'elHadi', NULL, '2022-04-07 08:16:06', NULL, ''),
+(50, 'Hamriou', 'Yazid', NULL, '2022-04-07 08:16:06', NULL, ''),
+(51, 'Sahia', 'larbi ', NULL, '2022-04-07 08:16:06', NULL, ''),
+(52, 'Ghemida', 'youcef', NULL, '2022-04-07 08:16:06', NULL, ''),
+(53, 'Maalem', 'Bilel', NULL, '2022-04-07 08:16:06', NULL, ''),
+(54, 'Bouchoucha', 'Kamel', NULL, '2022-04-07 08:16:06', NULL, ''),
+(55, 'Bouhadeb', 'Mabrouka', NULL, '2022-04-07 08:16:06', NULL, ''),
+(56, 'Siab', 'Fares', NULL, '2022-04-07 08:16:06', NULL, ''),
+(57, 'Boutaleb', 'Imen', NULL, '2022-04-07 08:16:06', NULL, ''),
+(58, 'Benmechter', 'Fouad', NULL, '2022-04-07 08:16:06', NULL, ''),
+(61, 'Bouguera', 'djamel eddine', NULL, '2022-04-07 08:16:06', NULL, ''),
+(62, 'Arifi', 'khadra', NULL, '2022-04-07 08:16:06', NULL, ''),
+(63, 'Benbouzid', 'miloud', NULL, '2022-04-07 08:16:06', NULL, ''),
+(64, 'Bekhakhcha', 'mohamed', NULL, '2022-04-07 08:16:06', NULL, ''),
+(65, 'Zouaoui', 'rebeh', NULL, '2022-04-07 08:16:06', NULL, ''),
+(66, 'Menaiaia', 'abdessalam', NULL, '2022-04-07 08:16:06', NULL, ''),
+(67, 'Tifoura', 'Salima', NULL, '2022-04-07 08:16:06', NULL, ''),
+(68, 'Bouguera', 'khadoudja', NULL, '2022-04-07 08:16:06', NULL, ''),
+(70, 'Rouaimia', 'bilel', NULL, '2022-04-07 08:16:06', NULL, ''),
+(71, 'Khoudja', 'chaima', NULL, '2022-04-07 08:16:06', NULL, ''),
+(72, 'Benaouadi', 'badri', NULL, '2022-04-07 08:16:06', NULL, ''),
+(73, 'Chouchane', 'selma', NULL, '2022-04-07 08:16:06', NULL, ''),
+(74, 'Brahmi', 'Yazid', NULL, '2022-04-07 08:16:06', NULL, ''),
+(75, 'Ziani', 'Bahdja', NULL, '2022-04-07 08:16:06', NULL, ''),
+(76, 'Ghanai', 'Ahcen', NULL, '2022-04-07 08:16:06', NULL, ''),
+(77, 'Gasmoune', 'saliha', NULL, '2022-04-07 08:16:06', NULL, ''),
+(78, 'Boughaba', 'salim', NULL, '2022-04-07 08:16:06', NULL, ''),
+(79, 'Soufi', 'Bariza', NULL, '2022-04-07 08:16:06', NULL, ''),
+(80, 'Ouali', 'fella', NULL, '2022-04-07 08:16:06', NULL, ''),
+(81, 'Dif', 'Riadh', NULL, '2022-04-07 08:16:06', NULL, ''),
+(82, 'Haif', 'saleh', NULL, '2022-04-07 08:16:06', NULL, ''),
+(83, 'Koraichi', 'siham', NULL, '2022-04-07 08:16:06', NULL, ''),
+(84, 'Hmaidi', 'miloud', NULL, '2022-04-07 08:16:06', NULL, ''),
+(85, 'Aouadi', 'hicham', NULL, '2022-04-07 08:16:06', NULL, ''),
+(86, 'Bechani', 'zakia', NULL, '2022-04-07 08:16:06', NULL, ''),
+(87, 'Fartas', 'seif eddine', NULL, '2022-04-07 08:16:06', NULL, ''),
+(88, 'oulhaci', 'med saleh', NULL, '2022-04-07 08:16:06', NULL, ''),
+(89, 'Bouguera', 'walid', NULL, '2022-04-07 08:16:06', NULL, ''),
+(90, 'Abadlia', 'Hanene', NULL, '2022-04-07 08:16:06', NULL, ''),
+(91, 'oulhaci', 'mohamed', NULL, '2022-04-07 08:16:06', NULL, ''),
+(92, 'Ouanes', 'Abdenasser', NULL, '2022-04-07 08:16:06', NULL, ''),
+(93, 'Hanachi', 'Amel', NULL, '2022-04-07 08:16:06', NULL, ''),
+(94, 'Kahili', 'zoubida', NULL, '2022-04-07 08:16:06', NULL, ''),
+(95, 'Amri', 'someya', NULL, '2022-04-07 08:16:06', NULL, ''),
+(96, 'Hemici', 'samir', NULL, '2022-04-07 08:16:06', NULL, ''),
+(97, 'Nahouchi', 'mohamed', NULL, '2022-04-07 08:16:06', NULL, ''),
+(98, 'Djedaidi', 'mohamed', NULL, '2022-04-07 08:16:06', NULL, ''),
+(99, 'Boudjedra', 'aymen', NULL, '2022-04-07 08:16:06', NULL, ''),
+(100, 'Bouallagui', 'fatiha', '2000-02-03', '2022-04-07 08:16:06', 'user_null.jpg', ''),
+(101, 'Boulifa', 'otman', NULL, '2022-04-07 08:16:06', NULL, ''),
+(102, 'Bechachhia', 'Abla', NULL, '2022-04-07 08:16:06', NULL, ''),
+(103, 'Skikdi', 'mustafa', NULL, '2022-04-07 08:16:06', NULL, ''),
+(104, 'Klai', 'chaabi', NULL, '2022-04-07 08:16:06', NULL, ''),
+(105, 'Bouhadjera', 'bachir', NULL, '2022-04-07 08:16:06', NULL, ''),
+(106, 'Zannat', 'fethi', NULL, '2022-04-07 08:16:06', NULL, ''),
+(107, 'Abaiz', 'fatima', NULL, '2022-04-07 08:16:06', NULL, ''),
+(108, 'Haizi', 'yassine', NULL, '2022-04-07 08:16:06', NULL, ''),
+(109, 'Bounaadja', 'kamer ezzemene', NULL, '2022-04-07 08:16:06', NULL, ''),
+(110, 'Belloum', 'boudjemaa', NULL, '2022-04-07 08:16:06', NULL, ''),
+(111, 'Achichi', 'mihoub', NULL, '2022-04-07 08:16:06', NULL, ''),
+(112, 'Bouchmala', 'issam', NULL, '2022-04-07 08:16:06', NULL, ''),
+(113, 'Sissaoui', 'khaled', NULL, '2022-04-07 08:16:06', NULL, ''),
+(114, 'Boumedris', 'Wassim', NULL, '2022-04-07 08:16:06', NULL, ''),
+(115, 'khaoua', 'Abdelaziz', NULL, '2022-04-07 08:16:06', NULL, ''),
+(116, 'Benallouche', 'Hafsia', NULL, '2022-04-07 08:16:06', NULL, ''),
+(117, 'Bouacha', 'mamdouh', NULL, '2022-04-07 08:16:06', NULL, ''),
+(118, 'Zouzou', 'reda', NULL, '2022-04-07 08:16:06', NULL, ''),
+(119, 'Soualem', 'Fattoum', NULL, '2022-04-07 08:16:06', NULL, ''),
+(120, 'Bourafa', 'salim', NULL, '2022-04-07 08:16:06', NULL, ''),
+(121, 'Bouanani', 'bariza', NULL, '2022-04-07 08:16:06', NULL, ''),
+(122, 'Ghemida', 'Houcine', NULL, '2022-04-07 08:16:06', NULL, ''),
+(123, 'Dif', 'sami', NULL, '2022-04-07 08:16:06', NULL, ''),
+(124, 'Khelil', 'souhaib', NULL, '2022-04-07 08:16:06', NULL, ''),
+(125, 'Sbai', 'Kheireddine', NULL, '2022-04-07 08:16:06', NULL, ''),
+(126, 'Diaf', 'malyk', NULL, '2022-04-07 08:16:06', NULL, ''),
+(127, 'Azizi', 'soltana', NULL, '2022-04-07 08:16:06', NULL, ''),
+(128, 'boulahba', 'mohssen', NULL, '2023-05-14 15:47:49', NULL, ''),
+(129, 'boulahba7411', 'mohssen', NULL, '2023-05-14 15:49:05', NULL, ''),
+(130, 'boulahba7411', 'mohssen', NULL, '2023-05-14 15:49:05', NULL, ''),
+(131, 'boulahbal', 'abdel rahmabn', NULL, '2023-05-14 15:57:46', NULL, ''),
+(132, 'nomber 1', 'client', NULL, '2023-05-14 16:14:59', NULL, ''),
+(133, 'dddd', 'TRAMADOL LS 100MG', NULL, '2023-05-17 00:05:31', NULL, ''),
+(134, 'ayad', 'louai', '2000-05-01', '2023-05-18 02:04:36', 'user_null.jpg', 'ben mhidi el tarf rue 36');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `inventory`
+--
+
+CREATE TABLE `inventory` (
+  `list_prodoit` int(11) DEFAULT NULL,
+  `pharm` int(11) DEFAULT NULL,
+  `lot` tinytext DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
+  `Expiration` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `inserted` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `inventory`
+--
+
+INSERT INTO `inventory` (`list_prodoit`, `pharm`, `lot`, `amount`, `Expiration`, `created`, `inserted`, `id`) VALUES
+(3, 10, '18', 100, '2023-05-16 23:00:00', '2023-04-30 12:37:13', NULL, 4),
+(4, 10, '13', 0, '2023-05-18 03:01:45', '2023-04-30 12:37:13', NULL, 5),
+(5, 10, '5220', 0, '2023-05-13 02:45:34', '2023-04-30 12:37:13', NULL, 6),
+(5, 10, '20', 0, '2023-05-15 16:53:41', '2023-05-01 04:13:22', NULL, 7),
+(3, 10, '19', 0, '2023-05-15 16:53:37', '2023-05-01 04:14:50', NULL, 8),
+(3, 10, '20', 0, '2023-05-15 16:53:36', '2023-05-01 04:15:05', NULL, 9),
+(3, 10, '21', 0, '2023-05-15 16:53:34', '2023-05-01 04:16:03', NULL, 10),
+(18, 10, '12', 100, '2023-05-18 03:00:24', '2023-05-01 05:02:15', NULL, 11),
+(84, 10, '12', 0, '2023-05-13 02:38:15', '2023-05-01 07:29:32', NULL, 12),
+(36, 10, '123', 0, '2023-05-13 02:38:10', '2023-05-01 07:45:16', NULL, 13),
+(100, 10, '20', 0, '2023-05-14 22:44:29', '2023-05-14 22:44:09', NULL, 27),
+(2, 12, '15', 100, '2023-05-16 23:00:00', '2023-05-15 22:43:20', NULL, 28),
+(42, 10, '13', 100, '2023-06-09 07:00:00', '2023-05-16 09:27:12', NULL, 29),
+(22, 10, '1000', 0, '2023-05-18 03:01:33', '2023-05-16 09:38:30', NULL, 30),
+(18, 10, '13', 100, '2023-05-18 07:00:00', '2023-05-16 11:59:19', NULL, 31);
 
 -- --------------------------------------------------------
 
@@ -291,7 +339,8 @@ INSERT INTO `list_prodoit` (`id`, `name`, `dci`, `dosage`, `form`) VALUES
 (100, 'vrrr', 'ffff', '20 3mg', 'ddd'),
 (101, 'vrrr', 'ffff', '20 3mg', 'ddd'),
 (102, 'nothing', 'rrrrr', '100 mg ', 'dfghghjgfyhjfghjghfjghfj'),
-(103, 'cvbn ', 'dfgrfh', '200000 mg', 'nothing');
+(103, 'cvbn ', 'dfgrfh', '200000 mg', 'nothing'),
+(104, 'zolidreat ', 'dcifi', 'dxvc', 'VBVV');
 
 -- --------------------------------------------------------
 
@@ -305,27 +354,6 @@ CREATE TABLE `noncompliant` (
   `amount` int(11) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `ord`
---
-
-CREATE TABLE `ord` (
-  `id` int(11) NOT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  `id_client` int(11) DEFAULT NULL,
-  `id_pharm` int(11) DEFAULT NULL,
-  `created` timestamp NOT NULL DEFAULT current_timestamp(),
-  `ord_date` datetime DEFAULT current_timestamp(),
-  `next_date` datetime DEFAULT current_timestamp(),
-  `order_ord` tinytext DEFAULT NULL,
-  `dure` int(11) DEFAULT NULL,
-  `ModifiedDate` datetime DEFAULT current_timestamp(),
-  `complited` tinyint(1) NOT NULL DEFAULT 1,
-  `note` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -355,40 +383,30 @@ INSERT INTO `pharm` (`id`, `name`, `adress`, `creation`, `email`, `owner`) VALUE
 -- --------------------------------------------------------
 
 --
--- Structure de la table `prodoit`
+-- Structure de la table `prescription`
 --
 
-CREATE TABLE `prodoit` (
-  `list_prodoit` int(11) DEFAULT NULL,
-  `pharm` int(11) DEFAULT NULL,
-  `lot` tinytext DEFAULT NULL,
-  `amount` int(11) DEFAULT NULL,
-  `Expiration` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+CREATE TABLE `prescription` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `id_client` int(11) DEFAULT NULL,
+  `id_pharm` int(11) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
-  `inserted` int(11) DEFAULT NULL,
-  `id` int(11) NOT NULL
+  `ord_date` datetime DEFAULT current_timestamp(),
+  `next_date` datetime DEFAULT current_timestamp(),
+  `order_ord` tinytext DEFAULT NULL,
+  `dure` int(11) DEFAULT NULL,
+  `ModifiedDate` datetime DEFAULT current_timestamp(),
+  `complited` tinyint(1) NOT NULL DEFAULT 1,
+  `note` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `prodoit`
+-- Déchargement des données de la table `prescription`
 --
 
-INSERT INTO `prodoit` (`list_prodoit`, `pharm`, `lot`, `amount`, `Expiration`, `created`, `inserted`, `id`) VALUES
-(3, 10, '18', 100, '2023-05-16 23:00:00', '2023-04-30 12:37:13', NULL, 4),
-(4, 10, '13', 100, '2023-05-17 00:06:11', '2023-04-30 12:37:13', NULL, 5),
-(5, 10, '5220', 0, '2023-05-13 02:45:34', '2023-04-30 12:37:13', NULL, 6),
-(5, 10, '20', 0, '2023-05-15 16:53:41', '2023-05-01 04:13:22', NULL, 7),
-(3, 10, '19', 0, '2023-05-15 16:53:37', '2023-05-01 04:14:50', NULL, 8),
-(3, 10, '20', 0, '2023-05-15 16:53:36', '2023-05-01 04:15:05', NULL, 9),
-(3, 10, '21', 0, '2023-05-15 16:53:34', '2023-05-01 04:16:03', NULL, 10),
-(18, 10, '12', 100, '2023-05-16 23:51:31', '2023-05-01 05:02:15', NULL, 11),
-(84, 10, '12', 0, '2023-05-13 02:38:15', '2023-05-01 07:29:32', NULL, 12),
-(36, 10, '123', 0, '2023-05-13 02:38:10', '2023-05-01 07:45:16', NULL, 13),
-(100, 10, '20', 0, '2023-05-14 22:44:29', '2023-05-14 22:44:09', NULL, 27),
-(2, 12, '15', 100, '2023-05-16 23:00:00', '2023-05-15 22:43:20', NULL, 28),
-(42, 10, '13', 50, '2023-05-17 10:41:19', '2023-05-16 09:27:12', NULL, 29),
-(22, 10, '1000', 100, '2023-05-16 23:59:27', '2023-05-16 09:38:30', NULL, 30),
-(18, 10, '13', 100, '2023-05-17 10:56:52', '2023-05-16 11:59:19', NULL, 31);
+INSERT INTO `prescription` (`id`, `id_user`, `id_client`, `id_pharm`, `created`, `ord_date`, `next_date`, `order_ord`, `dure`, `ModifiedDate`, `complited`, `note`) VALUES
+(14, 11, 134, 10, '2023-05-18 02:05:24', '2023-04-20 00:00:00', '2028-07-19 00:00:00', '000', 90, '2023-05-17 19:05:24', 1, 'vdfdsf');
 
 -- --------------------------------------------------------
 
@@ -411,14 +429,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `id_pharm`, `name`, `username`, `pwd`, `role`, `created`) VALUES
-(11, 10, 'hakim', 'hakim10', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'owner', '2023-04-14 04:21:31'),
-(13, 10, 'mohssen2', 'mohe2159', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
-(14, 10, 'bbbb', 'bbbb', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
-(15, 10, 'mohssen99', 'mohe15999', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
-(16, 10, 'mohssen4', 'mohe1594', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
-(17, 10, 'mohssen3', 'mohe3159', '$2y$10$9CnFT8bM1Sn5TxwTlrM7g.l0PrSDOSWIrNmalF0HbCqf2S0m.Newa', 'vander', '2023-05-14 09:29:32'),
+(11, 10, 'hakim benerhal', 'hakim10', '$2y$10$9zA6vMLlfLJe7OI7HLjvXu1PxGNkzWGQ/1mG.D9kqFmi3jWYyeOcy', 'owner', '2023-04-14 04:21:31'),
+(17, 10, 'mohssen boulahbal ', 'sadwik159', '$2y$10$2tJjyuURdqJeDTplxsmhR.1uUaMfd08s001jNPu96qHo2.czXsKxu', 'salesperson', '2023-05-14 09:29:32'),
 (18, 12, 'nothing', 'nothing12', '$2y$10$KAKxZ7f4vOnpC/gE4R56ze8gTR/bsNeUxp9y8.ZKT//jDfA8QL01m', 'owner', '2023-05-15 22:42:25'),
-(19, 13, 'nothing159', 'nothing15913', '$2y$10$O7QPh4Rv1fPdvEveqLhDFOIF0O9RigBTKayx//aPr7N2ovRp2Kpi2', 'owner', '2023-05-17 11:08:30');
+(19, 13, 'nothing159', 'nothing15913', '$2y$10$O7QPh4Rv1fPdvEveqLhDFOIF0O9RigBTKayx//aPr7N2ovRp2Kpi2', 'owner', '2023-05-17 11:08:30'),
+(20, 10, 'mehdi boutgane ', 'mehdi159', '$2y$10$2Y5o5mao4DAJz7v9VLUayOo/NLXbfEQp7NsaQHYUJzpfCiFTvDr/G', 'salesperson', '2023-05-21 01:46:22');
 
 --
 -- Index pour les tables déchargées
@@ -439,6 +454,14 @@ ALTER TABLE `client`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `inventory`
+--
+ALTER TABLE `inventory`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_list_prodoit` (`list_prodoit`),
+  ADD KEY `fk_pham_prodoit` (`pharm`);
+
+--
 -- Index pour la table `list_prodoit`
 --
 ALTER TABLE `list_prodoit`
@@ -452,15 +475,6 @@ ALTER TABLE `noncompliant`
   ADD KEY `fk_list_prodoit` (`list_prodoit`);
 
 --
--- Index pour la table `ord`
---
-ALTER TABLE `ord`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_client_ord` (`id_client`),
-  ADD KEY `fk_pham_ord` (`id_pharm`),
-  ADD KEY `fk_user_ord` (`id_user`);
-
---
 -- Index pour la table `pharm`
 --
 ALTER TABLE `pharm`
@@ -468,12 +482,13 @@ ALTER TABLE `pharm`
   ADD KEY `fk_users_pharm` (`owner`);
 
 --
--- Index pour la table `prodoit`
+-- Index pour la table `prescription`
 --
-ALTER TABLE `prodoit`
+ALTER TABLE `prescription`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_list_prodoit` (`list_prodoit`),
-  ADD KEY `fk_pham_prodoit` (`pharm`);
+  ADD KEY `fk_client_ord` (`id_client`),
+  ADD KEY `fk_pham_ord` (`id_pharm`),
+  ADD KEY `fk_user_ord` (`id_user`);
 
 --
 -- Index pour la table `users`
@@ -490,19 +505,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `changement`
 --
 ALTER TABLE `changement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+
+--
+-- AUTO_INCREMENT pour la table `inventory`
+--
+ALTER TABLE `inventory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `list_prodoit`
 --
 ALTER TABLE `list_prodoit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT pour la table `noncompliant`
@@ -511,28 +532,22 @@ ALTER TABLE `noncompliant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT pour la table `ord`
---
-ALTER TABLE `ord`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
 -- AUTO_INCREMENT pour la table `pharm`
 --
 ALTER TABLE `pharm`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT pour la table `prodoit`
+-- AUTO_INCREMENT pour la table `prescription`
 --
-ALTER TABLE `prodoit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+ALTER TABLE `prescription`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Contraintes pour les tables déchargées
@@ -542,16 +557,15 @@ ALTER TABLE `users`
 -- Contraintes pour la table `changement`
 --
 ALTER TABLE `changement`
-  ADD CONSTRAINT `fk_ord` FOREIGN KEY (`id_ord`) REFERENCES `ord` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_prodoit` FOREIGN KEY (`id_prodoit`) REFERENCES `prodoit` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_ord` FOREIGN KEY (`id_ord`) REFERENCES `prescription` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_prodoit` FOREIGN KEY (`id_prodoit`) REFERENCES `inventory` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `ord`
+-- Contraintes pour la table `inventory`
 --
-ALTER TABLE `ord`
-  ADD CONSTRAINT `fk_client_ord` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_pham_ord` FOREIGN KEY (`id_pharm`) REFERENCES `pharm` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_user_ord` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `inventory`
+  ADD CONSTRAINT `fk_list_prodoit` FOREIGN KEY (`list_prodoit`) REFERENCES `list_prodoit` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_pham_prodoit` FOREIGN KEY (`pharm`) REFERENCES `pharm` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `pharm`
@@ -560,11 +574,12 @@ ALTER TABLE `pharm`
   ADD CONSTRAINT `fk_users_pharm` FOREIGN KEY (`owner`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `prodoit`
+-- Contraintes pour la table `prescription`
 --
-ALTER TABLE `prodoit`
-  ADD CONSTRAINT `fk_list_prodoit` FOREIGN KEY (`list_prodoit`) REFERENCES `list_prodoit` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_pham_prodoit` FOREIGN KEY (`pharm`) REFERENCES `pharm` (`id`) ON DELETE CASCADE;
+ALTER TABLE `prescription`
+  ADD CONSTRAINT `fk_client_ord` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_pham_ord` FOREIGN KEY (`id_pharm`) REFERENCES `pharm` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_user_ord` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `users`

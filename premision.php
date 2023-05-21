@@ -1,5 +1,5 @@
 <?php
-$page_name = "User And Permission";
+$page_name = "";
 include "includes/session.php";
 include "includes/coon.php";
 
