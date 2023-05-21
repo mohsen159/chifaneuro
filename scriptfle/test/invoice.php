@@ -48,8 +48,7 @@
 			text-align: left;
 		}
 		
-		td {
-		}
+		
 		
 		.text-left {
 			text-align:left;

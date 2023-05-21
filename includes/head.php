@@ -79,6 +79,37 @@
 	.h1-size {
     font-size: 32px;
 }
+.search-container {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .search-bar {
+            width: 30%;
+            max-width: 400px;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: width 0.3s ease;
+        }
+
+        .search-button {
+            display: inline-block;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
+        }
+
+        .search-button button {
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .client-table {
+            margin-top: 30px;
+        }
 /*.container-fluid {
     text-align: center;
 }*/

@@ -55,7 +55,7 @@ function addElement() {
 }
 
 
-let foo ; 
+let foo;
 
 // function to add new input element
 function delet_p(element) {
@@ -131,59 +131,65 @@ function find_productid(input) {
 }
 
 $(document).ready(function () {
+ 
+   let table = $('#prducts').DataTable({
+        responsive: true,
+        paging: false,
+        dom: 'Bfrtip',
+        buttons: [{
+                text: 'add',
+                action: function () {
+
+                    //alert("nothing for now ")
+                    $('#add').modal('show');
+                }
+            },
+            {
+                extend: 'print',
+                messageTop: ' ',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'excel',
+                text: 'excel',
+                exportOptions: {
+                    columns: ':visible',
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            },
+            'colvis'
+        ],
+
+        columnDefs: [{
+                targets: -1,
+                visible: true
+            },
+            {
+                targets: 0,
+                visible: false
+            }
+        ],
+
+        order: [
+            [0, "desc"]
+        ]
+    });
+    $('#search-input').on('keyup', function() {
+        table.search(this.value).draw();
+    });
     $.ajax({
         url: "actions/get_products.php",
         type: "GET",
         dataType: "json",
         success: function (data) {
-            foo= data ;
+            foo = data;
             // Loop through the data and add each row to the table.
-            var table = $('#prducts').DataTable({
-                responsive: true,
-                paging: false,
-                dom: 'Bfrtip',
-                buttons: [{
-                        text: 'add',
-                        action: function () {
 
-                            //alert("nothing for now ")
-                            $('#add').modal('show');
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        messageTop: ' ',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'excel',
-                        text: 'excel',
-                        exportOptions: {
-                            columns: ':visible',
-                            modifier: {
-                                page: 'current'
-                            }
-                        }
-                    },
-                    'colvis'
-                ],
 
-                columnDefs: [{
-                        targets: -1,
-                        visible: true
-                    },
-                    {
-                        targets: 0,
-                        visible: false
-                    }
-                ],
-
-                order: [
-                    [0, "desc"]
-                ]
-            });
             for (var i = 0; i < data.length; i++) {
                 var row = [
                     data[i]['id'],
@@ -197,6 +203,7 @@ $(document).ready(function () {
             }
             // Draw the table to show the added data.
             table.draw();
+
             // delet button func 
             const dbutton = document.querySelectorAll('.delete-btn');
             dbutton.forEach(btn => {

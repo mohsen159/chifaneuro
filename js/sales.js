@@ -273,7 +273,9 @@ $(document).ready(function () {
         ]
     });
     
-
+    $('#search-input').on('keyup', function() {
+        table.search(this.value).draw();
+    });
 
     function getSalesData() {
         $.ajax({

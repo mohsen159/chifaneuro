@@ -21,36 +21,7 @@ mysqli_close($coon);
     <?php include "includes/head.php"; ?>
     <style>
         /* Add any additional styles for the table if needed */
-        .search-container {
-            text-align: center;
-            margin-top: 30px;
-        }
 
-        .search-bar {
-            width: 30%;
-            max-width: 400px;
-            height: 40px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: width 0.3s ease;
-        }
-
-        .search-button {
-            display: inline-block;
-            vertical-align: middle;
-            transition: transform 0.3s ease;
-        }
-
-        .search-button button {
-            border-radius: 5px;
-            transition: transform 0.3s ease;
-        }
-
-        .client-table {
-            margin-top: 30px;
-        }
     </style>
 </head>
 
@@ -112,6 +83,8 @@ mysqli_close($coon);
                     </table>
 
                 </div>
+          
+          
             </main>
 
             <!--footer start here -->
@@ -119,7 +92,7 @@ mysqli_close($coon);
             <!--end  here -->
         </div>
     </div>
-    <script src="js/sales.js"></script>
+    <script src="js/clients.js"></script>
 </body>
 
 </html>

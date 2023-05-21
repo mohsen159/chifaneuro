@@ -24,6 +24,15 @@ include "includes/coon.php";
 				<div class="container-fluid p-0">
 
 				<h1 class="h1 mb-1 h1-size"><?php echo $page_name; ?></h1>
+				<div class="search-container">
+                        <form id="search-form">
+                            <input type="text" class="search-bar" id="search-input" placeholder="Global Search">
+                            <div class="search-button">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                            <input type="hidden" id="hidden-input" value="-1">
+                        </form>
+                    </div>
 					<div style="color: black;" class="row">
 						<table id="prducts" style="width:100%" class="display" class="display table table-hover my-0">
 							<thead>
