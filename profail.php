@@ -2,7 +2,7 @@
 $page_name = "";
 include "includes/session.php";
 include "includes/coon.php";
-
+$pharm_id = $_SESSION['id_pharm'];
 
 // Check if the user ID is set
 if (isset($_GET["id"])) {
@@ -55,6 +55,11 @@ if (isset($_GET["id"])) {
     // Execute the products still in use query
     $using_result = mysqli_query($coon, $using);
 }
+
+else 
+{
+    // this is not excteple beacuse there is no id !! 
+}
 // Close the database connection
 mysqli_close($coon);
 ?>
@@ -69,6 +74,9 @@ mysqli_close($coon);
             width: 70%;
             height: auto;
             max-width: 100%;
+        }
+        th , td {
+            text-align: center ;
         }
     </style>
 </head>
@@ -145,7 +153,7 @@ mysqli_close($coon);
                     <!-- Tables -->
                     <div class="row">
                         <div class="col-md-6">
-                            <table class="table">
+                            <table class="table ">
                                 <thead>
                                     <tr>
                                         <th scope="col">Pharm</th>
@@ -162,7 +170,16 @@ mysqli_close($coon);
                                     if ($salles_result) {
                                         while ($salles_row = mysqli_fetch_assoc($salles_result)) {
                                             echo "<tr>";
-                                            echo "<td>{$salles_row['id_pharm']}</td>";
+                                            if($pharm_id!=$salles_row['id_pharm'])
+                                            {
+                                                echo "<td>  <i class='fas fa-clone fa-beat' style='font-size:19px;color:red'></i></td>";
+                                            }
+                                            else 
+                                            {
+                                                echo "<td>  <i class='fas fa-clone' style='font-size:19px;color:green'></i></td>";
+                                            }
+                                          
+                                           
                                             echo "<td>{$salles_row['medication_info']}</td>";
                                             echo "<td>" . date('d/m/Y', strtotime($salles_row['next_date'])) . "</td>";
                                             echo "<td>{$salles_row['dure']}</td>";
