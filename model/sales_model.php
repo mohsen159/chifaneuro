@@ -79,7 +79,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="sale_date" class="form-label">Sale date</label>
-                        <input type="date" id="sale_date" name="sale_date" required>
+                        <input type="date" placeholder="DD/MM/YYYY" id="sale_date" name="sale_date" required>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Enter a valid date.</div>
                     </div>
@@ -102,83 +102,6 @@
     </div>
 
 </div>
-
-
-
-
-
-<!--edit-->
-<div class="modal fade bd-example-modal-sm" id="edit">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">update sales information </h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form autocomplete="off" action="/operation/update_sale.php" method="post" class="was-validated" id="sale_update" name="sale_update">
-                    <div class="mb-3 mt-3">
-                        <input type="hidden" class="form-control" id="id" name="id" required>
-                        <!-- this on soo we can know wich sales id -->
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <textarea class="form-control" id="medication" placeholder="medication" name="medication" required>
-                               </textarea>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-
-                    <div class="mb-3 mt-3">
-                        <input type="text" class="form-control" id="num_order" placeholder="num_order" name="num_order" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="sale_date" class="form-label">sale date</label>
-                        <input type="date" id="sale_date" name="sale_date" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Enter a valid date.</div>
-                    </div>
-                    <br>
-                    <div class="mb-3">
-                        <select id="select" class="form-select form-select-sm" aria-label="Default select example" name="employs">
-                            <option value="1">wissam</option>
-                            <option value="2">mohssen</option>
-                            <option value="3">hakim</option>
-                            <option value="4">rafik</option>
-                            <option value="5">khouloud</option>
-                            <option value="6">mehdi</option>
-                            <option value="7">wided</option>
-                        </select>
-                    </div>
-                    <br>
-                    <div class="mb-3 mt-3">
-                        <input type="text" min="1" max="100" class="form-control" id="dure" placeholder="dure" name="dure" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <div class="mb-3 mt-3">
-                        <textarea class="form-control" id="note_fix" placeholder="note" name="note_fix">
-                               </textarea>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-                    <button type="submit" class="btn btn-outline-success">Edit</button>
-                    <button type="submit" class="btn btn-outline-danger" onclick='delet( document.forms["sale_update"]["id"].value ,"sales")' style="float:right">Delete</button>
-                </form>
-
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-
 
 <!--add new client -->
 <div class="modal" id="addclient">
