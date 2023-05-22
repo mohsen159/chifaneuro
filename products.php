@@ -26,10 +26,7 @@ include "includes/coon.php";
 				<h1 class="h1 mb-1 h1-size"><?php echo $page_name; ?></h1>
 				<div class="search-container">
                         <form id="search-form">
-                            <input type="text" class="search-bar" id="search-input" placeholder="Global Search">
-                            <div class="search-button">
-                                <button type="submit" class="btn btn-primary">Search</button>
-                            </div>
+                            <input type="text" class="search-bar" id="search-input" placeholder="Search">
                             <input type="hidden" id="hidden-input" value="-1">
                         </form>
                     </div>

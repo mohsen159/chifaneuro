@@ -150,7 +150,6 @@ mysqli_close($coon);
                     </div>
 
                     <!-- Tables -->
-                    <!-- Tables -->
                     <div class="row">
                         <div class="col-md-6">
                             <table class="table ">
@@ -180,7 +179,7 @@ mysqli_close($coon);
                                             }
                                           
                                            
-                                            echo "<td>{$salles_row['medication_info']}</td>";
+                                            echo "<td><pre>{$salles_row['medication_info']}</pre></td>";
                                             echo "<td>" . date('d/m/Y', strtotime($salles_row['next_date'])) . "</td>";
                                             echo "<td>{$salles_row['dure']}</td>";
                                             echo "</tr>";
