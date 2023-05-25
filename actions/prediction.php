@@ -22,7 +22,7 @@ $sql = "SELECT id_prodoit, SUM(amount) AS total_amount
         FROM `changement`
         WHERE id_ord IN (
             SELECT id
-            FROM `ord`
+            FROM `inventory`
             WHERE next_date >= '$start_date' AND next_date < '$end_date'
         )
         GROUP BY id_prodoit";

@@ -8,9 +8,9 @@ $client_id = 134; // Replace with the actual client ID
 
 // Query to retrieve the products the client still has
 $sql = "SELECT p.id, lp.name, lp.dosage, c.amount
-        FROM `ord` o
+        FROM `inventory` o
         INNER JOIN changement c ON o.id = c.id_ord
-        INNER JOIN prodoit p ON c.id_prodoit = p.id
+        INNER JOIN inventory p ON c.id_prodoit = p.id
         INNER JOIN list_prodoit lp ON p.list_prodoit = lp.id
         WHERE o.id_client = $client_id 
         AND o.next_date > CURDATE()

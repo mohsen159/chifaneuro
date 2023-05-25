@@ -12,7 +12,7 @@ if (isset($_POST['id'])) {
   // Replace the following code with your specific update logic
 
   // Example: Update the product with ID to have a value of 0
-  $sql = "UPDATE `prodoit` SET `amount`= 0   WHERE id = ?";
+  $sql = "UPDATE `inventory` SET `amount`= 0   WHERE id = ?";
   $stmt = $coon->prepare($sql);
   $stmt->bind_param('i', $id);
   $stmt->execute();
