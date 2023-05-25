@@ -197,7 +197,7 @@ $(document).ready(function () {
                     data[i]['lot'],
                     data[i]['amount'],
                     moment(data[i]['exp']).format('DD/MM/YYYY'),
-                    '<td><button class="delete-btn"><i class="fas fa-trash-alt"></i> Delete</button>  <button class="info-btn"><i class="fas fa-info-circle" ></i> Info</button> </td>'
+                    '<td><button class="btn btn-danger delet-user-btn delete-btn"><i class="fas fa-trash-alt"></i> Delete</button>  <button class="btn btn-primary edit-user-btn info-btn"><i class="fas fa-info-circle" ></i> Info</button> </td>'
                 ];
                 table.row.add(row);
             }

@@ -295,7 +295,7 @@ $(document).ready(function () {
                         row.next_date,
                         row.dure, 
                         $("<button>")
-                            .addClass("delete-btn")
+                            .addClass("btn btn-danger delet-user-btn delete-btn")
                             .append($("<i>").addClass("fas fa-trash-alt"))
                             .text("Delete")
                             .prop("outerHTML") // Convert the button element to HTML string great not bad 
