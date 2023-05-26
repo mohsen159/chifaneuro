@@ -288,8 +288,8 @@ $(document).ready(function () {
                 $.each(data, function (index, row) {
                     var rowData = [
                         row.id,
-                        '<a tyle="text-decoration: none; color: black;" href="profail.php?id=' + row.client_id + '">' + row.client_name + '</a>',
-                        "<pre>" + (row.medication_info + (row.non_completed_info == null ? "" : ("\nrest : \n" +
+                        '<a style="text-decoration: none; color: black;" href="profail.php?id=' + row.client_id + '">' + row.client_name + '</a>',
+                        "<pre style='font-weight: bold; font-size: larger;'>" + (row.medication_info + (row.non_completed_info == null ? " " : (" \nrest : \n" +
                             row.non_completed_info))) + "</pre>",
                         row.ord_date,
                         row.next_date,
