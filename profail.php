@@ -1,5 +1,6 @@
 <?php
 $page_name = "";
+///TODO : handle error when the get is empty 
 include "includes/session.php";
 include "includes/coon.php";
 $pharm_id = $_SESSION['id_pharm'];

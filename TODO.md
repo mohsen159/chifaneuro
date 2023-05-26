@@ -1,5 +1,4 @@
-TODO:
-
+//TODO:
 
 the error handling use a form and imag in it for user feedback no you are using echo first too do 
 every js func the are res of page will be add at the end of each file 

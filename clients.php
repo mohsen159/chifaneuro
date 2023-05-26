@@ -1,5 +1,6 @@
 <?php
-$page_name = "";
+///TODO: this is just a page to navigate users profile improve using local storge user  
+$page_name = "Clients";
 include "includes/session.php";
 include "includes/coon.php";
 

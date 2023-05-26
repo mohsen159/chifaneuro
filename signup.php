@@ -1,4 +1,7 @@
 <?php
+
+///TODO: please add the username and check is it exist 
+
 session_start(); // start a session
 if (isset($_SESSION["id"])) {
     header("Location: products.php");

@@ -3,6 +3,8 @@
 
 <head>
   <?php
+
+  ///TODO : the page shoult have the charts better and to tables recomandation  and wait list number of total sales and client and user count 
   $page_name = "Dashboard";
   include "includes/session.php";
   include "includes/coon.php";

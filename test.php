@@ -1,4 +1,7 @@
 <?php
+
+
+/// prototype of the prediction script 
 $servername = "localhost";
 $username = "root";
 $password = "";

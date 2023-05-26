@@ -1,4 +1,7 @@
 <?php
+
+//TODO: this logic is not good you need to take in mind the product you have and smiller product before creating a prediction think of using the 
+///TODO: similarity scripte
 $servername = "localhost";
 $username = "root";
 $password = "";

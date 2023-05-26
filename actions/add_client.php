@@ -1,4 +1,7 @@
 <?php
+
+
+///TODO: please add est here if the client allardy exits before inserting 
 include "../includes/coon.php";
 include "../includes/session.php";
 

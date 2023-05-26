@@ -1,5 +1,7 @@
 <?php
-$page_name = "";
+
+///TODO: the owner of the web site will always be the owner type can't be changed or add change owner ship 
+$page_name = "Users and Permissions";
 include "includes/session.php";
 include "includes/coon.php";
 

@@ -1,4 +1,7 @@
 <?php
+
+
+///TODO: not bad add local storage here for lougout and offline mode and the caching mechanism 	 
 $expire = 365 * 24 * 3600; // i choose a one year duration
 ini_set('session.gc_maxlifetime', $expire);
 session_start(); // start a session

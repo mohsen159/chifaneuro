@@ -1,5 +1,6 @@
 <?php
-$page_name = "";
+/// TODO: Implement count(amount) method on simelier products type 
+$page_name = "Medications";
 include "includes/session.php";
 include "includes/coon.php";
 ?>
