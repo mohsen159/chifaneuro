@@ -148,7 +148,8 @@ mysqli_close($coon);
                             </div>
                         </div>
                     </div>
-
+                    <br>
+                    <br>
                     <!-- Tables -->
                     <div class="row">
                         <div class="col-md-6">
@@ -157,7 +158,7 @@ mysqli_close($coon);
                                     <tr>
                                         <th scope="col">Pharm</th>
                                         <th scope="col">Prescription</th>
-                                        <th scope="col">Next Sales</th>
+                                        <th scope="col">Completion Date</th>
                                         <th scope="col">Duration</th>
                                     </tr>
                                 </thead>
@@ -198,7 +199,7 @@ mysqli_close($coon);
                                     <tr>
                                         <th scope="col">Medication</th>
                                         <th scope="col">Amount</th>
-                                        <th scope="col">Ends</th>
+                                        <th scope="col">Completion Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
