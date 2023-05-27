@@ -20,3 +20,4 @@ click to make changes or to see more info
 
 * user responsible of the change in the db to like sales and entry point too 
 * think about a function after the prediction and to genrate a boon command 
+* Error Handling: Consider adding error handling functionality to handle cases where users enter incorrect credentials, encounter validation errors, or face other issues during the login process. This will help provide a better user experience and guide users in troubleshooting problems.
