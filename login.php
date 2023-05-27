@@ -80,8 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="	Mohsssne boulahbal">
+	<meta name="description" content="login page">
+	<meta name="author" content="Mohsssne boulahbal chifanuero">
 
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -118,18 +118,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 									<div class="text-center">
 										<img src="img\avatars\avatar.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
 									</div>
+									<br />
+									<br />
 									<form id=" log_in" action="login.php" method="post">
 										<div class="mb-3">
-											<label class="form-label">Username</label>
+											
 											<input class="form-control form-control-lg" type="text" placeholder="Username" name="username" value="<?php echo "$user" ?>" />
 										</div>
+										<br />
 										<div class="mb-3">
-											<label class="form-label">Password</label>
-											<input class="form-control form-control-lg" type="password" placeholder="password" name="password" value="<?php echo "$pwd" ?>">
+											
+											<input class="form-control form-control-lg" type="password" placeholder="Password" name="password" value="<?php echo "$pwd" ?>">
+											<br/>
+										
 											<small>
 												<a href="#">Forgot password?</a> <a style="float: right" href="signup.php">creat a new acount</a>
 											</small>
 										</div>
+										<br />
 										<div class="text-center mt-3">
 											<button type="submit" class="btn btn-lg btn-primary">Sign in</button>
 										</div>
@@ -145,9 +151,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	</main>
 	
-
+    
 	<script src="js/app.js"></script>
+    <style>
+		body {
 
+         color: #000 !important;
+}
+	</style>
 </body>
 
 

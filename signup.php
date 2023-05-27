@@ -156,7 +156,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </main>
 
     <script src="js/app.js"></script>
+    <style>
+        body {
 
+            color: #000 !important;
+        }
+    </style>
 </body>
 
 </html>
