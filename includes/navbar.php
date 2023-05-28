@@ -34,11 +34,7 @@
 			</li>
 
 
-			<li class="sidebar-item">
-				<a class="sidebar-link" href="expiration.php">
-					<i class="align-middle" data-feather="trash"></i> <span class="align-middle">Expiration</span>
-				</a>
-			</li>
+			
 			<!-- just the owner could see this part -->
 			<?php
 
