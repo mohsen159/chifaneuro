@@ -1,50 +1,70 @@
 <?php
 
-//TODO: this logic is not good you need to take in mind the product you have and smiller product before creating a prediction think of using the 
-///TODO: similarity scripte
-$servername = "localhost";
-$username = "root";
-$password = "";
-$ndbname = "memo";
 
-// Create connection
-$coon = new mysqli($servername, $username, $password, $ndbname);
+include "../includes/coon.php";
+include "../includes/session.php";
 
-session_start();
-if (!isset($_SESSION["id"])) {
-    header("Location: login.php");
-    exit();
-}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve the end date from the AJAX request
+    $end_date = $_POST['end_date'];
 
-// Retrieve the start and end dates for the period
-$start_date = date("Y-m-d");
-$end_date = date('Y-m-d', strtotime($start_date . ' + 1 month')); // Adjust the interval as needed
+    // Call the getPredictionData function to retrieve the updated prediction data
+    $predictionData = getPredictionData($end_date, $coon);
 
-// Query the database to find the products purchased in potential orders within the time period
-$sql = "SELECT id_prodoit, SUM(amount) AS total_amount
-        FROM `changement`
-        WHERE id_ord IN (
-            SELECT id
-            FROM `inventory`
-            WHERE next_date >= '$start_date' AND next_date < '$end_date'
-        )
-        GROUP BY id_prodoit";
-$result = mysqli_query($coon, $sql);
+    // Generate the prediction table body HTML
+    $predictionTableBody = '';
+    foreach ($predictionData as $prediction) {
+        $product_name = $prediction['product_name'];
+        $product_dosage = $prediction['product_dosage'];
+        $quantity = $prediction['quantity'];
 
-// Create an array to store the predicted products and their quantities
-$predicted_products = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $product_id = $row['id_prodoit'];
-    $amount = $row['total_amount'];
-    $predicted_products[$product_id] = $amount;
-}
-
-// Display the predicted products needed
-if (!empty($predicted_products)) {
-    echo "Predicted products needed within the period from $start_date to $end_date:<br>";
-    foreach ($predicted_products as $product_id => $amount) {
-        echo "Product ID: $product_id, Quantity: $amount<br>";
+        $predictionTableBody .= "<tr>";
+        $predictionTableBody .= "<td>$product_name $product_dosage</td>";
+        $predictionTableBody .= "<td>$quantity</td>";
+        $predictionTableBody .= "</tr>";
     }
-} else {
-    echo "No predicted products needed within the period from $start_date to $end_date.";
+
+    // Return the prediction table body HTML
+    echo $predictionTableBody;
+    exit;
 }
+
+function getPredictionData( $end_date, $coon)
+{
+    $id_pharm = $_SESSION['id_pharm'];
+    $start_date = date("Y-m-d");
+    // Query the database to fetch prediction data
+    $sql = "SELECT p.id, lp.id AS list_id, lp.name, lp.dosage, SUM(c.amount) AS total_amount
+            FROM `changement` c
+            INNER JOIN inventory p ON c.id_prodoit = p.id
+            INNER JOIN list_prodoit lp ON p.list_prodoit = lp.id
+            WHERE c.id_ord IN (
+                SELECT id
+                FROM `prescription`
+                WHERE next_date >= '$start_date' AND next_date < '$end_date' AND id_pharm = $id_pharm
+            )
+            GROUP BY p.id";
+    $result = mysqli_query($coon, $sql);
+
+    $predictionData = array();
+
+    // Fetch prediction data and store it in an array
+    while ($row = mysqli_fetch_assoc($result)) {
+        $product_id = $row['id'];
+        $list_product_id = $row['list_id'];
+        $product_name = $row['name'];
+        $product_dosage = $row['dosage'];
+        $quantity = $row['total_amount'];
+
+        $predictionData[] = array(
+            'product_id' => $product_id,
+            'list_product_id' => $list_product_id,
+            'product_name' => $product_name,
+            'product_dosage' => $product_dosage,
+            'quantity' => $quantity
+        );
+    }
+   // print_r($predictionData);
+    return $predictionData;
+}
+?>

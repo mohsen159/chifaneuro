@@ -18,17 +18,17 @@ if (!isset($_SESSION["id"])) {
 
 // Retrieve the start and end dates for the period
 $start_date = date("Y-m-d");
-$end_date = date('Y-m-d', strtotime($start_date . ' + 2 month')); // Adjust the interval as needed
-
+$end_date = date('Y-m-d', strtotime($start_date . ' + 10 month')); // Adjust the interval as needed
+$id_pharm = $_SESSION['id_pharm'];
 // Query the database to find the products purchased in potential orders within the time period
 $sql = "SELECT p.id, lp.id AS list_id, lp.name, lp.dosage, SUM(c.amount) AS total_amount
         FROM `changement` c
-        INNER JOIN prodoit p ON c.id_prodoit = p.id
+        INNER JOIN inventory p ON c.id_prodoit = p.id
         INNER JOIN list_prodoit lp ON p.list_prodoit = lp.id
         WHERE c.id_ord IN (
             SELECT id
-            FROM `ord`
-            WHERE next_date >= '$start_date' AND next_date < '$end_date'
+            FROM `prescription`
+            WHERE next_date >= '$start_date' AND next_date < '$end_date' AND  id_pharm = $id_pharm
         )
         GROUP BY p.id";
 $result = mysqli_query($coon, $sql);
