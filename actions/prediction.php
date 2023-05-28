@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-function getPredictionData( $end_date, $coon)
+function getPredictionData($end_date, $coon)
 {
     $id_pharm = $_SESSION['id_pharm'];
     $start_date = date("Y-m-d");
@@ -56,15 +56,38 @@ function getPredictionData( $end_date, $coon)
         $product_dosage = $row['dosage'];
         $quantity = $row['total_amount'];
 
-        $predictionData[] = array(
-            'product_id' => $product_id,
-            'list_product_id' => $list_product_id,
-            'product_name' => $product_name,
-            'product_dosage' => $product_dosage,
-            'quantity' => $quantity
-        );
+        // Check if the product already exists in the inventory for the given list ID
+        $existingQuantity = getExistingQuantity($list_product_id, $id_pharm, $coon);
+
+        // Subtract the existing quantity from the prediction
+        $quantity -= $existingQuantity;
+
+        // If the quantity is less than or equal to zero, skip adding it to the prediction
+        if ($quantity > 0) {
+            // Add the prediction data to the array
+            $predictionData[] = array(
+                'product_id' => $product_id,
+                'list_product_id' => $list_product_id,
+                'product_name' => $product_name,
+                'product_dosage' => $product_dosage,
+                'quantity' => $quantity
+            );
+        }
     }
-   // print_r($predictionData);
+    //after 
+    /// you have to add the prdocut from noncompilte table too because they should be served too 
     return $predictionData;
 }
+function getExistingQuantity($list_product_id, $pharm_id, $coon) {
+    // Query the database to get the existing quantity of a product in the inventory for the given list ID
+    $sql = "SELECT SUM(amount) AS existing_quantity 
+            FROM inventory 
+            WHERE list_prodoit = $list_product_id AND pharm = $pharm_id";
+    $result = mysqli_query($coon, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $existingQuantity = $row['existing_quantity'];
+
+    return $existingQuantity;
+}
+
 ?>
