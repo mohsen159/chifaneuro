@@ -28,3 +28,4 @@ Quantity input: Enable Sales Checkers to enter the quantity of each product purc
 Transaction recording: Capture details of the sales transaction, including patient information, products sold, and transaction timestamp.
 Receipt generation: Generate a printable or digital receipt for the patient as proof of purchase.
 
+it 

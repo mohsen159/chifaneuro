@@ -10,21 +10,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Call the getPredictionData function to retrieve the updated prediction data
     $predictionData = getPredictionData($end_date, $coon);
-
-    // Generate the prediction table body HTML
     $predictionTableBody = '';
-    foreach ($predictionData as $prediction) {
-        $product_name = $prediction['product_name'];
-        $product_dosage = $prediction['product_dosage'];
-        $quantity = $prediction['quantity'];
+    if (empty($predictionData)) {
+        $predictionTableBody .= '<tr><td colspan="2" class="text-center">No products needed for the selected date.</td></tr>';
+    } else {
+        foreach ($predictionData as $prediction) {
+            $product_name = $prediction['product_name'];
+            $product_dosage = $prediction['product_dosage'];
+            $quantity = $prediction['quantity'];
 
-        $predictionTableBody .= "<tr>";
-        $predictionTableBody .= "<td>$product_name $product_dosage</td>";
-        $predictionTableBody .= "<td>$quantity</td>";
-        $predictionTableBody .= "</tr>";
+            $predictionTableBody .= "<tr>";
+            $predictionTableBody .= "<td>$product_name $product_dosage</td>";
+            $predictionTableBody .= "<td>$quantity</td>";
+            $predictionTableBody .= "</tr>";
+        }
     }
 
-    // Return the prediction table body HTML
     echo $predictionTableBody;
     exit;
 }
@@ -78,7 +79,8 @@ function getPredictionData($end_date, $coon)
     /// you have to add the prdocut from noncompilte table too because they should be served too 
     return $predictionData;
 }
-function getExistingQuantity($list_product_id, $pharm_id, $coon) {
+function getExistingQuantity($list_product_id, $pharm_id, $coon)
+{
     // Query the database to get the existing quantity of a product in the inventory for the given list ID
     $sql = "SELECT SUM(amount) AS existing_quantity 
             FROM inventory 

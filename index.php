@@ -103,44 +103,43 @@
             <main class="content">
                 <div class="container-fluid p-0">
 
-                    <h1 class="h1 mb-1 h1-size">
+                    <h1 class="h1 mb-4 h1-size" style="color: dark;">
                         <?php echo $page_name; ?>
                     </h1>
 
-                    <div style="color: black;" class="row">
+                    <div class="row">
                         <div class="col-md-6">
-                            <div class="card card-primary">
+                            <div class="card bg-dark text-white mb-4">
                                 <div class="card-body">
                                     <h5 class="card-title">
-                                        <i class="fas fa-users card-icon"></i> Customers
+                                        <i class="fas fa-users mr-2"></i> Number of Customers
                                     </h5>
                                     <p class="card-text card-number">
-                                        <?php echo $clientCount; ?>
+                                        <?php echo $clientCount; ?> Customers
                                     </p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-6">
-                            <div class="card card-success">
+                            <div class="card bg-dark text-white mb-4">
                                 <div class="card-body">
                                     <h5 class="card-title">
-                                        <i class="fas fa-chart-line card-icon"></i> Sales
-                                        <!-- Change the icon to a chart line icon -->
+                                        <i class="fas fa-chart-line mr-2"></i> Number of Sales This Month
                                     </h5>
                                     <p class="card-text card-number">
-                                        <?php echo $salesCount; ?>
+                                        <?php echo $salesCount; ?> Sales
                                     </p>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
 
-                    <div class="row mt-5">
+                    <br />
+
+                    <div class="row">
                         <div class="col-md-6">
-                            <h3>My Customer</h3>
+                            <h3>My Customers</h3>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -152,10 +151,10 @@
                                     <?php
                                     // Query the database to fetch customer medications data
                                     $customerMedsSql = "SELECT DISTINCT c.id, c.name, c.fname, MAX(p.next_date) AS next_date
-                                FROM client c
-                                INNER JOIN prescription p ON p.id_client = c.id
-                                WHERE p.id_pharm = $id_pharm
-                                GROUP BY c.id";
+                                    FROM client c
+                                    INNER JOIN prescription p ON p.id_client = c.id
+                                    WHERE p.id_pharm = $id_pharm
+                                    GROUP BY c.id";
                                     $customerMedsResult = mysqli_query($coon, $customerMedsSql);
 
                                     // Iterate over the customer medications data and create table rows
@@ -165,7 +164,7 @@
                                         $nextSalesDate = date('d/m/Y', strtotime($customerMedsRow['next_date']));
                                         ?>
                                         <tr>
-                                            <td><a style="text-decoration: none; color: black;"
+                                            <td><a style="text-decoration: none; color: black"
                                                     href="profail.php?id=<?php echo $customerId; ?>"><?php echo $customerName; ?></a></td>
                                             <td>
                                                 <?php echo $nextSalesDate; ?>
@@ -176,95 +175,99 @@
                                     ?>
                                 </tbody>
                             </table>
-
                         </div>
 
                         <div class="col-md-6">
-                            <h3>Waitlist Products</h3>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Product Name</th>
-                                        <th>Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    // Query the database to fetch waitlist product data
-                                    $waitlistSql = "SELECT lp.name AS product_name , lp.dosage, nc.amount
-                            FROM `noncompliant` nc
-                            INNER JOIN list_prodoit lp ON nc.list_prodoit = lp.id
-                            WHERE nc.ord_id IN (
-                                SELECT id
-                                FROM `prescription`
-                                WHERE id_pharm = $id_pharm
-                            )";
-                                    $waitlistResult = mysqli_query($coon, $waitlistSql);
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Waitlist Products</h3>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Medication</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            // Query the database to fetch waitlist product data
+                                            $waitlistSql = "SELECT lp.name AS product_name, lp.dosage, SUM(nc.amount) AS total_amount
+                                        FROM `noncompliant` nc
+                                        INNER JOIN list_prodoit lp ON nc.list_prodoit = lp.id
+                                        WHERE nc.ord_id IN (
+                                            SELECT id
+                                            FROM `prescription`
+                                            WHERE id_pharm = $id_pharm
+                                        )
+                                        GROUP BY lp.name, lp.dosage";
+                                            $waitlistResult = mysqli_query($coon, $waitlistSql);
 
-                                    // Iterate over the waitlist data and create table rows
-                                    while ($waitlistRow = mysqli_fetch_assoc($waitlistResult)) {
-                                        $productName = $waitlistRow['product_name'];
-                                        $productdosage = $waitlistRow['dosage'];
-                                        $amount = $waitlistRow['amount'];
-                                        ?>
-                                        <tr>
-                                            <td>
-                                                <?php echo $productName . " " . $productdosage; ?>
-                                            </td>
-                                            <td>
-                                                <?php echo $amount; ?>
-                                            </td>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                            <div class="table-buttons">
-                                <button class="btn btn-primary">Create Order</button>
-                            </div>
-                        </div>
-
-
-
-                        <div class="col-md-6">
-                            <h3>Prediction for Next Month</h3>
-                            <div class="prediction-date">
-                                <br />
-                                <input type="date" id="prediction-date"
-                                    value="<?php echo date('Y-m-d', strtotime('+30 days')); ?>">
-                            </div>
-                            <br\>
-                                <table class="table table-striped prediction-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Medication</th>
-                                            <th>Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="prediction-table-body">
-                                        <!-- Table body content will be dynamically generated here -->
-                                    </tbody>
-
-                                </table>
-                                <div class="table-buttons">
-                                    <button class="btn btn-primary">Create Order</button>
+                                            // Check if there are any rows in the result set
+                                            if (mysqli_num_rows($waitlistResult) > 0) {
+                                                // Iterate over the waitlist data and create table rows
+                                                while ($waitlistRow = mysqli_fetch_assoc($waitlistResult)) {
+                                                    $productName = $waitlistRow['product_name'];
+                                                    $productdosage = $waitlistRow['dosage'];
+                                                    $amount = $waitlistRow['total_amount'];
+                                                    ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?php echo $productName . " " . $productdosage; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $amount; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            } else {
+                                                // Display "Waitlist Empty" message
+                                                ?>
+                                                <tr>
+                                                    <td colspan="2" class="text-center">Waitlist Empty</td>
+                                                </tr>
+                                                <?php
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                    <div class="table-buttons">
+                                        <button class="btn btn-primary">Create Order</button>
+                                    </div>
                                 </div>
+                                <div class="col-md-12 mt-5">
+                                    <h3>Create Prediction</h3>
+                                    <div class="prediction-date">
+                                        <input type="date" id="prediction-date"
+                                            value="<?php echo date('Y-m-d', strtotime('+30 days')); ?>">
+                                    </div>
+                                    <table class="table table-striped prediction-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Medication</th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="prediction-table-body">
+                                            <!-- Table body content will be dynamically generated here -->
+                                        </tbody>
+                                    </table>
+                                    <div class="table-buttons">
+                                        <button class="btn btn-primary">Create Order</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                
-                
-                
                     </div>
                     <?php
                     // Close the database connection
                     mysqli_close($coon);
                     ?>
-                   
-                </div>
+
             </main>
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
             <!--footer start here -->
             <?php include "includes/footer.php"; ?>
             <!--end  here -->
