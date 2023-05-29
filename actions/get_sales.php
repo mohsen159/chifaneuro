@@ -19,7 +19,8 @@ $sql = "SELECT
   DATE_FORMAT(o.next_date, '%d/%m/%Y') AS next_date,
   o.dure,
   o.ModifiedDate,
-  o.complited
+  o.complited, 
+  o.order_ord
 FROM `prescription` o
 LEFT JOIN `changement` c ON o.id = c.id_ord
 LEFT JOIN `inventory` p ON c.id_prodoit = p.id

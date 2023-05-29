@@ -39,6 +39,7 @@ include "includes/coon.php";
 									<th>Order ID</th>
 									<th>Client Name</th>
 									<th>Medication </th>
+									<th>Number Order</th>
 									<th>Order Date</th>
 									<th>Next Date</th>
 									<th>Duration</th>

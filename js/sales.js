@@ -262,7 +262,7 @@ $(document).ready(function () {
                 visible: true
             },
             {
-                targets: [0, 5],
+                targets: [0, 6],
                 visible: false
             }
 
@@ -291,6 +291,7 @@ $(document).ready(function () {
                         '<a style="text-decoration: none; color: black;" href="profail.php?id=' + row.client_id + '">' + row.client_name + '</a>',
                         "<pre style='font-weight: bold; font-size: larger;'>" + (row.medication_info + (row.non_completed_info == null ? " " : (" \nrest : \n" +
                             row.non_completed_info))) + "</pre>",
+                            row.order_ord,
                         row.ord_date,
                         row.next_date,
                         row.dure, 

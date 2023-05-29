@@ -110,9 +110,6 @@
         .client-table {
             margin-top: 30px;
         }
-/*.container-fluid {
-    text-align: center;
-}*/
 </style>
 <script src="js/app.js"></script>
 

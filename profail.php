@@ -98,7 +98,7 @@ mysqli_close($coon);
             <main class="content">
                 <div class="container">
                     <h1 class="h1 mb-1 h1-size">
-                        <?php echo $page_name; ?>
+
                     </h1>
 
                     <!-- User Information -->
@@ -127,7 +127,13 @@ mysqli_close($coon);
                                 <div class="mb-3">
                                     <label for="id-card-photo" class="form-label">Identity Card Photo</label>
                                     <input type="file" class="form-control" id="id-card-photo" name="id_card_photo"
-                                        accept="image/*" required>
+                                        accept="image/*">
+                                    <?php if (isset($row['card']) && !empty($row['card'])): ?>
+                                        <input type="hidden" name="existing_card" value="<?php echo $row['card']; ?>">
+                                    <?php else: ?>
+                                        <input type="hidden" name="default_card" value="img/user_null.jpg">
+                                    <?php endif; ?>
+
                                 </div>
                                 <div class="mb-3">
                                     <label for="adress" class="form-label">Adress</label>
