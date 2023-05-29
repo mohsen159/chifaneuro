@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 21 mai 2023 à 06:35
+-- Généré le : lun. 29 mai 2023 à 03:28
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -39,9 +39,13 @@ CREATE TABLE `changement` (
 --
 
 INSERT INTO `changement` (`id`, `amount`, `id_prodoit`, `id_ord`) VALUES
-(17, 50, 30, 14),
-(21, 50, 31, 17),
-(22, 50, 29, 17);
+(13, 10, 36, 27),
+(14, 10, 36, 28),
+(18, 7, 37, 31),
+(22, 1, 37, 35),
+(23, 2, 41, 36),
+(24, 5, 40, 36),
+(25, 1, 41, 37);
 
 -- --------------------------------------------------------
 
@@ -110,7 +114,7 @@ INSERT INTO `client` (`id`, `fname`, `name`, `Date_of_Birth`, `created`, `card`,
 (44, 'Hezam', 'brahim', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (45, 'Ouali', 'Adel', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (46, 'Chabbi', 'Reda ', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
-(47, 'Boughaba', 'A/aziz', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
+(47, 'Boughaba', 'A/aziz', '1952-06-16', '2022-04-07 08:16:06', 'Capture d\'écran 2023-05-20 031703.png', 'ben mhidi el tarf rue 41'),
 (48, 'Khenouche', 'Samir', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (49, 'Achouri', 'elHadi', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (50, 'Hamriou', 'Yazid', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
@@ -154,7 +158,7 @@ INSERT INTO `client` (`id`, `fname`, `name`, `Date_of_Birth`, `created`, `card`,
 (91, 'oulhaci', 'mohamed', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (92, 'Ouanes', 'Abdenasser', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (93, 'Hanachi', 'Amel', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
-(94, 'Kahili', 'zoubida', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
+(94, 'Kahili', 'zoubida', '1952-06-16', '2022-04-07 08:16:06', 'Capture d\'écran 2023-05-22 151655.png', 'ben mhidi el tarf rue 41'),
 (95, 'Amri', 'someya', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (96, 'Hemici', 'samir', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (97, 'Nahouchi', 'mohamed', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
@@ -188,12 +192,14 @@ INSERT INTO `client` (`id`, `fname`, `name`, `Date_of_Birth`, `created`, `card`,
 (125, 'Sbai', 'Kheireddine', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (126, 'Diaf', 'malyk', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (127, 'Azizi', 'soltana', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
-(128, 'boulahba', 'mohssen', '1952-06-16', '2023-05-14 15:47:49', NULL, 'ben mhidi el tarf rue 41'),
+(128, 'boulahba', 'mohssen', '1952-06-16', '2023-05-14 15:47:49', 'user_null.jpg', 'ben mhidi el tarf rue 41'),
 (129, 'boulahba7411', 'mohssen', '1952-06-16', '2023-05-14 15:49:05', NULL, 'ben mhidi el tarf rue 41'),
 (130, 'boulahba7411', 'mohssen', '1952-06-16', '2023-05-14 15:49:05', NULL, 'ben mhidi el tarf rue 41'),
 (131, 'boulahbal', 'abdel rahmabn', '1952-06-16', '2023-05-14 15:57:46', NULL, 'ben mhidi el tarf rue 41'),
 (132, 'nomber 1', 'client', '1952-06-16', '2023-05-14 16:14:59', NULL, 'ben mhidi el tarf rue 41'),
-(134, 'ayad', 'louai', '1952-06-16', '2023-05-18 02:04:36', 'user_null.jpg', 'ben mhidi el tarf rue 41');
+(134, 'ayad', 'louai', '1952-06-16', '2023-05-18 02:04:36', 'user_null.jpg', 'ben mhidi el tarf rue 41'),
+(135, 'merdassi', 'karim', '2000-02-23', '2023-05-28 14:33:23', 'user_null.jpg', 'nothing 25'),
+(136, 'abadda', 'djamel', NULL, '2023-05-28 22:18:47', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -217,21 +223,12 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`list_prodoit`, `pharm`, `lot`, `amount`, `Expiration`, `created`, `inserted`, `id`) VALUES
-(3, 10, '18', 100, '2023-05-16 23:00:00', '2023-04-30 12:37:13', NULL, 4),
-(4, 10, '13', 0, '2023-05-18 03:01:45', '2023-04-30 12:37:13', NULL, 5),
-(5, 10, '5220', 0, '2023-05-13 02:45:34', '2023-04-30 12:37:13', NULL, 6),
-(5, 10, '20', 0, '2023-05-15 16:53:41', '2023-05-01 04:13:22', NULL, 7),
-(3, 10, '19', 0, '2023-05-15 16:53:37', '2023-05-01 04:14:50', NULL, 8),
-(3, 10, '20', 0, '2023-05-15 16:53:36', '2023-05-01 04:15:05', NULL, 9),
-(3, 10, '21', 0, '2023-05-15 16:53:34', '2023-05-01 04:16:03', NULL, 10),
-(18, 10, '12', 100, '2023-05-18 03:00:24', '2023-05-01 05:02:15', NULL, 11),
-(84, 10, '12', 0, '2023-05-13 02:38:15', '2023-05-01 07:29:32', NULL, 12),
-(36, 10, '123', 0, '2023-05-13 02:38:10', '2023-05-01 07:45:16', NULL, 13),
-(100, 10, '20', 0, '2023-05-14 22:44:29', '2023-05-14 22:44:09', NULL, 27),
-(2, 12, '15', 100, '2023-05-16 23:00:00', '2023-05-15 22:43:20', NULL, 28),
-(42, 10, '13', 50, '2023-05-21 04:22:55', '2023-05-16 09:27:12', NULL, 29),
-(22, 10, '1000', 0, '2023-05-18 03:01:33', '2023-05-16 09:38:30', NULL, 30),
-(18, 10, '13', 50, '2023-05-21 04:22:55', '2023-05-16 11:59:19', NULL, 31);
+(42, 15, '13', 5, '2023-05-28 23:00:00', '2023-05-21 06:10:48', NULL, 36),
+(36, 15, '13', 1, '2023-05-28 23:05:40', '2023-05-21 06:10:48', NULL, 37),
+(42, 15, '13', 0, '2023-05-28 23:02:18', '2023-05-24 10:14:52', NULL, 38),
+(36, 17, '13', 10, '2023-10-01 23:00:00', '2023-05-28 23:26:32', NULL, 39),
+(52, 17, '13', 5, '2023-05-28 23:28:01', '2023-05-28 23:26:32', NULL, 40),
+(19, 17, '13', 2, '2023-05-28 23:29:06', '2023-05-28 23:26:32', NULL, 41);
 
 -- --------------------------------------------------------
 
@@ -336,12 +333,7 @@ INSERT INTO `list_prodoit` (`id`, `name`, `dci`, `dosage`, `form`) VALUES
 (82, 'NEURAXON', 'PREGABALINE', '50 MG', NULL),
 (83, 'NEURAXON 150', 'PREGABALINE', '150 MG', NULL),
 (84, 'PREGABALINE BEKER', 'PREGABALINE', '75 MG', NULL),
-(99, 'notthing ', 'nothing', '50 mg', '55555'),
-(100, 'vrrr', 'ffff', '20 3mg', 'ddd'),
-(101, 'vrrr', 'ffff', '20 3mg', 'ddd'),
-(102, 'nothing', 'rrrrr', '100 mg ', 'dfghghjgfyhjfghjghfjghfj'),
-(103, 'cvbn ', 'dfgrfh', '200000 mg', 'nothing'),
-(104, 'zolidreat ', 'dcifi', 'dxvc', 'VBVV');
+(105, 'sfsfssf', 'ssffsf', 'sfsfs', 'sfsfsfsf');
 
 -- --------------------------------------------------------
 
@@ -356,6 +348,13 @@ CREATE TABLE `noncompliant` (
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `noncompliant`
+--
+
+INSERT INTO `noncompliant` (`list_prodoit`, `ord_id`, `amount`, `created`, `id`) VALUES
+(42, 35, 9, '2023-05-28 23:05:40', 30);
 
 -- --------------------------------------------------------
 
@@ -377,9 +376,8 @@ CREATE TABLE `pharm` (
 --
 
 INSERT INTO `pharm` (`id`, `name`, `adress`, `creation`, `email`, `owner`) VALUES
-(10, 'hakim', 'ben mehidi rue 44', '2023-04-14 04:21:31', 'mohssenboulahbal3333@gmail.com', 11),
-(12, 'nothing', 'ffffffff', '2023-05-15 22:42:25', 'mohssenboulahbal@gmail.com', 18),
-(13, 'nothing159', 'ben mhidi el tarf rue 36', '2023-05-17 11:08:30', 'jomia@gmail.com', 19);
+(15, 'mohssen', 'ben mhidi el tarf rue 41', '2023-05-21 06:09:07', 'ledupis2016@gmail.com', 23),
+(17, 'hakim pharm', 'ben mhidi ', '2023-05-28 23:25:27', 'mohssenboulahbal@gmail.com', 27);
 
 -- --------------------------------------------------------
 
@@ -407,8 +405,12 @@ CREATE TABLE `prescription` (
 --
 
 INSERT INTO `prescription` (`id`, `id_user`, `id_client`, `id_pharm`, `created`, `ord_date`, `next_date`, `order_ord`, `dure`, `ModifiedDate`, `complited`, `note`) VALUES
-(14, 11, 134, 10, '2023-05-18 02:05:24', '2023-04-20 00:00:00', '2028-07-19 00:00:00', '000', 90, '2023-05-17 19:05:24', 1, 'vdfdsf'),
-(17, 17, 134, 10, '2023-05-21 04:22:55', '2023-02-16 00:00:00', '2023-05-31 00:00:00', '99', 90, '2023-05-20 21:22:55', 1, 'nothing');
+(27, 25, 9, 15, '2023-05-26 14:55:30', '2023-02-02 00:00:00', '2023-05-03 00:00:00', '50', 90, '2023-05-26 07:55:30', 1, 'nothig'),
+(28, 25, 134, 15, '2023-05-26 14:57:04', '2023-02-02 00:00:00', '2023-09-03 00:00:00', 'mmttt8889', 90, '2023-05-26 07:57:04', 1, 'efedfgdgdg'),
+(31, 23, 135, 15, '2023-05-28 14:34:12', '2023-06-05 00:00:00', '2023-09-03 00:00:00', 'mtffff', 90, '2023-05-28 15:34:12', 1, 'nothing'),
+(35, 25, 128, 15, '2023-05-28 23:05:40', '2023-05-02 00:00:00', '2023-07-31 00:00:00', 'mt999', 90, '2023-05-29 00:05:40', 0, ''),
+(36, 27, 128, 17, '2023-05-28 23:28:01', '2023-05-10 00:00:00', '2023-08-08 00:00:00', 'mt23', 90, '2023-05-29 00:28:01', 1, 'nothing '),
+(37, 27, 134, 17, '2023-05-28 23:29:06', '2023-04-02 00:00:00', '2023-05-02 00:00:00', 'mtkk89', 30, '2023-05-29 00:29:06', 1, '');
 
 -- --------------------------------------------------------
 
@@ -431,11 +433,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `id_pharm`, `name`, `username`, `pwd`, `role`, `created`) VALUES
-(11, 10, 'hakim benerhal', 'hakim10', '$2y$10$9zA6vMLlfLJe7OI7HLjvXu1PxGNkzWGQ/1mG.D9kqFmi3jWYyeOcy', 'owner', '2023-04-14 04:21:31'),
-(17, 10, 'mohssen boulahbal ', 'sadwik159', '$2y$10$2tJjyuURdqJeDTplxsmhR.1uUaMfd08s001jNPu96qHo2.czXsKxu', 'salesperson', '2023-05-14 09:29:32'),
-(18, 12, 'nothing', 'nothing12', '$2y$10$KAKxZ7f4vOnpC/gE4R56ze8gTR/bsNeUxp9y8.ZKT//jDfA8QL01m', 'owner', '2023-05-15 22:42:25'),
-(19, 13, 'nothing159', 'nothing15913', '$2y$10$O7QPh4Rv1fPdvEveqLhDFOIF0O9RigBTKayx//aPr7N2ovRp2Kpi2', 'owner', '2023-05-17 11:08:30'),
-(20, 10, 'mehdi boutgane ', 'mehdi159', '$2y$10$2Y5o5mao4DAJz7v9VLUayOo/NLXbfEQp7NsaQHYUJzpfCiFTvDr/G', 'salesperson', '2023-05-21 01:46:22');
+(23, 15, 'mohssen', 'mohssen15', '$2y$10$YJJenKvR04YxlhIO6iN0pe5H3BHlqRZer27YK1L2qGPp20gxFnMnS', 'salesperson', '2023-05-21 06:09:07'),
+(25, 15, 'rafi9', 'rafik159', '$2y$10$o3C2fpEiPOaleGFaod2zReyqGs382nBGoXlaHaP.G264m76mb/7YK', 'owner', '2023-05-21 19:48:10'),
+(27, 17, 'hakim', 'hakim', '$2y$10$RLmvPOAAonaZYasAB76WL.zg01SlErbUNttthuxdcy9Xo3YKhIUMW', 'owner', '2023-05-28 23:25:27');
 
 --
 -- Index pour les tables déchargées
@@ -507,49 +507,49 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `changement`
 --
 ALTER TABLE `changement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT pour la table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT pour la table `list_prodoit`
 --
 ALTER TABLE `list_prodoit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT pour la table `noncompliant`
 --
 ALTER TABLE `noncompliant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT pour la table `pharm`
 --
 ALTER TABLE `pharm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `prescription`
 --
 ALTER TABLE `prescription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Contraintes pour les tables déchargées

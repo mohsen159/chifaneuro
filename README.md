@@ -4,6 +4,6 @@ i hope if someone else is reading and have any improvment send me pull request
 
 #instalation 
 creat a db name memo 
-import the db from db/memo.sql file 
+import the db from configuration/memo.sql file 
 creat an acount 
 login
