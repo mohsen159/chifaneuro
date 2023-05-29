@@ -1,7 +1,5 @@
 <?php
 
-///TODO: please add the username and check is it exist 
-
 session_start(); // start a session
 if (isset($_SESSION["id"])) {
     header("Location: products.php");
@@ -41,14 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Hash the password
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             // Insert the pharm data into the database
-            $insert_pharm = "INSERT INTO `pharm`(`name`, `adress`, `email`) VALUES ('$username','$adress' ,'$email');";
+            $insert_pharm = "INSERT INTO `pharm`(`name`, `adress`, `email`) VALUES ('$pharm','$adress' ,'$email');";
             $conn->query($insert_pharm);
             $pharm_id = mysqli_insert_id($conn);
             // Insert the user's data into the database
             $role = "owner";
 
             /// after the owner of the pharm sigin form you have to send email white the user name and password 
-            $temp = $username . strval($pharm_id); // i don't need to keep this in mind the "." make a syntax error so no need to complecat this 
+            $temp = $username ;
             $insert_user = "INSERT INTO `users`( `id_pharm`, `name`, `username`, `pwd`, `role`) VALUES ('$pharm_id','$username','$temp','$hashed_password','$role')";
             if ($conn->query($insert_user) === TRUE) {
                 // give this user the owner ship of the pharm 

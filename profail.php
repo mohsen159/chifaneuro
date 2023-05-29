@@ -1,6 +1,5 @@
 <?php
-$page_name = "";
-///TODO : handle error when the get is empty 
+$page_name = " ";
 include "includes/session.php";
 include "includes/coon.php";
 $pharm_id = $_SESSION['id_pharm'];
@@ -39,7 +38,7 @@ if (isset($_GET["id"])) {
     LEFT JOIN `client` cl ON o.id_client = cl.id
     LEFT JOIN `users` u ON o.id_user = u.id
     WHERE cl.id = $user_id
-    GROUP BY o.id";
+    GROUP BY o.id  DESC";
 
     // Execute the sales query
     $salles_result = mysqli_query($coon, $salles);
@@ -55,11 +54,10 @@ if (isset($_GET["id"])) {
 
     // Execute the products still in use query
     $using_result = mysqli_query($coon, $using);
-}
+} else {
 
-else 
-{
-    // this is not excteple beacuse there is no id !! 
+    header("Location: error.php");
+    exit();
 }
 // Close the database connection
 mysqli_close($coon);
@@ -69,17 +67,23 @@ mysqli_close($coon);
 <html lang="en">
 
 <head>
-    <?php include "includes/head.php"; ?>
+    <?php
+    $page_name = $row['fname'] . " " . $row["name"];
+    include "includes/head.php"; ?>
     <style>
         .profile {
             width: 70%;
             height: auto;
             max-width: 100%;
         }
-        th , td {
-            text-align: center ;
+
+        th,
+        td {
+            text-align: center;
         }
     </style>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -132,8 +136,11 @@ mysqli_close($coon);
                                         value="<?php echo isset($row['adress']) ? $row['adress'] : ''; ?>">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Edit</button>
-                                <button type="button" id="similarity-btn" class="btn btn-primary"
-                                    onclick="openModal()">Similarity</button>
+                                <button type="button" id="similarityBtn" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#similarityModal">
+                                    Similarity
+                                </button>
+
 
                             </form>
                         </div>
@@ -166,21 +173,18 @@ mysqli_close($coon);
                                 <tbody>
                                     <?php
                                     // Initialize $salles_result variable
-                                 
+                                    
                                     // Check if $salles_result is not null before accessing its values
                                     if ($salles_result) {
                                         while ($salles_row = mysqli_fetch_assoc($salles_result)) {
                                             echo "<tr>";
-                                            if($pharm_id!=$salles_row['id_pharm'])
-                                            {
-                                                echo "<td>  <i class='fas fa-clone fa-beat' style='font-size:19px;color:red'></i></td>";
-                                            }
-                                            else 
-                                            {
+                                            if ($pharm_id != $salles_row['id_pharm']) {
+                                                echo "<td>  <i class='fas fa-clone' style='font-size:19px;color:red'></i></td>";
+                                            } else {
                                                 echo "<td>  <i class='fas fa-clone' style='font-size:19px;color:green'></i></td>";
                                             }
-                                          
-                                           
+
+
                                             echo "<td><pre>{$salles_row['medication_info']}</pre></td>";
                                             echo "<td>" . date('d/m/Y', strtotime($salles_row['next_date'])) . "</td>";
                                             echo "<td>{$salles_row['dure']}</td>";
@@ -189,7 +193,7 @@ mysqli_close($coon);
                                     } else {
                                         // Handle the case when there is no result
                                     }
-                               
+
                                     ?>
                                 </tbody>
                             </table>
@@ -216,7 +220,7 @@ mysqli_close($coon);
                                     ?>
                                 </tbody>
                             </table>
-                            <?php include "model/profail_model.php"; ?>
+
                         </div>
                     </div>
 
@@ -224,18 +228,60 @@ mysqli_close($coon);
                 </div>
             </main>
 
+
             <!--footer start here -->
             <?php include "includes/footer.php"; ?>
             <!--end  here -->
         </div>
     </div>
-    <script>
-        function openModal() {
-            // Code to open the modal, e.g., using Bootstrap modal functionality
-            // Example using Bootstrap modal:
-            $('#myModal').modal('show');
-        }
-    </script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="similarityModal" tabindex="-1" role="dialog" aria-labelledby="similarityModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="similarityModalLabel">Similarity</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="smilarty">
+                        <input type="hidden" name="id_user" value="<?php echo $user_id ?>">
+                        <div class="mt-3 autocomplete d-flex flex-nowrap justify-content-between space">
+                            <input type="hidden" name="idn[]">
+                            <input type="text" onfocus="find_product(this)" onblur="find_productid(this)"
+                                class="form-control order-1 p-2" placeholder="Name" name="namen[]" required>
+                            <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true"
+                                onclick="delet_p(this)">
+                                <br>
+                            </li>
+                        </div>
+                        <input type="hidden" id="noncomplited">
+
+                        <br>
+                        <button style="margin-top:10px" type="button" onclick="addElement()"
+                            class="fa fa-plus btn btn-primary"></button>
+                    </div>
+
+                </div>
+                <br />
+                <table id="resultTable" class="table">
+                </table>
+                <br />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="checkSimilarity()">Test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/profail.js"></script>
 </body>
+
 
 </html>
