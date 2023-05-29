@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Validate the form data
 	if (empty($username) || empty($password)) {
-		$_SESSION["error"]  = "Please fill in all fields.";
+		$_SESSION["error"] = "Please fill in all fields.";
 		//echo "Please fill in all fields.";
 		exit;
 	}
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Check connection
 	if (!$conn) {
-		$_SESSION["error"]  = "Connection failed: " . mysqli_connect_error();
+		$_SESSION["error"] = "Connection failed: " . mysqli_connect_error();
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
@@ -61,11 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			header("Location: index.php");
 		} else {
 			// Password does not match
-			$_SESSION["error"]  = "Incorrect username or password.";;
+			$_SESSION["error"] = "Incorrect username or password.";
+			;
 		}
 	} else {
 		// User not found
-		$_SESSION["error"]  = "Incorrect username or password.";
+		$_SESSION["error"] = "Incorrect username or password.";
 	}
 
 	mysqli_close($conn);
@@ -87,8 +88,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="img/avatars/img2.jpg" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+		integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+		crossorigin="anonymous"></script>
 
 
 	<title>Sign In</title>
@@ -116,23 +121,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<div class="card-body">
 								<div class="m-sm-4">
 									<div class="text-center">
-										<img src="img\avatars\avatar.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
+										<img src="img\avatars\avatar.jpg" alt="Charles Hall"
+											class="img-fluid rounded-circle" width="132" height="132" />
 									</div>
 									<br />
 									<br />
 									<form id=" log_in" action="login.php" method="post">
 										<div class="mb-3">
-											
-											<input class="form-control form-control-lg" type="text" placeholder="Username" name="username" value="<?php echo "$user" ?>" />
+
+											<input class="form-control form-control-lg" type="text"
+												placeholder="Username" name="username" value="<?php echo "$user" ?>" />
 										</div>
 										<br />
 										<div class="mb-3">
-											
-											<input class="form-control form-control-lg" type="password" placeholder="Password" name="password" value="<?php echo "$pwd" ?>">
-											<br/>
-										
+
+											<input class="form-control form-control-lg" type="password"
+												placeholder="Password" name="password" value="<?php echo "$pwd" ?>">
+											<br />
+
 											<small>
-												<a href="#">Forgot password?</a> <a style="float: right" href="signup.php">creat a new acount</a>
+												<a href="#">Forgot password?</a> <a style="float: right"
+													href="signup.php">creat a new acount</a>
 											</small>
 										</div>
 										<br />
@@ -148,16 +157,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				</div>
 			</div>
 		</div>
-	
+
 	</main>
-	
-    
+
+
 	<script src="js/app.js"></script>
-    <style>
+	<style>
 		body {
 
-         color: #000 !important;
-}
+			color: #000 !important;
+		}
 	</style>
 </body>
 

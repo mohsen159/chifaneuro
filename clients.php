@@ -22,7 +22,6 @@ mysqli_close($coon);
     <?php include "includes/head.php"; ?>
     <style>
         /* Add any additional styles for the table if needed */
-
     </style>
 </head>
 
@@ -42,7 +41,7 @@ mysqli_close($coon);
                     </h1>
 
                     <div class="search-container">
-                    <form id="search-form">
+                        <form id="search-form">
                             <input type="text" class="search-bar" id="search-input" placeholder="Search">
                             <input type="hidden" id="hidden-input" value="-1">
                         </form>
@@ -62,7 +61,8 @@ mysqli_close($coon);
                             <?php foreach ($clients as $client): ?>
                                 <tr>
                                     <td>
-                                        <a style="text-decoration: none; color: black;" href="profail.php?id=<?php echo $client['id']; ?>">
+                                        <a style="text-decoration: none; color: black;"
+                                            href="profail.php?id=<?php echo $client['id']; ?>">
                                             <?php echo $client['name'] . " " . $client['fname']; ?>
                                         </a>
                                     </td>
@@ -81,8 +81,8 @@ mysqli_close($coon);
                     </table>
 
                 </div>
-          
-          
+
+
             </main>
 
             <!--footer start here -->
