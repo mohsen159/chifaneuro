@@ -273,39 +273,10 @@
             <!--end  here -->
         </div>
     </div>
-    <!-- Add Font Awesome JS -->
-    <script src="js/index.js"></script>
+   
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-    <script>
-        // Function to handle date input change event
-        // Function to handle date input change event
-        function handleDateChange() {
-            // Get the selected date value
-            var dateValue = document.getElementById('prediction-date').value;
-
-            // Create a FormData object and append the date value
-            var formData = new FormData();
-            formData.append('end_date', dateValue);
-
-            // Send an AJAX request to the prediction PHP file
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Replace the table body with the new prediction data
-                    var predictionTableBody = document.getElementById('prediction-table-body');
-                    predictionTableBody.innerHTML = xhr.responseText;
-                }
-            };
-            xhr.open('POST', 'actions/prediction.php', true);
-            xhr.send(formData);
-        }
-
-
-        // Attach the date input change event listener
-        var predictionDateInput = document.getElementById('prediction-date');
-        predictionDateInput.addEventListener('change', handleDateChange);
-        handleDateChange();
-    </script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
