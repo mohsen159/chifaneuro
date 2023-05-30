@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $end_date = $_POST['end_date'];
 
     // Call the getPredictionData function to retrieve the updated prediction data
-    $predictionData = getPredictionData($end_date, $coon);
+    $predictionData = getPredictionData($end_date, $coon); /// genrat a prediction from prescrition data 
     $predictionTableBody = '';
     if (empty($predictionData)) {
         $predictionTableBody .= '<tr><td colspan="2" class="text-center">No products needed for the selected date.</td></tr>';

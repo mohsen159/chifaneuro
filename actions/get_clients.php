@@ -1,7 +1,5 @@
 <?php
 
-
-
 /** this file is just to fetch my own client in the pharm  */
 include "../includes/coon.php";
 include "../includes/session.php";

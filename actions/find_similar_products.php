@@ -18,7 +18,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 if (!empty($product_list)) {
-    // Query to check if the client has similar products with the same DCI and next sale date passed
     $sql = "SELECT p.id, lp.name, lp.dosage, c.amount, o.next_date
             FROM `prescription` o
             INNER JOIN changement c ON o.id = c.id_ord
@@ -36,8 +35,6 @@ if (!empty($product_list)) {
 
     if ($result) {
         if (mysqli_num_rows($result) > 0) {
-            // The client has already purchased similar products with the next sale date passed
-            // You can iterate over the rows and generate the table rows dynamically
             $table_data = array();
             while ($row = mysqli_fetch_assoc($result)) {
                 $table_data[] = array(
@@ -48,11 +45,9 @@ if (!empty($product_list)) {
             }
             echo json_encode($table_data); // Send the table data as JSON response
         } else {
-            // The client can buy the products in the list
             echo "The client can buy the products in the list.";
         }
     } else {
-        // Handle the error if the query execution fails
         echo "Error: " . mysqli_error($coon);
     }
 } else {

@@ -3,8 +3,6 @@ include "../includes/coon.php";
 include "../includes/session.php";
 
 $pharm_id = $_SESSION['id_pharm'];
-
-// Execute SQL query
 $sql = "SELECT
   o.id,
   GROUP_CONCAT(CONCAT(REPLACE(lp.name, '(', ''), ' ', REPLACE(lp.dosage, ')', ''), ' : ', c.amount) SEPARATOR '\n') AS medication_info,

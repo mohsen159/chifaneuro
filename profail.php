@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $page_name = " ";
 include "includes/session.php";
 include "includes/coon.php";
@@ -128,12 +132,6 @@ mysqli_close($coon);
                                     <label for="id-card-photo" class="form-label">Identity Card Photo</label>
                                     <input type="file" class="form-control" id="id-card-photo" name="id_card_photo"
                                         accept="image/*">
-                                    <?php if (isset($row['card']) && !empty($row['card'])): ?>
-                                        <input type="hidden" name="existing_card" value="<?php echo $row['card']; ?>">
-                                    <?php else: ?>
-                                        <input type="hidden" name="default_card" value="img/user_null.jpg">
-                                    <?php endif; ?>
-
                                 </div>
                                 <div class="mb-3">
                                     <label for="adress" class="form-label">Adress</label>
