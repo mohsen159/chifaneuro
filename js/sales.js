@@ -88,7 +88,9 @@ function find_productid(input) {
         const productId = product.id_p;
         idInput.value = productId;
     } else {
+        if(full_name.length>1) {
         alert('Please select a valide product name ');
+        }
     }
 }
 
