@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 29 mai 2023 à 03:28
+-- Généré le : mer. 31 mai 2023 à 07:55
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -39,13 +39,13 @@ CREATE TABLE `changement` (
 --
 
 INSERT INTO `changement` (`id`, `amount`, `id_prodoit`, `id_ord`) VALUES
-(13, 10, 36, 27),
 (14, 10, 36, 28),
-(18, 7, 37, 31),
-(22, 1, 37, 35),
-(23, 2, 41, 36),
-(24, 5, 40, 36),
-(25, 1, 41, 37);
+(27, 9, 43, 39),
+(28, 3, 42, 39),
+(29, 3, 42, 40),
+(30, 5, 42, 41),
+(31, 9, 37, 42),
+(32, 5, 40, 43);
 
 -- --------------------------------------------------------
 
@@ -158,7 +158,7 @@ INSERT INTO `client` (`id`, `fname`, `name`, `Date_of_Birth`, `created`, `card`,
 (91, 'oulhaci', 'mohamed', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (92, 'Ouanes', 'Abdenasser', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (93, 'Hanachi', 'Amel', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
-(94, 'Kahili', 'zoubida', '1952-06-16', '2022-04-07 08:16:06', 'Capture d\'écran 2023-05-22 151655.png', 'ben mhidi el tarf rue 41'),
+(94, 'Kahilicccc', 'zoubida', '1952-06-16', '2022-04-07 08:16:06', '1311860.jpeg', 'ben mhidi el tarf rue 41'),
 (95, 'Amri', 'someya', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (96, 'Hemici', 'samir', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (97, 'Nahouchi', 'mohamed', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
@@ -192,14 +192,15 @@ INSERT INTO `client` (`id`, `fname`, `name`, `Date_of_Birth`, `created`, `card`,
 (125, 'Sbai', 'Kheireddine', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (126, 'Diaf', 'malyk', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
 (127, 'Azizi', 'soltana', '1952-06-16', '2022-04-07 08:16:06', NULL, 'ben mhidi el tarf rue 41'),
-(128, 'boulahba', 'mohssen', '1952-06-16', '2023-05-14 15:47:49', 'user_null.jpg', 'ben mhidi el tarf rue 41'),
+(128, 'boulahbal', 'mohssen', '1952-06-16', '2023-05-14 15:47:49', 'user_null.jpg', 'ben mhidi el tarf rue 41'),
 (129, 'boulahba7411', 'mohssen', '1952-06-16', '2023-05-14 15:49:05', NULL, 'ben mhidi el tarf rue 41'),
 (130, 'boulahba7411', 'mohssen', '1952-06-16', '2023-05-14 15:49:05', NULL, 'ben mhidi el tarf rue 41'),
 (131, 'boulahbal', 'abdel rahmabn', '1952-06-16', '2023-05-14 15:57:46', NULL, 'ben mhidi el tarf rue 41'),
 (132, 'nomber 1', 'client', '1952-06-16', '2023-05-14 16:14:59', NULL, 'ben mhidi el tarf rue 41'),
 (134, 'ayad', 'louai', '1952-06-16', '2023-05-18 02:04:36', 'user_null.jpg', 'ben mhidi el tarf rue 41'),
 (135, 'merdassi', 'karim', '2000-02-23', '2023-05-28 14:33:23', 'user_null.jpg', 'nothing 25'),
-(136, 'abadda', 'djamel', NULL, '2023-05-28 22:18:47', NULL, '');
+(136, 'abadda', 'djamel', NULL, '2023-05-28 22:18:47', NULL, ''),
+(137, 'khemassi', 'akrem', NULL, '2023-05-31 02:19:52', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -223,12 +224,15 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`list_prodoit`, `pharm`, `lot`, `amount`, `Expiration`, `created`, `inserted`, `id`) VALUES
-(42, 15, '13', 5, '2023-05-28 23:00:00', '2023-05-21 06:10:48', NULL, 36),
-(36, 15, '13', 1, '2023-05-28 23:05:40', '2023-05-21 06:10:48', NULL, 37),
-(42, 15, '13', 0, '2023-05-28 23:02:18', '2023-05-24 10:14:52', NULL, 38),
+(42, 15, '13', 0, '2023-05-31 05:53:39', '2023-05-21 06:10:48', NULL, 36),
+(36, 15, '13', 0, '2023-05-31 02:20:42', '2023-05-21 06:10:48', NULL, 37),
+(42, 15, '13', 0, '2023-05-31 05:53:36', '2023-05-24 10:14:52', NULL, 38),
 (36, 17, '13', 10, '2023-10-01 23:00:00', '2023-05-28 23:26:32', NULL, 39),
-(52, 17, '13', 5, '2023-05-28 23:28:01', '2023-05-28 23:26:32', NULL, 40),
-(19, 17, '13', 2, '2023-05-28 23:29:06', '2023-05-28 23:26:32', NULL, 41);
+(52, 17, '13', 5, '2023-05-31 02:27:07', '2023-05-28 23:26:32', NULL, 40),
+(19, 17, '13', 10, '2023-05-30 23:00:00', '2023-05-28 23:26:32', NULL, 41),
+(19, 15, '13', 0, '2023-05-31 02:16:49', '2023-05-31 02:13:19', NULL, 42),
+(32, 15, '13', 44, '2023-05-31 05:54:30', '2023-05-31 02:13:45', NULL, 43),
+(19, 15, '10', 100, '2023-05-30 23:00:00', '2023-05-31 05:53:53', NULL, 44);
 
 -- --------------------------------------------------------
 
@@ -354,7 +358,7 @@ CREATE TABLE `noncompliant` (
 --
 
 INSERT INTO `noncompliant` (`list_prodoit`, `ord_id`, `amount`, `created`, `id`) VALUES
-(42, 35, 9, '2023-05-28 23:05:40', 30);
+(31, 42, 9, '2023-05-31 02:20:42', 32);
 
 -- --------------------------------------------------------
 
@@ -405,12 +409,12 @@ CREATE TABLE `prescription` (
 --
 
 INSERT INTO `prescription` (`id`, `id_user`, `id_client`, `id_pharm`, `created`, `ord_date`, `next_date`, `order_ord`, `dure`, `ModifiedDate`, `complited`, `note`) VALUES
-(27, 25, 9, 15, '2023-05-26 14:55:30', '2023-02-02 00:00:00', '2023-05-03 00:00:00', '50', 90, '2023-05-26 07:55:30', 1, 'nothig'),
 (28, 25, 134, 15, '2023-05-26 14:57:04', '2023-02-02 00:00:00', '2023-09-03 00:00:00', 'mmttt8889', 90, '2023-05-26 07:57:04', 1, 'efedfgdgdg'),
-(31, 23, 135, 15, '2023-05-28 14:34:12', '2023-06-05 00:00:00', '2023-09-03 00:00:00', 'mtffff', 90, '2023-05-28 15:34:12', 1, 'nothing'),
-(35, 25, 128, 15, '2023-05-28 23:05:40', '2023-05-02 00:00:00', '2023-07-31 00:00:00', 'mt999', 90, '2023-05-29 00:05:40', 0, ''),
-(36, 27, 128, 17, '2023-05-28 23:28:01', '2023-05-10 00:00:00', '2023-08-08 00:00:00', 'mt23', 90, '2023-05-29 00:28:01', 1, 'nothing '),
-(37, 27, 134, 17, '2023-05-28 23:29:06', '2023-04-02 00:00:00', '2023-05-02 00:00:00', 'mtkk89', 30, '2023-05-29 00:29:06', 1, '');
+(39, 23, 128, 15, '2023-05-31 02:15:20', '2023-05-31 00:00:00', '2023-08-29 00:00:00', 'nomt999', 90, '2023-05-31 03:15:20', 1, ''),
+(40, 25, 10, 15, '2023-05-31 02:16:08', '2023-05-21 00:00:00', '2023-08-19 00:00:00', 'my', 90, '2023-05-31 03:16:08', 1, 'fdfdf\r\n'),
+(41, 25, 2, 15, '2023-05-31 02:16:49', '2023-05-21 00:00:00', '2023-08-19 00:00:00', '333', 90, '2023-05-31 03:16:49', 1, 'nothing'),
+(42, 25, 137, 15, '2023-05-31 02:20:42', '2023-05-02 00:00:00', '2023-07-01 00:00:00', 'nothing', 60, '2023-05-31 03:20:42', 0, 'nothing'),
+(43, 27, 134, 17, '2023-05-31 02:27:07', '2023-07-02 00:00:00', '2023-09-30 00:00:00', 'mty39', 90, '2023-05-31 03:27:07', 1, 'tiitt');
 
 -- --------------------------------------------------------
 
@@ -433,8 +437,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `id_pharm`, `name`, `username`, `pwd`, `role`, `created`) VALUES
-(23, 15, 'mohssen', 'mohssen15', '$2y$10$YJJenKvR04YxlhIO6iN0pe5H3BHlqRZer27YK1L2qGPp20gxFnMnS', 'salesperson', '2023-05-21 06:09:07'),
-(25, 15, 'rafi9', 'rafik159', '$2y$10$o3C2fpEiPOaleGFaod2zReyqGs382nBGoXlaHaP.G264m76mb/7YK', 'owner', '2023-05-21 19:48:10'),
+(23, 15, 'vender 01', 'vender01', '$2y$10$lC3PoXx9M0SuBuhm4NL8PeA7T2lGi8E7vJuFLwfyvZkKmAqTblRW2', 'owner', '2023-05-21 06:09:07'),
+(25, 15, 'mohssen boulhbal ', 'rahim', '$2y$10$uThDDUbOICptMlUXv85EguxdWq12DDysFuV6P/yaBUHPfSg2maXv.', 'owner', '2023-05-21 19:48:10'),
 (27, 17, 'hakim', 'hakim', '$2y$10$RLmvPOAAonaZYasAB76WL.zg01SlErbUNttthuxdcy9Xo3YKhIUMW', 'owner', '2023-05-28 23:25:27');
 
 --
@@ -507,19 +511,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `changement`
 --
 ALTER TABLE `changement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT pour la table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT pour la table `list_prodoit`
@@ -531,7 +535,7 @@ ALTER TABLE `list_prodoit`
 -- AUTO_INCREMENT pour la table `noncompliant`
 --
 ALTER TABLE `noncompliant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT pour la table `pharm`
@@ -543,7 +547,7 @@ ALTER TABLE `pharm`
 -- AUTO_INCREMENT pour la table `prescription`
 --
 ALTER TABLE `prescription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT pour la table `users`
