@@ -1,5 +1,6 @@
 <?php
 // TODO: Implement count(amount) method on simelier products type 
+// TODO: no goood solotion t odo this ins sql query maybe it will be better to implement in php code this stuff 
 $page_name = "Medications";
 include "includes/session.php";
 include "includes/coon.php";

@@ -1,5 +1,7 @@
 <?php
 ///TODO: you should use the order number in order the if should be data-sd in the head make js code simpler 
+///TODO: YOU SHOULD FINISH THE COMPLIT MODEL PLEASE DO TEST IN THE SERVER AND DO NOT CAR ABOUT THE TEST USE THE ON IN THE INSER SALES SCRIPT
+///TODO: ALAWYS REMMBER THAT DONE IS BETTER THEN PERFECT NO TIME FOR THIS 
 $page_name = "";
 include "includes/session.php";
 include "includes/coon.php";
@@ -36,6 +38,7 @@ include "includes/coon.php";
 							<thead>
 								<tr>
 									<th>Order ID</th>
+									<!--NOT GOOD PRECTICE TO USE ID IN THE FRONT END :) -->
 									<th>Client Name</th>
 									<th>Medication </th>
 									<th>Number Order</th>

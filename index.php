@@ -236,7 +236,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 mt-5">
-                                    <h3>Create Prediction</h3>
+                                    <h3>Supply List</h3>
                                     <div class="prediction-date">
                                         <input type="date" id="prediction-date"
                                             value="<?php echo date('Y-m-d', strtotime('+30 days')); ?>">

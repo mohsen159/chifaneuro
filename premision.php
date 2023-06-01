@@ -38,23 +38,7 @@ function getUsers()
 // Handle form submissions for user creation or modification
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Handle new user creation
-  if (isset($_POST['create'])) {
-    // Add code to create a new user in the database
-    // Retrieve the form data and perform necessary validation and sanitization
-    // After creating the user, you can redirect the user to the updated user list or display a success message
-  }
-  // Handle user modification
-  elseif (isset($_POST['update'])) {
-    // Add code to update an existing user in the database
-    // Retrieve the form data and perform necessary validation and sanitization
-    // After updating the user, you can redirect the user to the updated user list or display a success message
-  }
-  // Handle user deletion
-  elseif (isset($_POST['delete'])) {
-    // Add code to delete the user from the database
-    // Retrieve the user ID from the form data and delete the corresponding user
-    // After deleting the user, you can redirect the user to the updated user list or display a success message
-  }
+
 }
 
 // Fetch users from the database
@@ -134,7 +118,7 @@ $users = getUsers();
     </div>
   </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
       // Get the update user modal
       var updateModal = document.getElementById('updateuser');
       var deleteModal = document.getElementById('deleteUser');
@@ -146,16 +130,15 @@ $users = getUsers();
 
       // Get the edit user buttons
       var editButtons = document.querySelectorAll('.edit-user-btn');
-      // Attach event listeners to each edit user button
-      editButtons.forEach(function (button) {
-        button.addEventListener('click', function () {
+
+      editButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
           // Get the data attributes from the button
           var id = button.dataset.id;
           var name = button.dataset.name;
           var username = button.dataset.username;
           var role = button.dataset.role;
 
-          // Set the values of the input fields in the update user modal
           idInput.value = id;
           nameInput.value = name;
           usernameInput.value = username;
@@ -166,10 +149,8 @@ $users = getUsers();
 
       // Get the delete user buttons
       var deleteButtons = document.querySelectorAll('.delet-user-btn');
-
-      // Attach event listeners to each delete user button
-      deleteButtons.forEach(function (button) {
-        button.addEventListener('click', function () {
+      deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
           // Get the data attributes from the button
           var id = button.dataset.id;
           // Get the delete user form and user ID input
@@ -186,9 +167,6 @@ $users = getUsers();
       });
 
     });
-
-
-
   </script>
 </body>
 

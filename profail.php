@@ -1,7 +1,9 @@
 <?php
+/*
+just of test 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(E_ALL);*/
 
 $page_name = " ";
 include "includes/session.php";
@@ -47,7 +49,8 @@ if (isset($_GET["id"])) {
     // Execute the sales query
     $salles_result = mysqli_query($coon, $salles);
 
-    // SQL query for products still in use
+    // SQL query for products still in 
+    // importent i could change tihs to work finding if similar products in use just test for the same dci  
     $using = "SELECT CONCAT(lp.name, ' ', lp.dosage) AS medication, c.amount, o.next_date AS next_sale_date
     FROM `prescription` o
     INNER JOIN changement c ON o.id = c.id_ord
@@ -59,7 +62,7 @@ if (isset($_GET["id"])) {
     // Execute the products still in use query
     $using_result = mysqli_query($coon, $using);
 } else {
-
+   // not working for now maybe add a model 
     header("Location: error.php");
     exit();
 }
