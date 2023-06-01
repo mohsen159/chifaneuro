@@ -1,9 +1,3 @@
-// this part is just for your custom search
-/*$('#search').keyup(function() {
-	var table = $('#prducts').DataTable();
-	table.search($(this).val()).draw();
-});*/
-// the add model 
 // counter to track number of elements
 let counter = 1;
 
@@ -124,20 +118,20 @@ function find_productid(input) {
             });
 
         } else {
-            alert("no empty fiealds here enter data or delete the entry  Please  ");
+            alert("you can not submit with empty field  ");
         }
 
     }
 }
 
 $(document).ready(function () {
- 
-   let table = $('#prducts').DataTable({
+
+    let table = $('#prducts').DataTable({
         responsive: true,
         paging: false,
         dom: 'Bfrtip',
         buttons: [{
-                text: 'add',
+                text: 'Add',
                 action: function () {
 
                     //alert("nothing for now ")
@@ -178,7 +172,7 @@ $(document).ready(function () {
             [0, "desc"]
         ]
     });
-    $('#search-input').on('keyup', function() {
+    $('#search-input').on('keyup', function () {
         table.search(this.value).draw();
     });
     $.ajax({
@@ -209,7 +203,7 @@ $(document).ready(function () {
             dbutton.forEach(btn => {
                 btn.addEventListener('click', () => {
 
-                    if (confirm("Are you sure you want to delete this item?")) {
+                    if (confirm("Are you sure you want to delete  ?")) {
 
 
                         //alert('Delete button clicked');
@@ -290,25 +284,24 @@ $(document).ready(function () {
                         exp: exp
                     };
 
-                    // Perform an AJAX request to update the data in the server-side script
+                    //  to update the data 
                     $.ajax({
-                        url: 'actions/update_product.php', // Replace with the URL of your server-side script
+                        url: 'actions/update_product.php',
                         method: 'POST',
                         data: formData,
                         dataType: 'json',
                         success: function (response) {
-                            // Check if the update was successful
+
                             if (response.success) {
-                                // Update the data in the row
-                                /// this is just for test 
+
                                 location.reload();
-                                // Update the expiration date in the row using the expDate value
+
                             } else {
-                                // Handle the case when the update failed
+
                             }
                         },
                         error: function (xhr, status, error) {
-                            // Handle the AJAX error
+
                         }
                     });
                 });

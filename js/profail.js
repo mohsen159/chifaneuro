@@ -57,7 +57,7 @@ function find_productid(input) {
 function delet_p(element) {
     if (element.parentElement === document.getElementById("1")) {
         /// no need for the form to be visible
-        alert("this fieald can not be deleted ");
+        alert("This fieald can not be deleted ");
     } else {
         element.parentElement.remove();
     }

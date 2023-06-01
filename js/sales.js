@@ -88,8 +88,8 @@ function find_productid(input) {
         const productId = product.id_p;
         idInput.value = productId;
     } else {
-        if(full_name.length>1) {
-        alert('Please select a valide product name ');
+        if (full_name.length > 1) {
+            alert('Please select a valide product name ');
         }
     }
 }
@@ -181,7 +181,7 @@ function find_clientid(input) {
         } else {
             // this means the client is new we have to creat a new one update the clients array and call the findclientid again 
             // use the model addclient
-            alert('This client not exist in the database please enter his information  !!! ');
+            alert('The name of the client does not match |n pleae insert his information in the database');
             $('#add').modal('hide');
             $('#addclient').modal('show');
             $('#new_client').submit(function (e) {
@@ -274,8 +274,8 @@ $(document).ready(function () {
             [0, 'desc']
         ]
     });
-    
-    $('#search-input').on('keyup', function() {
+
+    $('#search-input').on('keyup', function () {
         table.search(this.value).draw();
     });
 
@@ -293,32 +293,32 @@ $(document).ready(function () {
                         '<a style="text-decoration: none; color: black;" href="profail.php?id=' + row.client_id + '">' + row.client_name + '</a>',
                         "<pre style='font-weight: bold; font-size: larger;'>" + (row.medication_info + (row.non_completed_info == null ? " " : (" \nrest : \n" +
                             row.non_completed_info))) + "</pre>",
-                            row.order_ord,
+                        row.order_ord,
                         row.ord_date,
                         row.next_date,
-                        row.dure, 
+                        row.dure,
                         $("<button>")
-                            .addClass("btn btn-danger delet-user-btn delete-btn")
-                            .append($("<i>").addClass("fas fa-trash-alt"))
-                            .text("Delete")
-                            .prop("outerHTML") // Convert the button element to HTML string great not bad 
+                        .addClass("btn btn-danger delet-user-btn delete-btn")
+                        .append($("<i>").addClass("fas fa-trash-alt"))
+                        .text("Delete")
+                        .prop("outerHTML") // Convert the button element to HTML string great not bad 
                     ];
                     table.row.add(rowData);
                 });
                 table.draw();
 
-                
+
                 const dbutton = document.querySelectorAll('.delete-btn');
                 dbutton.forEach(btn => {
                     btn.addEventListener('click', () => {
-                          var currentRow = btn.closest("tr");
-                          var rowIdx = table.row(currentRow).index();
-                          var rowData = table.row(rowIdx).data();
-                          var id = rowData[0]; // the id is the first column in the table 
-                         // alert(id);   // just for test this is good enough 
-                        if (confirm(' this will return the inventory to his old location ?  ')) {
+                        var currentRow = btn.closest("tr");
+                        var rowIdx = table.row(currentRow).index();
+                        var rowData = table.row(rowIdx).data();
+                        var id = rowData[0]; // the id is the first column in the table 
+                        // alert(id);   // just for test this is good enough 
+                        if (confirm(' All products will be return to there previos amounts  ')) {
                             // Perform the delete operation
-                            const saleId = id ; 
+                            const saleId = id;
                             $.ajax({
                                 url: 'actions/delet_sales.php',
                                 type: 'POST',
@@ -328,7 +328,7 @@ $(document).ready(function () {
                                 success: function () {
                                     // Refresh the sales table
                                     currentRow.remove();
-                                    
+
                                 },
                                 error: function () {
                                     alert('Error deleting the sale.');
