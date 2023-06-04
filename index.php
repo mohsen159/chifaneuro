@@ -162,15 +162,14 @@
                                         $customerId = $customerMedsRow['id'];
                                         $customerName = $customerMedsRow['name'] . ' ' . $customerMedsRow['fname'];
                                         $nextSalesDate = date('d/m/Y', strtotime($customerMedsRow['next_date']));
-                                        ?>
+                                    ?>
                                         <tr>
-                                            <td><a style="text-decoration: none; color: black"
-                                                    href="profail.php?id=<?php echo $customerId; ?>"><?php echo $customerName; ?></a></td>
+                                            <td><a style="text-decoration: none; color: black" href="profail.php?id=<?php echo $customerId; ?>"><?php echo $customerName; ?></a></td>
                                             <td>
                                                 <?php echo $nextSalesDate; ?>
                                             </td>
                                         </tr>
-                                        <?php
+                                    <?php
                                     }
                                     ?>
                                 </tbody>
@@ -209,7 +208,7 @@
                                                     $productName = $waitlistRow['product_name'];
                                                     $productdosage = $waitlistRow['dosage'];
                                                     $amount = $waitlistRow['total_amount'];
-                                                    ?>
+                                            ?>
                                                     <tr>
                                                         <td>
                                                             <?php echo $productName . " " . $productdosage; ?>
@@ -218,7 +217,7 @@
                                                             <?php echo $amount; ?>
                                                         </td>
                                                     </tr>
-                                                    <?php
+                                                <?php
                                                 }
                                             } else {
                                                 // Display "Waitlist Empty" message
@@ -226,20 +225,17 @@
                                                 <tr>
                                                     <td colspan="2" class="text-center">Waitlist Empty</td>
                                                 </tr>
-                                                <?php
+                                            <?php
                                             }
                                             ?>
                                         </tbody>
                                     </table>
-                                    <div class="table-buttons">
-                                        <button class="btn btn-primary">Create Order</button>
-                                    </div>
+
                                 </div>
                                 <div class="col-md-12 mt-5">
                                     <h3>Supply List</h3>
                                     <div class="prediction-date">
-                                        <input type="date" id="prediction-date"
-                                            value="<?php echo date('Y-m-d', strtotime('+30 days')); ?>">
+                                        <input type="date" id="prediction-date" value="<?php echo date('Y-m-d', strtotime('+30 days')); ?>">
                                     </div>
                                     <table class="table table-striped prediction-table">
                                         <thead>
@@ -252,16 +248,15 @@
                                             <!-- Table body content will be dynamically generated here -->
                                         </tbody>
                                     </table>
-                                    <div class="table-buttons">
-                                        <button class="btn btn-primary">Create Order</button>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <?php
                     // Close the database connection
-                    mysqli_close($coon);''
+                    mysqli_close($coon);
+                    ''
                     ?>
 
             </main>
@@ -276,7 +271,7 @@
     <!-- Add Font Awesome JS -->
     <script src="js/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-   
+
 </body>
 
 </html>
