@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ns = date('Y-m-d', strtotime($sale_date . ' + ' . $dure . ' days'));
         $temp = 1;
         $stmt = $coon->prepare("UPDATE `prescription` SET `id_user` = ?, `id_client` = ?, `ord_date` = ?, `next_date` = ?, `order_ord` = ?, `dure` = ?, `complited` = ?, `note` = ? WHERE `id` = ?");
-        $stmt->bind_param("iississis", $employs, $clientid, $sale_date, $ns, $order, $dure, $temp, $note, $sale_id);
+        $stmt->bind_param("iissssssi", $employs, $clientid, $sale_date, $ns, $order, $dure, $temp, $note, $sale_id);
         $stmt->execute();
         $stmt->close();
     } else {
@@ -32,5 +32,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: ../sales.php");
 }
 {
-    // fix this later s
+    // fix this later
 }
