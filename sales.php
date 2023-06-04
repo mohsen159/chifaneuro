@@ -52,7 +52,10 @@ include "includes/coon.php";
 							<tbody id="order-data">
 							</tbody>
 						</table>
-						<?php include "model/sales_model.php"; ?>
+						<?php  
+						if (isset($_SESSION["role"]) && $_SESSION["role"] == "owner") {
+							// Access the 'role' key only if it's defined
+							include "model/sales_model.php";}  ?>
 					</div>
 
 
