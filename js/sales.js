@@ -306,21 +306,19 @@ $(document).ready(function () {
                     table.row.add(rowData);
                 });
                 table.draw();
-                const dbutton = document.querySelectorAll('.btn-info');
-                dbutton.forEach(btn => {
+                const ebutton = document.querySelectorAll('.btn-info');
+                ebutton.forEach(btn => {
                     btn.addEventListener('click', () => {
                         var currentRow = btn.closest("tr");
                         var rowIdx = table.row(currentRow).index();
                         var rowData = table.row(rowIdx).data();
-                        var id = rowData[0]; // the id is the first column in the table 
-                        // alert(id);   // just for test this is good enough 
-
+                        var id = rowData[0];
                         // Perform the delete operation
                         const saleId = sales.findIndex(p => p.id == id);
                         if (saleId == -1) {
                             alert("the data for this sales odes not found mybe deleted from anthor user or in modifaied ")
                         }
-                        console.table(sales[saleId])
+
                         var form = document.getElementById("edit_sales");
                         form.elements["salesid"].value = sales[saleId].id;
                         form.elements["clientid"].value = sales[saleId].client_id;
@@ -335,7 +333,7 @@ $(document).ready(function () {
                         var formattedDate = parts[2] + "-" + parts[1] + "-" + parts[0];
                         form.elements["sale_date"].value = formattedDate;
 
-                        /// this part is just to clen the data for noncomplit from the form element 
+                        /// this part is just to clean the data for noncomplit from the form element 
 
                         const elements = form.querySelectorAll('.fetchclean');
 
@@ -343,9 +341,10 @@ $(document).ready(function () {
                             element.remove();
                         });
                         /* here add noncomplite valus  */
-                        if (sales[saleId].complited == '0') {
-
+                        if (sales[saleId].non_completed_info != null) {
                             fetchnoncomplited(sales[saleId].non_completed_info); // test data if working properly
+                        } else {
+                            console.log(saleId);
                         }
                         $('#edit').modal('show');
                     });
@@ -365,12 +364,13 @@ $(document).ready(function () {
 
 function addElementc() {
     const newDiv = document.createElement('div');
+    let d = "0";
     newDiv.className = 'mt-3 autocomplete d-flex flex-nowrap justify-content-between space fetchclean';
     newDiv.innerHTML = `
             <input type="hidden" name="id[]" >
             <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
             <input type="number" class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" required>
-            <input type="text" class="order-2 p-2" style="width:80px" onblur="findmax(this)" placeholder="Lot" name="lot[]" >
+            <input type="text" class="order-2 p-2" style="width:80px"  placeholder="Lot" name="lot[]" value="${d}" >
             <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)"></li>`;
 
     const container = document.getElementById('addnewinputs');
@@ -383,7 +383,6 @@ function fetchnoncomplited(noncomplited) {
     // before fetch cleal previose valus in the form 
 
     const sampleData = convertTextToArray(noncomplited);
-    console.log(sampleData);
 
     // Loop through the sample data and create div elements
     sampleData.forEach((p) => {
@@ -391,14 +390,14 @@ function fetchnoncomplited(noncomplited) {
         /// find the default id to use it later on 
         let fullname = p.name.toLowerCase();
         const product = data.find((m) => m.full_name.toLowerCase() === fullname);
-
+        let d = "0";
         newDiv.id = p.id + 'p';
         newDiv.className = 'mt-3 autocomplete d-flex flex-nowrap justify-content-between space fetchclean';
         newDiv.innerHTML = `
         <input type="hidden" name="id[]" value="${product.id_p}">
         <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" value="${p.name}" required>
         <input type="number" class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" value="${p.amount}" required>
-        <input type="text" class="order-2 p-2" style="width:80px" onblur="findmax(this)" placeholder="Lot" name="lot[]" >
+        <input type="text" class="order-2 p-2" style="width:80px" placeholder="Lot" name="lot[]" value="${d}" >
         <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)"></li>`;
 
         const container = document.getElementById('addnewinputs');

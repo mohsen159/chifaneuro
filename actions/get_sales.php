@@ -28,7 +28,7 @@ LEFT JOIN `noncompliant` nc ON o.id = nc.ord_id
 LEFT JOIN `list_prodoit` nlp ON nc.list_prodoit = nlp.id
 LEFT JOIN `client` cl ON o.id_client = cl.id
 LEFT JOIN `users` u ON o.id_user = u.id
-WHERE o.id_pharm = $pharm_id
+WHERE o.id_pharm = $pharm_id 
 GROUP BY o.id
 "; 
 $result = mysqli_query($coon, $sql);

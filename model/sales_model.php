@@ -117,7 +117,7 @@
                     <div class="mb-3 mt-3 autocomplete">
                         <input type="hidden" name="salesid" id="salesid">
                         <input type="hidden" name="clientid">
-                        <input type="text" onfocus="find_client(this)" onblur="find_clientid(this)" class="form-control" id="input_client" placeholder="client" name="client" required>
+                        <input type="text" onfocus="find_client(this)" onblur="find_clientid(this)" class="form-control" id="input_client" placeholder="client" name="client" required readonly>
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>

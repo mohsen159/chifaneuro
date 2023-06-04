@@ -38,7 +38,7 @@ for ($i = 0; $i < $count; $i++) {
 }
 if ($available) {    // creat sales 
     $ns = date('Y-m-d', strtotime($sale_date . ' +  ' . $dure . ' days'));
-    $temp =  ($complited == 0);
+    $temp =   $complited==0;
     $stmt = $coon->prepare("INSERT INTO `prescription` (`id_user`, `id_client`, `id_pharm`, `ord_date`, `next_date`, `order_ord`, `dure`, `complited`, `note`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("iiisssiss", $employs, $clientid, $pharm_id, $sale_date, $ns, $num_order, $dure, $temp, $note);
     $stmt->execute();
