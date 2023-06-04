@@ -25,14 +25,14 @@ include "includes/coon.php";
 
 			<main class="content">
 				<div class="container-fluid p-0">
-				<h1 class="h1 mb-1 h1-size"><?php echo $page_name; ?></h1>
+					<h1 class="h1 mb-1 h1-size"><?php echo $page_name; ?></h1>
 
-				<div class="search-container">
-				<form id="search-form">
-                            <input type="text" class="search-bar" id="search-input" placeholder="Search">
-                            <input type="hidden" id="hidden-input" value="-1">
-                        </form>
-                    </div>
+					<div class="search-container">
+						<form id="search-form">
+							<input type="text" class="search-bar" id="search-input" placeholder="Search">
+							<input type="hidden" id="hidden-input" value="-1">
+						</form>
+					</div>
 					<div style="color: black;" class="row">
 						<table id="Sales" style="width:100%" class="display" class="display table table-hover my-0">
 							<thead>
@@ -65,6 +65,16 @@ include "includes/coon.php";
 			<!--end  here -->
 		</div>
 	</div>
+	<style>
+		/* Style the textarea */
+		textarea {
+			width: 100%;
+			padding: 10px;
+			font-size: 14px;
+			border-radius: 4px;
+			border: 1px solid #ccc;
+		}
+	</style>
 	<script src="js/sales.js"></script>
 </body>
 

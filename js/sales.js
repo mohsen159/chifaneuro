@@ -298,9 +298,9 @@ $(document).ready(function () {
                         row.next_date,
                         row.dure,
                         $("<button>")
-                        .addClass("btn btn-danger delet-user-btn delete-btn")
+                        .addClass("btn btn-danger delet-user-btn btn-info")
                         .append($("<i>").addClass("fas fa-trash-alt"))
-                        .text("Delete")
+                        .text("Action")
                         .prop("outerHTML") // Convert the button element to HTML string great not bad 
                     ];
                     table.row.add(rowData);
@@ -308,7 +308,37 @@ $(document).ready(function () {
                 table.draw();
 
 
-                const dbutton = document.querySelectorAll('.delete-btn');
+                /* const dbutton = document.querySelectorAll('.delete-btn');
+                 dbutton.forEach(btn => {
+                     btn.addEventListener('click', () => {
+                         var currentRow = btn.closest("tr");
+                         var rowIdx = table.row(currentRow).index();
+                         var rowData = table.row(rowIdx).data();
+                         var id = rowData[0]; // the id is the first column in the table 
+                         // alert(id);   // just for test this is good enough 
+                         if (confirm(' All products will be return to there previos amounts  ')) {
+                             // Perform the delete operation
+                             const saleId = id;
+                             $.ajax({
+                                 url: 'actions/delet_sales.php',
+                                 type: 'POST',
+                                 data: {
+                                     saleId: saleId
+                                 },
+                                 success: function () {
+                                     // Refresh the sales table
+                                     currentRow.remove();
+
+                                 },
+                                 error: function () {
+                                     alert('Error deleting the sale.');
+                                 }
+                             });
+                         }
+                     });
+                 });*/
+
+                const dbutton = document.querySelectorAll('.btn-info');
                 dbutton.forEach(btn => {
                     btn.addEventListener('click', () => {
                         var currentRow = btn.closest("tr");
@@ -316,25 +346,30 @@ $(document).ready(function () {
                         var rowData = table.row(rowIdx).data();
                         var id = rowData[0]; // the id is the first column in the table 
                         // alert(id);   // just for test this is good enough 
-                        if (confirm(' All products will be return to there previos amounts  ')) {
-                            // Perform the delete operation
-                            const saleId = id;
-                            $.ajax({
-                                url: 'actions/delet_sales.php',
-                                type: 'POST',
-                                data: {
-                                    saleId: saleId
-                                },
-                                success: function () {
-                                    // Refresh the sales table
-                                    currentRow.remove();
 
-                                },
-                                error: function () {
-                                    alert('Error deleting the sale.');
-                                }
-                            });
+                        // Perform the delete operation
+                        const saleId = sales.findIndex(p => p.id == id);
+                        if (saleId == -1) {
+                            alert("the data for this sales odes not found mybe deleted from anthor user or in modifaied ")
                         }
+                        console.table(sales[saleId])
+                        var form = document.getElementById("edit_sales");
+                        form.elements["salesid"].value = sales[saleId].id;
+                        form.elements["clientid"].value = sales[saleId].client_id;
+                        form.elements["client"].value = sales[saleId].client_name;
+                        form.elements["employs"].value = sales[saleId].user_id;
+                        form.elements["medication_info"].value = sales[saleId].medication_info;
+                        form.elements["num_order"].value = sales[saleId].order_ord;
+                        form.elements["note"].value = sales[saleId].note;
+                        form.elements["dure"].value = sales[saleId].dure;
+                        let temp = sales[saleId].ord_date;
+                        var parts = temp.split("/");
+                        var formattedDate = parts[2] + "-" + parts[1] + "-" + parts[0];
+                        form.elements["sale_date"].value = formattedDate;
+                        
+                        /* here add noncomplite valus  */
+                        
+                        $('#edit').modal('show');
                     });
                 });
 
@@ -349,3 +384,29 @@ $(document).ready(function () {
     getSalesData();
 
 });
+
+
+function deletsales() {
+    var form = document.getElementById("edit_sales");
+    let id = form.elements["salesid"].value;
+    if (confirm(' All products will be return to there previos amounts  ')) {
+        // Perform the delete operation
+        const saleId = id;
+        $.ajax({
+            url: 'actions/delet_sales.php',
+            type: 'POST',
+            data: {
+                saleId: saleId
+            },
+            success: function () {
+                // Refresh the sales table
+                location.reload();
+
+            },
+            error: function () {
+                alert('Error deleting the sale.');
+            }
+        });
+    }
+
+}

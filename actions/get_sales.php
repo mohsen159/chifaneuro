@@ -18,7 +18,8 @@ $sql = "SELECT
   o.dure,
   o.ModifiedDate,
   o.complited, 
-  o.order_ord
+  o.order_ord,
+  o.note
 FROM `prescription` o
 LEFT JOIN `changement` c ON o.id = c.id_ord
 LEFT JOIN `inventory` p ON c.id_prodoit = p.id

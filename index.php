@@ -261,7 +261,7 @@
                     </div>
                     <?php
                     // Close the database connection
-                    mysqli_close($coon);
+                    mysqli_close($coon);''
                     ?>
 
             </main>
