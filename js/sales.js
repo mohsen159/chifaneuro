@@ -369,8 +369,9 @@ function addElementc() {
     newDiv.innerHTML = `
             <input type="hidden" name="id[]" >
             <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
-            <input type="number" class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" required>
+          
             <input type="text" class="order-2 p-2" style="width:80px"  placeholder="Lot" name="lot[]" value="${d}" >
+            <input type="number" class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" required>
             <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)"></li>`;
 
     const container = document.getElementById('addnewinputs');
@@ -396,8 +397,9 @@ function fetchnoncomplited(noncomplited) {
         newDiv.innerHTML = `
         <input type="hidden" name="id[]" value="${product.id_p}">
         <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" value="${p.name}" required>
-        <input type="number" class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" value="${p.amount}" required>
         <input type="text" class="order-2 p-2" style="width:80px" placeholder="Lot" name="lot[]" value="${d}" >
+        <input type="number" class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" value="${p.amount}" required>
+
         <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)"></li>`;
 
         const container = document.getElementById('addnewinputs');
