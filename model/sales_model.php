@@ -161,9 +161,9 @@
                     <br />
 
                     <!-- Don't delete this input, we use it to add new div before -->
-                    <input type="hidden" id="noncomplited">
+                    <input type="hidden" id="addnewinputs">
                     <br>
-                    <button style="margin-top:10px" type="button" onclick="addnElementc()" class="fa fa-plus btn btn-primary">Add</button>
+                    <button style="margin-top:10px" type="button" onclick="addElementc()" class="fa fa-plus btn btn-primary">Add</button>
                     <!-- Num order  -->
                     <div class="mb-3 mt-3">
                         <input type="text" class="form-control" id="num_order" placeholder="num_order" name="num_order" required>

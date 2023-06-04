@@ -298,7 +298,7 @@ $(document).ready(function () {
                         row.next_date,
                         row.dure,
                         $("<button>")
-                        .addClass("btn btn-danger delet-user-btn btn-info")
+                        .addClass("btn btn-secondary btn-info")
                         .append($("<i>").addClass("fas fa-trash-alt"))
                         .text("Action")
                         .prop("outerHTML") // Convert the button element to HTML string great not bad 
@@ -306,38 +306,6 @@ $(document).ready(function () {
                     table.row.add(rowData);
                 });
                 table.draw();
-
-
-                /* const dbutton = document.querySelectorAll('.delete-btn');
-                 dbutton.forEach(btn => {
-                     btn.addEventListener('click', () => {
-                         var currentRow = btn.closest("tr");
-                         var rowIdx = table.row(currentRow).index();
-                         var rowData = table.row(rowIdx).data();
-                         var id = rowData[0]; // the id is the first column in the table 
-                         // alert(id);   // just for test this is good enough 
-                         if (confirm(' All products will be return to there previos amounts  ')) {
-                             // Perform the delete operation
-                             const saleId = id;
-                             $.ajax({
-                                 url: 'actions/delet_sales.php',
-                                 type: 'POST',
-                                 data: {
-                                     saleId: saleId
-                                 },
-                                 success: function () {
-                                     // Refresh the sales table
-                                     currentRow.remove();
-
-                                 },
-                                 error: function () {
-                                     alert('Error deleting the sale.');
-                                 }
-                             });
-                         }
-                     });
-                 });*/
-
                 const dbutton = document.querySelectorAll('.btn-info');
                 dbutton.forEach(btn => {
                     btn.addEventListener('click', () => {
@@ -366,9 +334,19 @@ $(document).ready(function () {
                         var parts = temp.split("/");
                         var formattedDate = parts[2] + "-" + parts[1] + "-" + parts[0];
                         form.elements["sale_date"].value = formattedDate;
-                        
+
+                        /// this part is just to clen the data for noncomplit from the form element 
+
+                        const elements = form.querySelectorAll('.fetchclean');
+
+                        elements.forEach((element) => {
+                            element.remove();
+                        });
                         /* here add noncomplite valus  */
-                        
+                        if (sales[saleId].complited == '0') {
+
+                            fetchnoncomplited(sales[saleId].non_completed_info); // test data if working properly
+                        }
                         $('#edit').modal('show');
                     });
                 });
@@ -385,6 +363,78 @@ $(document).ready(function () {
 
 });
 
+function addElementc() {
+    const newDiv = document.createElement('div');
+    newDiv.className = 'mt-3 autocomplete d-flex flex-nowrap justify-content-between space fetchclean';
+    newDiv.innerHTML = `
+            <input type="hidden" name="id[]" >
+            <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" required>
+            <input type="number" class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" required>
+            <input type="text" class="order-2 p-2" style="width:80px" onblur="findmax(this)" placeholder="Lot" name="lot[]" >
+            <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)"></li>`;
+
+    const container = document.getElementById('addnewinputs');
+    container.parentNode.insertBefore(newDiv, container);
+
+}
+
+function fetchnoncomplited(noncomplited) {
+
+    // before fetch cleal previose valus in the form 
+
+    const sampleData = convertTextToArray(noncomplited);
+    console.log(sampleData);
+
+    // Loop through the sample data and create div elements
+    sampleData.forEach((p) => {
+        const newDiv = document.createElement('div');
+        /// find the default id to use it later on 
+        let fullname = p.name.toLowerCase();
+        const product = data.find((m) => m.full_name.toLowerCase() === fullname);
+
+        newDiv.id = p.id + 'p';
+        newDiv.className = 'mt-3 autocomplete d-flex flex-nowrap justify-content-between space fetchclean';
+        newDiv.innerHTML = `
+        <input type="hidden" name="id[]" value="${product.id_p}">
+        <input type="text" onfocus="find_product(this)" onblur="find_productid(this)" class="form-control order-1 p-2" placeholder="Name" name="name[]" value="${p.name}" required>
+        <input type="number" class="order-3 p-2" min="1" style="width:100px" placeholder="Amount" name="amount[]" value="${p.amount}" required>
+        <input type="text" class="order-2 p-2" style="width:80px" onblur="findmax(this)" placeholder="Lot" name="lot[]" >
+        <li style="margin-right: 10px;" class="btn btn-danger fa fa-trash" aria-hidden="true" onclick="delet_p(this)"></li>`;
+
+        const container = document.getElementById('addnewinputs');
+        container.parentNode.insertBefore(newDiv, container);
+    });
+}
+
+function convertTextToArray(text) {
+    const dataArray = [];
+
+    // Split the text into individual lines
+    const lines = text.trim().split('\n');
+
+    // Iterate over each line and extract product name and amount
+    lines.forEach((line) => {
+        // Extract product name and amount using regular expression
+        const regex = /(.*?)\s*:\s*(\d+)/;
+        const matches = line.match(regex);
+
+        if (matches && matches.length === 3) {
+            const productName = matches[1].trim();
+            const amount = parseInt(matches[2]);
+
+            // Create an object with product name and amount
+            const data = {
+                name: productName,
+                amount: amount
+            };
+
+            // Push the object into the dataArray
+            dataArray.push(data);
+        }
+    });
+
+    return dataArray;
+}
 
 function deletsales() {
     var form = document.getElementById("edit_sales");
@@ -408,5 +458,4 @@ function deletsales() {
             }
         });
     }
-
 }
