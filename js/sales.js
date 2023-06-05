@@ -181,7 +181,7 @@ function find_clientid(input) {
         } else {
             // this means the client is new we have to creat a new one update the clients array and call the findclientid again 
             // use the model addclient
-            alert('The name of the client does not match |n pleae insert his information in the database');
+            alert('The name of the client does not match in pleae insert his information in the database');
             $('#add').modal('hide');
             $('#addclient').modal('show');
             $('#new_client').submit(function (e) {
@@ -341,7 +341,7 @@ $(document).ready(function () {
                             element.remove();
                         });
                         /* here add noncomplite valus  */
-                        if (sales[saleId].non_completed_info != null) {
+                        if (sales[saleId].non_completed_info !== null) {
                             fetchnoncomplited(sales[saleId].non_completed_info); // test data if working properly
                         } else {
                             console.log(saleId);
